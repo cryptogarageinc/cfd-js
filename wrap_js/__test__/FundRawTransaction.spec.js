@@ -22,29 +22,6 @@ const createFeeInfo = (feeRate, minChange = -1) => {
 };
 
 const testCase = [
-  // (() => {
-  //   const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
-  //   return TestHelper.createBitcoinTestCase(
-  //     'FundRawTransaction tx: 0 input, 0 output, feeRate: 1',
-  //     FundRawTransaction,
-  //     [JSON.stringify({
-  //       utxos,
-  //       selectUtxos: [{}],
-  //       tx: '',
-  //       isElements: false,
-  //       network: 'mainnet',
-  //       targetAmount: 0,
-  //       reserveAddress: '',
-  //       feeInfo: {
-  //         feeRate: 0.0,
-  //         longTermFeeRate: 0.0,
-  //         knapsackMinChange: -1,
-  //         dustFeeRate: 0.0,
-  //       },
-  //     })],
-  //     '{"hex":"","usedAddresses":[],"feeAmount":0}',
-  //   );
-  // })(),
   (() => {
     const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
     return TestHelper.createBitcoinTestCase(
@@ -264,7 +241,7 @@ const testCase = [
         reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
         feeInfo: createFeeInfo(5.0),
       })],
-      '{"hex":"02000000020000001000000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff02808d5b00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac769ad500000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":1290}',
+      '{"hex":"02000000020000001000000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff02808d5b00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88acf6306e01000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":1290}',
     );
   })(),
   (() => {
@@ -308,7 +285,7 @@ const testCase = [
     );
   })(),
   (() => {
-    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], FIXED_DESCRIPTOR);
     return TestHelper.createBitcoinTestCase(
       'FundRawTransaction (tx: 2 input(1.3 btc) 3 output(1.05 btc), targetAmount: 2.0 btc, feeRate: 20.0)',
       FundRawTransaction,
@@ -326,27 +303,28 @@ const testCase = [
         feeInfo: createFeeInfo(20.0),
       })],
       [
-        '{"hex":"02000000050000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588acb0fd4106000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":11920}',
-        '{"hex":"02000000050000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588acb0fd4106000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":11920}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000080000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000070000000000000000000000000000000000000000000000000000000000000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000060000000000000000000000000000000000000000000000000000000000000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000080000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
       ],
     );
   })(),
   (() => {
-    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], FIXED_DESCRIPTOR);
+    // create utxos (0.01 ~ 2.00)
+    const selectUtxos = [...Array(200)].map((_, i) => {
+      const btc = 0.01 * (i+1);
+      const amount = Math.floor(btc * COIN_BASE);
+      const txid = 'abcdef' + ('0000000000000000000000000000000000000000000000000000000000' + amount).slice(-58);
+      return TestUtxoCreater.createUtxo(txid, 0, btc, FIXED_DESCRIPTOR);
+    });
     return TestHelper.createBitcoinTestCase(
       'FundRawTransaction (tx: 2 input(1.3 btc) 3 output(1.05 btc), targetAmount: 2.0 btc, feeRate: 20.0, multi-selected utxo)',
       FundRawTransaction,
       [JSON.stringify({
         utxos,
-        selectUtxos: (() => {
-          // create utxos (0.01 ~ 2.00)
-          return [...Array(200)].map((_, i) => {
-            const btc = 0.01 * (i+1);
-            const amount = Math.floor(btc * COIN_BASE);
-            const txid = 'abcdef' + ('0000000000000000000000000000000000000000000000000000000000' + amount).slice(-58);
-            return TestUtxoCreater.createUtxo(txid, 0, btc, FIXED_DESCRIPTOR);
-          });
-        })(),
+        selectUtxos: selectUtxos,
         tx: '02000000020000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0340ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588ac00000000',
         isElements: false,
         network: 'regtest',
@@ -355,8 +333,10 @@ const testCase = [
         feeInfo: createFeeInfo(20.0, (Math.floor(2 * COIN_BASE))),
       })],
       [
-        '{"hex":"02000000050000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588acb0fd4106000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":11920}',
-        '{"hex":"02000000050000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588acb0fd4106000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":11920}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000080000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000070000000000000000000000000000000000000000000000000000000000000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000060000000000000000000000000000000000000000000000000000000000000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000060000000000000000000000000000000000000000000000000000000000000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
       ],
     );
   })(),
@@ -374,34 +354,12 @@ const testCase = [
         reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
         feeInfo: createFeeInfo(2.0),
       })],
-      '{"hex":"020000000100000020000000000000000000000000000000000000000000000000000000000000000000ffffffff01f42b3101000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":224}',
+      '{"hex":"020000000100000020000000000000000000000000000000000000000000000000000000000000000000ffffffff01202c3101000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":224}',
     );
   })(),
 ];
 
 const errorCase = [
-  // (() => {
-  //   const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
-  //   return TestHelper.createBitcoinTestCase(
-  //     'FundRawTransaction - Error - invalid transaction',
-  //     FundRawTransaction,
-  //     [JSON.stringify({
-  //       utxos,
-  //       selectUtxos: [
-  //         TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000115000000', 0, 1.15, FIXED_DESCRIPTOR),
-  //         TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000015000000', 0, 0.15, FIXED_DESCRIPTOR),
-  //       ],
-  //       tx: '02000000020000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0340ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588ac00000000',
-  //       isElements: false,
-  //       network: 'regtest',
-  //       targetAmount: (Math.floor(2.0 * COIN_BASE)),
-  //       reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
-  //       feeInfo: createFeeInfo(20.0),
-  //     })],
-  //     '{"error":{"code":1,"type":"illegal_argument","message":"Unmatch fee asset."}}',
-  //   );
-  // })(),
-
   // error case based on 'FundRawTransaction (tx: 2 input(1.3 btc) 3 output(1.05 btc), targetAmount: 2.0 btc, feeRate: 20.0)' case
   (() => {
     const utxos = TestUtxoCreater.createUtxos([0.001, 0.002], FIXED_DESCRIPTOR);
@@ -449,33 +407,432 @@ const errorCase = [
 
 const elementsTestCase = [
   (() => {
-    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR, DEFAULT_ASSET_A);
-    return TestHelper.createBitcoinTestCase(
-      'FundRawTransaction - Elements - (tx: 0 input, 0 output, feeRate: 0, targets: [0.15], standard utxo)',
+    const utxoSetA = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR, DEFAULT_ASSET_A);
+    const utxoSetB = TestUtxoCreater.createUtxos([0.6, 0.7, 0.8, 0.9, 1.0], SEGWIT_DESCRIPTOR, DEFAULT_ASSET_B);
+    const utxosForFee = TestUtxoCreater.createUtxos([0.01, 0.02, 0.03, 0.04, 0.05], FIXED_DESCRIPTOR, DEFAULT_ASSET_B);
+    const utxos = [].concat(utxoSetA, utxoSetB, utxosForFee);
+    return TestHelper.createElementsTestCase(
+      'FundRawTransaction - Elements - (tx: 0 input(0 btc) 0 output(0 btc), targetAmount: 0, feeRate: 0, single asset utxos)',
       FundRawTransaction,
       [JSON.stringify({
         utxos,
-        selectUtxos: [{}],
-        tx: '020000000000000000000000',
+        tx: '0200000000000000000000',
         isElements: true,
         network: 'liquidv1',
         targets: [{
           asset: DEFAULT_ASSET_A,
-          amount: (Math.floor(0.15 * COIN_BASE)),
-          reserveAddress: 'QKXGAM4Cvd1fvLEz5tbq4YwNRzTjdMWi2q',
+          amount: 0,
+          reserveAddress: 'GqA8nUufz9yVpSTB5Ytw4Pe5maCuaHrVmo',
         }],
         feeInfo: {
           feeRate: 0.0,
           longTermFeeRate: 0.0,
           knapsackMinChange: -1,
           dustFeeRate: 0.0,
-          feeAsset: '',
+          feeAsset: FEE_ASSET,
           isBlindEstimateFee: false,
         },
       })],
-      '{"hex":"","usedAddress":[],"feeAmount":0}',
+      '{"hex":"0200000000000000000000","usedAddresses":[],"feeAmount":0}',
     );
   })(),
+  (() => {
+    const utxoSetA = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR, DEFAULT_ASSET_A);
+    const utxoSetB = TestUtxoCreater.createUtxos([0.6, 0.7, 0.8, 0.9, 1.0], SEGWIT_DESCRIPTOR, DEFAULT_ASSET_B);
+    const utxosForFee = TestUtxoCreater.createUtxos([0.01, 0.02, 0.03, 0.04, 0.05], FIXED_DESCRIPTOR, DEFAULT_ASSET_B);
+    const utxos = [].concat(utxoSetA, utxoSetB, utxosForFee);
+    return TestHelper.createElementsTestCase(
+      'FundRawTransaction - Elements - (tx: 0 input(0 btc) 0 output(0 btc), targetAmount: 11000000, feeRate: 0, single asset utxos)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        tx: '0200000000000000000000',
+        isElements: true,
+        network: 'liquidv1',
+        targets: [{
+          asset: DEFAULT_ASSET_A,
+          amount: (Math.floor(0.15 * COIN_BASE)),
+          reserveAddress: 'GqA8nUufz9yVpSTB5Ytw4Pe5maCuaHrVmo',
+        }],
+        feeInfo: {
+          feeRate: 0.0,
+          longTermFeeRate: 0.0,
+          knapsackMinChange: -1,
+          dustFeeRate: 0.0,
+          feeAsset: FEE_ASSET,
+          isBlindEstimateFee: false,
+        },
+      })],
+      '{"hex":"02000000000100000020000000000000000000000000000000000000000000000000000000000000000000ffffffff01013412907856341290785634129078563412907856341290785634129078563412010000000001312d000017a914577db60780aacfd4c7c43815d3d31353e2b7b54b8700000000","usedAddresses":["GqA8nUufz9yVpSTB5Ytw4Pe5maCuaHrVmo"],"feeAmount":0}',
+    );
+  })(),
+  (() => {
+    const utxoSetA = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR, DEFAULT_ASSET_A);
+    const utxoSetB = TestUtxoCreater.createUtxos([0.6, 0.7, 0.8, 0.9, 1.0], SEGWIT_DESCRIPTOR, DEFAULT_ASSET_B);
+    const utxosForFee = TestUtxoCreater.createUtxos([0.01, 0.02, 0.03, 0.04, 0.05], FIXED_DESCRIPTOR, DEFAULT_ASSET_B);
+    const utxos = [].concat(utxoSetA, utxoSetB, utxosForFee);
+    return TestHelper.createElementsTestCase(
+      'FundRawTransaction - Elements - (tx: 0 input(0 btc) 0 output(0 btc), targetAmount: 11000000, feeRate: 0, single asset utxos)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        tx: '0200000000000000000000',
+        isElements: true,
+        network: 'liquidv1',
+        targets: [{
+          asset: DEFAULT_ASSET_A,
+          amount: (Math.floor(0.15 * COIN_BASE)),
+          reserveAddress: 'GqA8nUufz9yVpSTB5Ytw4Pe5maCuaHrVmo',
+        }],
+        feeInfo: {
+          feeRate: 0.0,
+          longTermFeeRate: 0.0,
+          knapsackMinChange: -1,
+          dustFeeRate: 0.0,
+          feeAsset: FEE_ASSET,
+          isBlindEstimateFee: false,
+        },
+      })],
+      '{"hex":"02000000000100000020000000000000000000000000000000000000000000000000000000000000000000ffffffff01013412907856341290785634129078563412907856341290785634129078563412010000000001312d000017a914577db60780aacfd4c7c43815d3d31353e2b7b54b8700000000","usedAddresses":["GqA8nUufz9yVpSTB5Ytw4Pe5maCuaHrVmo"],"feeAmount":0}',
+    );
+  })(),
+/*
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 0 input(0 btc) 0 output(0 btc), targetAmount: 0, feeRate: 0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        tx: '02000000000000000000',
+        isElements: false,
+        network: 'mainnet',
+        targetAmount: 0,
+        reserveAddress: '13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY',
+        feeInfo: createFeeInfo(0.0),
+      })],
+      '{"hex":"02000000000000000000","usedAddresses":[],"feeAmount":0}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 0 input(0 btc) 0 output(0 btc), targetAmount: 11000000, feeRate: 0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        tx: '02000000000000000000',
+        isElements: false,
+        network: 'mainnet',
+        targetAmount: (Math.floor(0.11 * COIN_BASE)),
+        reserveAddress: '13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY',
+        feeInfo: createFeeInfo(0.0),
+      })],
+      '{"hex":"020000000100000020000000000000000000000000000000000000000000000000000000000000000000ffffffff01002d3101000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY"],"feeAmount":0}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 1 input(0.05 btc) 0 output(0 btc), targetAmount: 12000000, feeRate: 0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        selectUtxos: [
+          TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000005000000', 0, 0.05, FIXED_DESCRIPTOR),
+        ],
+        tx: '02000000010000000500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000000000',
+        isElements: false,
+        network: 'mainnet',
+        targetAmount: (Math.floor(0.12 * COIN_BASE)),
+        reserveAddress: '13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY',
+        feeInfo: createFeeInfo(0.0),
+      })],
+      '{"hex":"02000000020000000500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff01c0e1e400000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY"],"feeAmount":0}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 0 input(0 btc) 1 output(0.05 btc), targetAmount: 13000000, feeRate: 0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        tx: '020000000001404b4c00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac00000000',
+        isElements: false,
+        network: 'mainnet',
+        targetAmount: (Math.floor(0.13 * COIN_BASE)),
+        reserveAddress: '13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY',
+        feeInfo: createFeeInfo(0.0),
+      })],
+      '{"hex":"020000000100000020000000000000000000000000000000000000000000000000000000000000000000ffffffff02404b4c00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88acc0e1e400000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY"],"feeAmount":0}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 1 input(0.1 btc) 1 output(0.06 btc), targetAmount: 14000000, feeRate: 0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        selectUtxos: [
+          TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000010000000', 0, 0.1, FIXED_DESCRIPTOR),
+        ],
+        tx: '02000000010000001000000000000000000000000000000000000000000000000000efcdab0000000000ffffffff01808d5b00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac00000000',
+        isElements: false,
+        network: 'mainnet',
+        targetAmount: (Math.floor(0.14 * COIN_BASE)),
+        reserveAddress: '13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY',
+        feeInfo: createFeeInfo(0.0),
+      })],
+      '{"hex":"02000000020000001000000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff02808d5b00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY"],"feeAmount":0}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 1 input(0.11 btc) 1 output(0.07 btc), targetAmount: 0, feeRate: 0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        selectUtxos: [
+          TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000011000000', 0, 0.11, FIXED_DESCRIPTOR),
+        ],
+        tx: '02000000010000001100000000000000000000000000000000000000000000000000efcdab0000000000ffffffff01c0cf6a00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac00000000',
+        isElements: false,
+        network: 'mainnet',
+        targetAmount: 0,
+        reserveAddress: '13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY',
+        feeInfo: createFeeInfo(0.0),
+      })],
+      '{"hex":"02000000010000001100000000000000000000000000000000000000000000000000efcdab0000000000ffffffff02c0cf6a00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac00093d00000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY"],"feeAmount":0}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 1 input(0.01 btc) 1 output(0.15 btc), targetAmount: 0, feeRate: 0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        selectUtxos: [
+          TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000001000000', 0, 0.01, FIXED_DESCRIPTOR),
+        ],
+        tx: '02000000010000000100000000000000000000000000000000000000000000000000efcdab0000000000ffffffff01c0e1e400000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac00000000',
+        isElements: false,
+        network: 'mainnet',
+        targetAmount: 0,
+        reserveAddress: '13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY',
+        feeInfo: createFeeInfo(0.0),
+      })],
+      '{"hex":"02000000020000000100000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff02c0e1e400000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac808d5b00000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["13ydRRyK22QdDSVUVQixtLqbTQLQmbxrfY"],"feeAmount":0}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 0 input 0 output, targetAmount: 0, feeRate: 1.0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        tx: '02000000000000000000',
+        isElements: false,
+        network: 'testnet',
+        targetAmount: 0,
+        reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
+        feeInfo: createFeeInfo(1.0),
+      })],
+      '{"hex":"020000000100000010000000000000000000000000000000000000000000000000000000000000000000ffffffff01fa959800000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":134}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 0 input(0 btc) 0 output(0 btc), targetAmount: 11000000, feeRate: 2.0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        tx: '02000000000000000000',
+        isElements: false,
+        network: 'testnet',
+        targetAmount: (Math.floor(0.11 * COIN_BASE)),
+        reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
+        feeInfo: createFeeInfo(2.0),
+      })],
+      '{"hex":"020000000100000020000000000000000000000000000000000000000000000000000000000000000000ffffffff01f42b3101000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":268}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 1 input(0.05 btc) 0 output(0 btc), targetAmount: 12000000, feeRate: 3.0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        selectUtxos: [
+          TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000005000000', 0, 0.05, FIXED_DESCRIPTOR),
+        ],
+        tx: '02000000010000000500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000000000',
+        isElements: false,
+        network: 'testnet',
+        targetAmount: (Math.floor(0.12 * COIN_BASE)),
+        reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
+        feeInfo: createFeeInfo(3.0),
+      })],
+      '{"hex":"02000000020000000500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0120dfe400000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":672}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 0 input(0 btc) 1 output(0.05 btc), targetAmount: 13000000, feeRate: 4.0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        tx: '020000000001404b4c00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac00000000',
+        isElements: false,
+        network: 'testnet',
+        targetAmount: (Math.floor(0.13 * COIN_BASE)),
+        reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
+        feeInfo: createFeeInfo(4.0),
+      })],
+      '{"hex":"020000000100000020000000000000000000000000000000000000000000000000000000000000000000ffffffff02404b4c00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac20dfe400000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":672}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 1 input(0.1 btc) 1 output(0.06 btc), targetAmount: 14000000, feeRate: 5.0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        selectUtxos: [
+          TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000010000000', 0, 0.1, FIXED_DESCRIPTOR),
+        ],
+        tx: '02000000010000001000000000000000000000000000000000000000000000000000efcdab0000000000ffffffff01808d5b00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac00000000',
+        isElements: false,
+        network: 'testnet',
+        targetAmount: (Math.floor(0.14 * COIN_BASE)),
+        reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
+        feeInfo: createFeeInfo(5.0),
+      })],
+      '{"hex":"02000000020000001000000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff02808d5b00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88acf6306e01000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":1290}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 1 input(0.11 btc) 1 output(0.07 btc), targetAmount: 0, feeRate: 6.0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        selectUtxos: [
+          TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000011000000', 0, 0.11, FIXED_DESCRIPTOR),
+        ],
+        tx: '02000000010000001100000000000000000000000000000000000000000000000000efcdab0000000000ffffffff01c0cf6a00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac00000000',
+        isElements: false,
+        network: 'testnet',
+        targetAmount: 0,
+        reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
+        feeInfo: createFeeInfo(6.0),
+      })],
+      '{"hex":"02000000020000001100000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff02c0cf6a00000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac7499d500000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":1548}',
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 1 input(0.01 btc) 1 output(0.15 btc), targetAmount: 0, feeRate: 7.0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        selectUtxos: [
+          TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000001000000', 0, 0.01, FIXED_DESCRIPTOR),
+        ],
+        tx: '02000000010000000100000000000000000000000000000000000000000000000000efcdab0000000000ffffffff01c0e1e400000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac00000000',
+        isElements: false,
+        network: 'testnet',
+        targetAmount: 0,
+        reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
+        feeInfo: createFeeInfo(7.0),
+      })],
+      '{"hex":"02000000020000000100000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff02c0e1e400000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac72865b00000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":1806}'
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], FIXED_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 2 input(1.3 btc) 3 output(1.05 btc), targetAmount: 2.0 btc, feeRate: 20.0)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        selectUtxos: [
+          TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000115000000', 0, 1.15, FIXED_DESCRIPTOR),
+          TestUtxoCreater.createUtxo('abcdef0000000000000000000000000000000000000000000000000015000000', 0, 0.15, FIXED_DESCRIPTOR),
+        ],
+        tx: '02000000020000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0340ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588ac00000000',
+        isElements: false,
+        network: 'regtest',
+        targetAmount: (Math.floor(2.0 * COIN_BASE)),
+        reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
+        feeInfo: createFeeInfo(20.0),
+      })],
+      [
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000080000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000070000000000000000000000000000000000000000000000000000000000000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000060000000000000000000000000000000000000000000000000000000000000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000080000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+      ],
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0], FIXED_DESCRIPTOR);
+    // create utxos (0.01 ~ 2.00)
+    const selectUtxos = [...Array(200)].map((_, i) => {
+      const btc = 0.01 * (i+1);
+      const amount = Math.floor(btc * COIN_BASE);
+      const txid = 'abcdef' + ('0000000000000000000000000000000000000000000000000000000000' + amount).slice(-58);
+      return TestUtxoCreater.createUtxo(txid, 0, btc, FIXED_DESCRIPTOR);
+    });
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 2 input(1.3 btc) 3 output(1.05 btc), targetAmount: 2.0 btc, feeRate: 20.0, multi-selected utxo)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        selectUtxos: selectUtxos,
+        tx: '02000000020000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0340ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588ac00000000',
+        isElements: false,
+        network: 'regtest',
+        targetAmount: (Math.floor(2.0 * COIN_BASE)),
+        reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
+        feeInfo: createFeeInfo(20.0, (Math.floor(2 * COIN_BASE))),
+      })],
+      [
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000080000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000070000000000000000000000000000000000000000000000000000000000000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000030000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000060000000000000000000000000000000000000000000000000000000000000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+        '{"hex":"02000000070000001501000000000000000000000000000000000000000000000000efcdab0000000000ffffffff0000001500000000000000000000000000000000000000000000000000efcdab0000000000ffffffff00000060000000000000000000000000000000000000000000000000000000000000000000ffffffff00000050000000000000000000000000000000000000000000000000000000000000000000ffffffff00000040000000000000000000000000000000000000000000000000000000000000000000ffffffff00000020000000000000000000000000000000000000000000000000000000000000000000ffffffff00000010000000000000000000000000000000000000000000000000000000000000000000ffffffff0440ff1005000000001976a9145949cf1d302d32d127ee54b480aaf593797db22a88ac809fd500000000001976a9149549bfe03588f5cd110afb32b0b3680e10eb07e288ac808d5b00000000001976a91456571712259ca89634d6edadfe10a2f8ce7a898588aca0d0370c000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":15520}',
+      ],
+    );
+  })(),
+  (() => {
+    const utxos = TestUtxoCreater.createUtxos([0.1, 0.2, 0.3, 0.4, 0.5], SEGWIT_DESCRIPTOR);
+    return TestHelper.createBitcoinTestCase(
+      'FundRawTransaction (tx: 0 input(0 btc) 0 output(0 btc), targetAmount: 11000000, feeRate: 2.0, segwit utxos)',
+      FundRawTransaction,
+      [JSON.stringify({
+        utxos,
+        tx: '02000000000000000000',
+        isElements: false,
+        network: 'testnet',
+        targetAmount: (Math.floor(0.11 * COIN_BASE)),
+        reserveAddress: 'miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k',
+        feeInfo: createFeeInfo(2.0),
+      })],
+      '{"hex":"020000000100000020000000000000000000000000000000000000000000000000000000000000000000ffffffff01202c3101000000001976a91420a5f2c59d3d62a1108e8ce3c5e01133f383039f88ac00000000","usedAddresses":["miVaiV4Hq3qszYy6CyhLiG3vKPw7dCMC9k"],"feeAmount":224}',
+    );
+  })(),
+*/
 ];
 
 const elementsErrorCase = [
@@ -513,5 +870,5 @@ const elementsErrorCase = [
 TestHelper.doTest('FundRawTransaction', testCase);
 TestHelper.doTest('FundRawTransaction - Error', errorCase);
 
-// TestHelper.doTest('FundRawTransaction - Elements', elementsTestCase);
+TestHelper.doTest('FundRawTransaction - Elements', elementsTestCase);
 // TestHelper.doTest('FundRawTransaction - Elements - Error', elementsErrorCase);
