@@ -102,6 +102,24 @@ class TestUtxoCreator {
   }
 
   /**
+   * create elements utxo
+   * @param {string} txid transaction id
+   * @param {number} vout index of previous transaction output
+   * @param {number} amount amount, unit is btc.
+   * @param {string} descriptor bitcoin output descriptor
+   * @param {string} asset asset id
+   * @param {boolean} issuance is prevous output issuance or not
+   * @param {boolean} blindIssuance is prevous output blind issuance or not
+   * @param {number} btcTxSize bitcoin transaction size
+   * @param {string} fedpegScript fedpegscript used in peg-in transaction
+   * @return {Utxo} array of created utxos
+   */
+  static createUtxo(txid, vout, amount, descriptor, asset, issuance = false, blindIssuance = false, btcTxSize = undefined, fedpegScript = undefined) {
+    const satoshiAmount = Math.round(amount * COIN_BASE);
+    return {txid, vout, amount: satoshiAmount, asset, redeemScript: '', descriptor, isIssuance: issuance, isBlindIssuance: blindIssuance, isPegin: (btcTxSize && fedpegScript), peginBtcTxSize: btcTxSize, fedpegScript};
+  }
+
+  /**
    * create bitcoin utxos
    * @param {Array.<number>} btcAmounts Amounts array. Each amount, unit is btc.
    * @param {string} descriptor bitcoin output descriptor
