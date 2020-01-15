@@ -155,7 +155,7 @@ ExtractScriptData TransactionStructApiBase::ExtractLockingScript(
     return extract_data;
   }
 #ifndef CFD_DISABLE_ELEMENTS
-  if (locking_script.IsEmpty()) {
+  if (locking_script.Empty()) {
     // empty
     extract_data.script_type = LockingScriptType::kFee;
     return extract_data;

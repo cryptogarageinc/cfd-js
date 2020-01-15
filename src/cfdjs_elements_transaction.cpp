@@ -113,7 +113,7 @@ struct Issuance {
    * @details assetのamountとtokenのamountが設定されているかを判定している.
    */
   bool isNull() const {
-    return (amount_.IsEmpty() && inflation_keys_.IsEmpty());
+    return (amount_.Empty() && inflation_keys_.Empty());
   }
 };
 
@@ -224,7 +224,7 @@ ElementsTransactionStructApi::DecodeRawTransaction(  // NOLINT
         tx_in_res.ignore_items.insert("scriptSig");
         tx_in_res.ignore_items.insert("is_pegin");
 
-        if (!tx_in_ref.GetUnlockingScript().IsEmpty()) {
+        if (!tx_in_ref.GetUnlockingScript().Empty()) {
           tx_in_res.coinbase = tx_in_ref.GetUnlockingScript().GetHex();
         }
       } else {
@@ -233,7 +233,7 @@ ElementsTransactionStructApi::DecodeRawTransaction(  // NOLINT
         // FIXME(fujita-cg): Elemnets Specific Valueまでは共通化ができるはず
         tx_in_res.txid = tx_in_ref.GetTxid().GetHex();
         tx_in_res.vout = tx_in_ref.GetVout();
-        if (!tx_in_ref.GetUnlockingScript().IsEmpty()) {
+        if (!tx_in_ref.GetUnlockingScript().Empty()) {
           tx_in_res.script_sig.asm_ =
               tx_in_ref.GetUnlockingScript().ToString();
           tx_in_res.script_sig.hex = tx_in_ref.GetUnlockingScript().GetHex();
@@ -298,7 +298,7 @@ ElementsTransactionStructApi::DecodeRawTransaction(  // NOLINT
         tx_in_res.issuance.asset = asset.GetHex();
 
         const ConfidentialValue asset_amount = issuance.amount_;
-        if (!asset_amount.IsEmpty()) {
+        if (!asset_amount.Empty()) {
           if (asset_amount.HasBlinding()) {
             tx_in_res.issuance.assetamountcommitment = asset_amount.GetHex();
             tx_in_res.issuance.ignore_items.insert("assetamount");
@@ -313,7 +313,7 @@ ElementsTransactionStructApi::DecodeRawTransaction(  // NOLINT
         }
 
         const ConfidentialValue inflation_keys = issuance.inflation_keys_;
-        if (!inflation_keys.IsEmpty()) {
+        if (!inflation_keys.Empty()) {
           if (inflation_keys.HasBlinding()) {
             tx_in_res.issuance.tokenamountcommitment = inflation_keys.GetHex();
             tx_in_res.issuance.ignore_items.insert("tokenamount");

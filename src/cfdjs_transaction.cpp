@@ -137,7 +137,7 @@ DecodeRawTransactionResponseStruct TransactionStructApi::DecodeRawTransaction(
         res_txin.ignore_items.insert("scriptSig");
         res_txin.ignore_items.insert("txinwitness");
 
-        if (!tx_in_ref.GetUnlockingScript().IsEmpty()) {
+        if (!tx_in_ref.GetUnlockingScript().Empty()) {
           res_txin.coinbase = tx_in_ref.GetUnlockingScript().GetHex();
         }
       } else {
@@ -145,7 +145,7 @@ DecodeRawTransactionResponseStruct TransactionStructApi::DecodeRawTransaction(
 
         res_txin.txid = tx_in_ref.GetTxid().GetHex();
         res_txin.vout = tx_in_ref.GetVout();
-        if (!tx_in_ref.GetUnlockingScript().IsEmpty()) {
+        if (!tx_in_ref.GetUnlockingScript().Empty()) {
           res_txin.script_sig.asm_ = tx_in_ref.GetUnlockingScript().ToString();
           res_txin.script_sig.hex = tx_in_ref.GetUnlockingScript().GetHex();
         }
@@ -176,7 +176,7 @@ DecodeRawTransactionResponseStruct TransactionStructApi::DecodeRawTransaction(
       res_txout.script_pub_key.hex = locking_script.GetHex();
       res_txout.script_pub_key.asm_ = locking_script.ToString();
 
-      if (locking_script.IsEmpty()) {
+      if (locking_script.Empty()) {
         res_txout.script_pub_key.type = "nonstandard";
         res_txout.script_pub_key.ignore_items.insert("reqSigs");
         res_txout.script_pub_key.ignore_items.insert("addresses");

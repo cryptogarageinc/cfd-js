@@ -83,7 +83,7 @@ CreateAddressResponseStruct AddressStructApi::CreateAddress(
     response.error.code = 0;
     response.address = addr.GetAddress();
     response.locking_script = locking_script.GetHex();
-    if (redeem_script.IsEmpty()) {
+    if (redeem_script.Empty()) {
       response.ignore_items.insert("redeemScript");
     } else {
       response.redeem_script = redeem_script.GetHex();
@@ -122,12 +122,12 @@ CreateMultisigResponseStruct AddressStructApi::CreateMultisig(
 
     // レスポンスとなるモデルへ変換
     response.address = addr.GetAddress();
-    if (redeem_script.IsEmpty()) {
+    if (redeem_script.Empty()) {
       response.ignore_items.insert("redeemScript");
     } else {
       response.redeem_script = redeem_script.GetHex();
     }
-    if (witness_script.IsEmpty()) {
+    if (witness_script.Empty()) {
       response.ignore_items.insert("witnessScript");
     } else {
       response.witness_script = witness_script.GetHex();
@@ -262,7 +262,7 @@ ParseDescriptorResponseStruct AddressStructApi::ConvertDescriptorData(
   if (result.address.empty()) {
     result.ignore_items.insert("address");
   }
-  if (!script_data.locking_script.IsEmpty()) {
+  if (!script_data.locking_script.Empty()) {
     result.locking_script = script_data.locking_script.GetHex();
   } else {
     result.ignore_items.insert("lockingScript");
@@ -272,7 +272,7 @@ ParseDescriptorResponseStruct AddressStructApi::ConvertDescriptorData(
         convert_to_hashtype(script_data.address_type, result.type);
   }
   if (result.hash_type.empty()) result.ignore_items.insert("hashType");
-  if (!script_data.redeem_script.IsEmpty()) {
+  if (!script_data.redeem_script.Empty()) {
     result.redeem_script = script_data.redeem_script.GetHex();
   } else {
     result.ignore_items.insert("redeemScript");
@@ -284,7 +284,7 @@ ParseDescriptorResponseStruct AddressStructApi::ConvertDescriptorData(
     setting_scripts = script_list;
   } else if (
       (!result.address.empty()) &&
-      ((!script_data.redeem_script.IsEmpty()) || (!script_data.key.empty()))) {
+      ((!script_data.redeem_script.Empty()) || (!script_data.key.empty()))) {
     setting_scripts.push_back(script_data);
   } else if (script_data.locking_script.IsMultisigScript()) {
     setting_scripts.push_back(script_data);
@@ -301,7 +301,7 @@ ParseDescriptorResponseStruct AddressStructApi::ConvertDescriptorData(
       } else {
         script_struct.hash_type = convert_to_hashtype(data.address_type, "");
       }
-      if (!data.locking_script.IsEmpty()) {
+      if (!data.locking_script.Empty()) {
         script_struct.locking_script = data.locking_script.GetHex();
       } else {
         script_struct.ignore_items.insert("lockingScript");
@@ -309,7 +309,7 @@ ParseDescriptorResponseStruct AddressStructApi::ConvertDescriptorData(
       if (script_struct.hash_type.empty()) {
         script_struct.ignore_items.insert("hashType");
       }
-      if (!data.redeem_script.IsEmpty()) {
+      if (!data.redeem_script.Empty()) {
         script_struct.redeem_script = data.redeem_script.GetHex();
       } else {
         script_struct.ignore_items.insert("redeemScript");

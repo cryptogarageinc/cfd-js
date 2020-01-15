@@ -64,7 +64,7 @@ CreateAddressResponseStruct ElementsAddressStructApi::CreateAddress(
     response.error.code = 0;
     response.address = addr.GetAddress();
     response.locking_script = locking_script.GetHex();
-    if (redeem_script.IsEmpty()) {
+    if (redeem_script.Empty()) {
       response.ignore_items.insert("redeemScript");
     } else {
       response.redeem_script = redeem_script.GetHex();
@@ -104,12 +104,12 @@ CreateMultisigResponseStruct ElementsAddressStructApi::CreateMultisig(
 
     // レスポンスとなるモデルへ変換
     response.address = addr.GetAddress();
-    if (redeem_script.IsEmpty()) {
+    if (redeem_script.Empty()) {
       response.ignore_items.insert("redeemScript");
     } else {
       response.redeem_script = redeem_script.GetHex();
     }
-    if (witness_script.IsEmpty()) {
+    if (witness_script.Empty()) {
       response.ignore_items.insert("witnessScript");
     } else {
       response.witness_script = witness_script.GetHex();
@@ -258,12 +258,12 @@ ElementsAddressStructApi::CreatePegInAddress(
 
     // convert parameters to response struct
     response.mainchain_address = pegin_address.GetAddress();
-    if (claim_script.IsEmpty()) {
+    if (claim_script.Empty()) {
       response.ignore_items.insert("claimScript");
     } else {
       response.claim_script = claim_script.GetHex();
     }
-    if (tweak_fedpegscript.IsEmpty()) {
+    if (tweak_fedpegscript.Empty()) {
       response.ignore_items.insert("tweakFedpegscript");
     } else {
       response.tweak_fedpegscript = tweak_fedpegscript.GetHex();
