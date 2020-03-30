@@ -10,6 +10,8 @@ include(../cmake/ConvertSrclistFunction.cmake)
 include(../cmake/CfdCommonOption.cmake)
 include(../cmake/CfdCommonSetting.cmake)
 
+option(ENABLE_WALLYJS "enable wally-js build (ON or OFF. default:ON)" ON)
+
 if("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 set(ENABLE_DEBUG  TRUE)
 set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS $<$<CONFIG:Debug>:DEBUGBUILD>)
@@ -282,7 +284,9 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 add_dependencies(${PROJECT_NAME} ${CFDJS_LIBRARY})
+if(ENABLE_WALLYJS)
 add_dependencies(${PROJECT_NAME} wallycore)
+endif()
 
 if(USE_INSTALLED_LIBRARY)
 if(ENABLE_SHARED)

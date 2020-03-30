@@ -10,6 +10,7 @@ include(./cmake/CfdCommonOption.cmake)
 include(./cmake/CfdWallyOption.cmake)
 
 option(ENABLE_CAPI  "enable c-api (ON or OFF. default:OFF)" OFF)
+option(ENABLE_WALLYJS "enable wally-js build (ON or OFF. default:ON)" ON)
 
 if(NOT APPLE)
 set(ENABLE_SHARED ON CACHE BOOL "" FORCE)
@@ -65,7 +66,7 @@ endif()
 ####################
 # subdirectories
 ####################
-if(NOT CFD_SINGLE_BUILD)
+if((NOT CFD_SINGLE_BUILD) AND ENABLE_WALLYJS)
 add_subdirectory(external)
 endif()  # CFD_SINGLE_BUILD
 
