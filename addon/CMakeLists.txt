@@ -284,7 +284,7 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 add_dependencies(${PROJECT_NAME} ${CFDJS_LIBRARY})
-if(ENABLE_WALLYJS)
+if((NOT USE_INSTALLED_LIBRARY) OR ENABLE_WALLYJS)
 add_dependencies(${PROJECT_NAME} wallycore)
 endif()
 

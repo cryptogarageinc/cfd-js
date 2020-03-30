@@ -66,7 +66,7 @@ endif()
 ####################
 # subdirectories
 ####################
-if((NOT CFD_SINGLE_BUILD) AND ENABLE_WALLYJS)
+if((NOT CFD_SINGLE_BUILD) AND ((NOT CFDJS_API_INSTALLED) OR ENABLE_WALLYJS))
 add_subdirectory(external)
 endif()  # CFD_SINGLE_BUILD
 
