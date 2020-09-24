@@ -1,4 +1,4 @@
-// Copyright 2019 CryptoGarage
+// Copyright 2020 CryptoGarage
 /**
  * @file cfdjs_struct.h
  *
@@ -28,6 +28,46 @@ struct InnerErrorResponseStruct {
   int code = 0;              //!< code  // NOLINT
   std::string type = "";     //!< type  // NOLINT
   std::string message = "";  //!< message  // NOLINT
+  std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
+};
+
+// ------------------------------------------------------------------------
+// DecodeUnlockingScriptStruct
+// ------------------------------------------------------------------------
+/**
+ * @brief DecodeUnlockingScriptStruct struct
+ */
+struct DecodeUnlockingScriptStruct {
+  std::string asm_ = "";  //!< asm_  // NOLINT
+  std::string hex = "";   //!< hex  // NOLINT
+  std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
+};
+
+// ------------------------------------------------------------------------
+// TargetAmountMapDataStruct
+// ------------------------------------------------------------------------
+/**
+ * @brief TargetAmountMapDataStruct struct
+ */
+struct TargetAmountMapDataStruct {
+  std::string asset = "";  //!< asset  // NOLINT
+  int64_t amount = 0;      //!< amount  // NOLINT
+  std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
+};
+
+// ------------------------------------------------------------------------
+// UtxoJsonDataStruct
+// ------------------------------------------------------------------------
+/**
+ * @brief UtxoJsonDataStruct struct
+ */
+struct UtxoJsonDataStruct {
+  std::string txid = "";                 //!< txid  // NOLINT
+  uint32_t vout = 0;                     //!< vout  // NOLINT
+  int64_t amount = 0;                    //!< amount  // NOLINT
+  std::string asset = "";                //!< asset  // NOLINT
+  std::string descriptor = "";           //!< descriptor  // NOLINT
+  std::string script_sig_template = "";  //!< script_sig_template  // NOLINT
   std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
 };
 
@@ -911,18 +951,6 @@ struct DecodeRawTransactionRequestStruct {
 };
 
 // ------------------------------------------------------------------------
-// DecodeUnlockingScriptStruct
-// ------------------------------------------------------------------------
-/**
- * @brief DecodeUnlockingScriptStruct struct
- */
-struct DecodeUnlockingScriptStruct {
-  std::string asm_ = "";  //!< asm_  // NOLINT
-  std::string hex = "";   //!< hex  // NOLINT
-  std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
-};
-
-// ------------------------------------------------------------------------
 // DecodeRawTransactionTxInStruct
 // ------------------------------------------------------------------------
 /**
@@ -1497,18 +1525,6 @@ struct ElementsDecodeRawTransactionRequestStruct {
 };
 
 // ------------------------------------------------------------------------
-// ElementsDecodeUnlockingScriptStruct
-// ------------------------------------------------------------------------
-/**
- * @brief ElementsDecodeUnlockingScriptStruct struct
- */
-struct ElementsDecodeUnlockingScriptStruct {
-  std::string asm_ = "";  //!< asm_  // NOLINT
-  std::string hex = "";   //!< hex  // NOLINT
-  std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
-};
-
-// ------------------------------------------------------------------------
 // ElementsDecodeIssuanceStruct
 // ------------------------------------------------------------------------
 /**
@@ -1537,15 +1553,15 @@ struct ElementsDecodeIssuanceStruct {
  * @brief ElementsDecodeRawTransactionTxInStruct struct
  */
 struct ElementsDecodeRawTransactionTxInStruct {
-  std::string coinbase = "";                       //!< coinbase  // NOLINT
-  std::string txid = "";                           //!< txid  // NOLINT
-  uint32_t vout = 0;                               //!< vout  // NOLINT
-  ElementsDecodeUnlockingScriptStruct script_sig;  //!< script_sig  // NOLINT
-  bool is_pegin = false;                           //!< is_pegin  // NOLINT
-  int64_t sequence = 0;                            //!< sequence  // NOLINT
-  std::vector<std::string> txinwitness;            //!< txinwitness  // NOLINT
-  std::vector<std::string> pegin_witness;          //!< pegin_witness  // NOLINT
-  ElementsDecodeIssuanceStruct issuance;           //!< issuance  // NOLINT
+  std::string coinbase = "";               //!< coinbase  // NOLINT
+  std::string txid = "";                   //!< txid  // NOLINT
+  uint32_t vout = 0;                       //!< vout  // NOLINT
+  DecodeUnlockingScriptStruct script_sig;  //!< script_sig  // NOLINT
+  bool is_pegin = false;                   //!< is_pegin  // NOLINT
+  int64_t sequence = 0;                    //!< sequence  // NOLINT
+  std::vector<std::string> txinwitness;    //!< txinwitness  // NOLINT
+  std::vector<std::string> pegin_witness;  //!< pegin_witness  // NOLINT
+  ElementsDecodeIssuanceStruct issuance;   //!< issuance  // NOLINT
   std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
 };
 
@@ -1708,7 +1724,6 @@ struct IssuanceDataResponseStruct {
   std::string asset = "";    //!< asset  // NOLINT
   std::string entropy = "";  //!< entropy  // NOLINT
   std::string token = "";    //!< token  // NOLINT
-  cfd::js::api::InnerErrorResponseStruct error;   //!< error information
   std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
 };
 
@@ -1766,7 +1781,6 @@ struct ReissuanceDataResponseStruct {
   uint32_t vout = 0;         //!< vout  // NOLINT
   std::string asset = "";    //!< asset  // NOLINT
   std::string entropy = "";  //!< entropy  // NOLINT
-  cfd::js::api::InnerErrorResponseStruct error;   //!< error information
   std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
 };
 
@@ -2075,34 +2089,6 @@ struct FundRawTransactionResponseStruct {
 };
 
 // ------------------------------------------------------------------------
-// GetAddressesFromMultisigRequestStruct
-// ------------------------------------------------------------------------
-/**
- * @brief GetAddressesFromMultisigRequestStruct struct
- */
-struct GetAddressesFromMultisigRequestStruct {
-  bool is_elements = false;          //!< is_elements  // NOLINT
-  std::string redeem_script = "";    //!< redeem_script  // NOLINT
-  std::string network = "mainnet";   //!< network  // NOLINT
-  std::string hash_type = "p2wpkh";  //!< hash_type  // NOLINT
-  std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
-};
-
-// ------------------------------------------------------------------------
-// GetAddressesFromMultisigResponseStruct
-// ------------------------------------------------------------------------
-/**
- * @brief GetAddressesFromMultisigResponseStruct struct
- */
-struct GetAddressesFromMultisigResponseStruct {
-  std::vector<std::string> addresses;  //!< addresses  // NOLINT
-  std::vector<std::string> pubkeys;    //!< pubkeys  // NOLINT
-  uint32_t require_num = 0;            //!< require_num  // NOLINT
-  cfd::js::api::InnerErrorResponseStruct error;   //!< error information
-  std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
-};
-
-// ------------------------------------------------------------------------
 // GetAddressInfoRequestStruct
 // ------------------------------------------------------------------------
 /**
@@ -2126,6 +2112,34 @@ struct GetAddressInfoResponseStruct {
   std::string hash_type = "p2pkh";  //!< hash_type  // NOLINT
   int32_t witness_version = 0;      //!< witness_version  // NOLINT
   std::string hash = "";            //!< hash  // NOLINT
+  cfd::js::api::InnerErrorResponseStruct error;   //!< error information
+  std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
+};
+
+// ------------------------------------------------------------------------
+// GetAddressesFromMultisigRequestStruct
+// ------------------------------------------------------------------------
+/**
+ * @brief GetAddressesFromMultisigRequestStruct struct
+ */
+struct GetAddressesFromMultisigRequestStruct {
+  bool is_elements = false;          //!< is_elements  // NOLINT
+  std::string redeem_script = "";    //!< redeem_script  // NOLINT
+  std::string network = "mainnet";   //!< network  // NOLINT
+  std::string hash_type = "p2wpkh";  //!< hash_type  // NOLINT
+  std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
+};
+
+// ------------------------------------------------------------------------
+// GetAddressesFromMultisigResponseStruct
+// ------------------------------------------------------------------------
+/**
+ * @brief GetAddressesFromMultisigResponseStruct struct
+ */
+struct GetAddressesFromMultisigResponseStruct {
+  std::vector<std::string> addresses;  //!< addresses  // NOLINT
+  std::vector<std::string> pubkeys;    //!< pubkeys  // NOLINT
+  uint32_t require_num = 0;            //!< require_num  // NOLINT
   cfd::js::api::InnerErrorResponseStruct error;   //!< error information
   std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
 };
@@ -2554,34 +2568,6 @@ struct ParseScriptRequestStruct {
 struct ParseScriptResponseStruct {
   std::vector<std::string> script_items;  //!< script_items  // NOLINT
   cfd::js::api::InnerErrorResponseStruct error;   //!< error information
-  std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
-};
-
-// ------------------------------------------------------------------------
-// UtxoJsonDataStruct
-// ------------------------------------------------------------------------
-/**
- * @brief UtxoJsonDataStruct struct
- */
-struct UtxoJsonDataStruct {
-  std::string txid = "";                 //!< txid  // NOLINT
-  uint32_t vout = 0;                     //!< vout  // NOLINT
-  int64_t amount = 0;                    //!< amount  // NOLINT
-  std::string asset = "";                //!< asset  // NOLINT
-  std::string descriptor = "";           //!< descriptor  // NOLINT
-  std::string script_sig_template = "";  //!< script_sig_template  // NOLINT
-  std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
-};
-
-// ------------------------------------------------------------------------
-// TargetAmountMapDataStruct
-// ------------------------------------------------------------------------
-/**
- * @brief TargetAmountMapDataStruct struct
- */
-struct TargetAmountMapDataStruct {
-  std::string asset = "";  //!< asset  // NOLINT
-  int64_t amount = 0;      //!< amount  // NOLINT
   std::set<std::string> ignore_items;   //!< using on JSON mapping convert.
 };
 

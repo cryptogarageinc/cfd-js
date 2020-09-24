@@ -1,21 +1,23 @@
 /* eslint-disable max-len */
 /* eslint-disable indent */
 /**
- * Multisig signature data.
- * @property {string} hex - signature hex.
- * @property {string} type? - parameter type. (sign only)
- * @property {boolean} derEncode? - der encode option flag
- * @property {string} sighashType? - signature hash type. (all, none or single)
- * @property {boolean} sighashAnyoneCanPay? - sighashType anyone can pay flag.
- * @property {string} relatedPubkey? - a pubkey related to signature.
+ * Multisig input data to add to tx.
+ * @property {boolean} isElements? - elements transaction flag.
+ * @property {string} tx - transaction hex
+ * @property {AddMultisigSignTxInRequest} txin - transaction input data
  */
-export interface MultisigSignData {
+export interface AddMultisigSignRequest {
+    isElements?: boolean;
+    tx: string;
+    txin: AddMultisigSignTxInRequest;
+}
+
+/**
+ * The output data with signature added.
+ * @property {string} hex - signed transaction hex.
+ */
+export interface AddMultisigSignResponse {
     hex: string;
-    type?: string;
-    derEncode?: boolean;
-    sighashType?: string;
-    sighashAnyoneCanPay?: boolean;
-    relatedPubkey?: string;
 }
 
 /**
@@ -39,39 +41,23 @@ export interface AddMultisigSignTxInRequest {
 }
 
 /**
- * Multisig input data to add to tx.
+ * pubkey hash input data to add to tx.
  * @property {boolean} isElements? - elements transaction flag.
  * @property {string} tx - transaction hex
- * @property {AddMultisigSignTxInRequest} txin - transaction input data
+ * @property {AddPubkeyHashSignTxInRequest} txin - transaction input data
  */
-export interface AddMultisigSignRequest {
+export interface AddPubkeyHashSignRequest {
     isElements?: boolean;
     tx: string;
-    txin: AddMultisigSignTxInRequest;
+    txin: AddPubkeyHashSignTxInRequest;
 }
 
 /**
  * The output data with signature added.
  * @property {string} hex - signed transaction hex.
  */
-export interface AddMultisigSignResponse {
+export interface AddPubkeyHashSignResponse {
     hex: string;
-}
-
-/**
- * pubkey hash signature data
- * @property {string} hex - signature hex.
- * @property {string} type? - parameter type. (sign only)
- * @property {boolean} derEncode? - der encode option flag
- * @property {string} sighashType? - signature hash type. (all, none or single)
- * @property {boolean} sighashAnyoneCanPay? - sighashType anyone can pay flag.
- */
-export interface PubkeyHashSignData {
-    hex: string;
-    type?: string;
-    derEncode?: boolean;
-    sighashType?: string;
-    sighashAnyoneCanPay?: boolean;
 }
 
 /**
@@ -91,23 +77,95 @@ export interface AddPubkeyHashSignTxInRequest {
 }
 
 /**
- * pubkey hash input data to add to tx.
+ * The data added to the transaction.
+ * @property {string} tx - transaction hex
+ * @property {AddTxIn[]} txins? - The data added to the transaction input.
+ * @property {AddTxOut[]} txouts? - The data added to the transaction output.
+ */
+export interface AddRawTransactionRequest {
+    tx: string;
+    txins?: AddTxIn[];
+    txouts?: AddTxOut[];
+}
+
+/**
+ * The output transaction data.
+ * @property {string} hex - transaction hex.
+ */
+export interface AddRawTransactionResponse {
+    hex: string;
+}
+
+/**
+ * script hash input data to add to tx.
  * @property {boolean} isElements? - elements transaction flag.
  * @property {string} tx - transaction hex
- * @property {AddPubkeyHashSignTxInRequest} txin - transaction input data
+ * @property {AddScriptHashSignTxInRequest} txin - transaction input data
  */
-export interface AddPubkeyHashSignRequest {
+export interface AddScriptHashSignRequest {
     isElements?: boolean;
     tx: string;
-    txin: AddPubkeyHashSignTxInRequest;
+    txin: AddScriptHashSignTxInRequest;
 }
 
 /**
  * The output data with signature added.
  * @property {string} hex - signed transaction hex.
  */
-export interface AddPubkeyHashSignResponse {
+export interface AddScriptHashSignResponse {
     hex: string;
+}
+
+/**
+ * script hash input data
+ * @property {string} txid - utxo txid.
+ * @property {number} vout - utxo vout.
+ * @property {ScriptHashSignData[]} signParam - signature data
+ * @property {string} redeemScript - redeem script.
+ * @property {string} hashType - hash type. (p2sh, p2wsh or p2sh-p2wsh)
+ */
+export interface AddScriptHashSignTxInRequest {
+    txid: string;
+    vout: number;
+    signParam: ScriptHashSignData[];
+    redeemScript: string;
+    hashType: string;
+}
+
+/**
+ * Sign input data to add to tx.
+ * @property {boolean} isElements? - elements transaction flag.
+ * @property {string} tx - transaction hex
+ * @property {AddSignTxInRequest} txin - transaction input data
+ */
+export interface AddSignRequest {
+    isElements?: boolean;
+    tx: string;
+    txin: AddSignTxInRequest;
+}
+
+/**
+ * The output data with signature added.
+ * @property {string} hex - signed transaction hex.
+ */
+export interface AddSignResponse {
+    hex: string;
+}
+
+/**
+ * Sign input data.
+ * @property {string} txid - utxo txid.
+ * @property {number} vout - utxo vout.
+ * @property {boolean} isWitness? - use witness stack flag.
+ * @property {SignData[]} signParam - The sign data.
+ * @property {boolean} clearStack? - Clear the stack before addSign. If isWitness is false, clearStack is forced to be true.
+ */
+export interface AddSignTxInRequest {
+    txid: string;
+    vout: number;
+    isWitness?: boolean;
+    signParam: SignData[];
+    clearStack?: boolean;
 }
 
 /**
@@ -135,130 +193,6 @@ export interface AddTxOut {
 }
 
 /**
- * The data added to the transaction.
- * @property {string} tx - transaction hex
- * @property {AddTxIn[]} txins? - The data added to the transaction input.
- * @property {AddTxOut[]} txouts? - The data added to the transaction output.
- */
-export interface AddRawTransactionRequest {
-    tx: string;
-    txins?: AddTxIn[];
-    txouts?: AddTxOut[];
-}
-
-/**
- * The output transaction data.
- * @property {string} hex - transaction hex.
- */
-export interface AddRawTransactionResponse {
-    hex: string;
-}
-
-/**
- * signature data
- * @property {string} hex - If the type is auto or op_code, character string input is enabled. Others are hex byte array only.
- * @property {string} type? - parameter type. (binary, sign)
- * @property {boolean} derEncode? - der encode option flag. Valid when type is auto or sign.
- * @property {string} sighashType? - signature hash type. (all, none, single)
- * @property {boolean} sighashAnyoneCanPay? - sighashType anyone can pay flag.
- */
-export interface ScriptHashSignData {
-    hex: string;
-    type?: string;
-    derEncode?: boolean;
-    sighashType?: string;
-    sighashAnyoneCanPay?: boolean;
-}
-
-/**
- * script hash input data
- * @property {string} txid - utxo txid.
- * @property {number} vout - utxo vout.
- * @property {ScriptHashSignData[]} signParam - signature data
- * @property {string} redeemScript - redeem script.
- * @property {string} hashType - hash type. (p2sh, p2wsh or p2sh-p2wsh)
- */
-export interface AddScriptHashSignTxInRequest {
-    txid: string;
-    vout: number;
-    signParam: ScriptHashSignData[];
-    redeemScript: string;
-    hashType: string;
-}
-
-/**
- * script hash input data to add to tx.
- * @property {boolean} isElements? - elements transaction flag.
- * @property {string} tx - transaction hex
- * @property {AddScriptHashSignTxInRequest} txin - transaction input data
- */
-export interface AddScriptHashSignRequest {
-    isElements?: boolean;
-    tx: string;
-    txin: AddScriptHashSignTxInRequest;
-}
-
-/**
- * The output data with signature added.
- * @property {string} hex - signed transaction hex.
- */
-export interface AddScriptHashSignResponse {
-    hex: string;
-}
-
-/**
- * The sign data.
- * @property {string} hex - If the type is auto or op_code, character string input is enabled. Others are hex byte array only.
- * @property {string} type? - parameter type. (auto, binary, sign, pubkey, redeem_script, op_code)
- * @property {boolean} derEncode? - der encode option flag. Valid when type is auto or sign.
- * @property {string} sighashType? - signature hash type. (all, none, single)
- * @property {boolean} sighashAnyoneCanPay? - sighashType anyone can pay flag.
- */
-export interface SignData {
-    hex: string;
-    type?: string;
-    derEncode?: boolean;
-    sighashType?: string;
-    sighashAnyoneCanPay?: boolean;
-}
-
-/**
- * Sign input data.
- * @property {string} txid - utxo txid.
- * @property {number} vout - utxo vout.
- * @property {boolean} isWitness? - use witness stack flag.
- * @property {SignData[]} signParam - The sign data.
- * @property {boolean} clearStack? - Clear the stack before addSign. If isWitness is false, clearStack is forced to be true.
- */
-export interface AddSignTxInRequest {
-    txid: string;
-    vout: number;
-    isWitness?: boolean;
-    signParam: SignData[];
-    clearStack?: boolean;
-}
-
-/**
- * Sign input data to add to tx.
- * @property {boolean} isElements? - elements transaction flag.
- * @property {string} tx - transaction hex
- * @property {AddSignTxInRequest} txin - transaction input data
- */
-export interface AddSignRequest {
-    isElements?: boolean;
-    tx: string;
-    txin: AddSignTxInRequest;
-}
-
-/**
- * The output data with signature added.
- * @property {string} hex - signed transaction hex.
- */
-export interface AddSignResponse {
-    hex: string;
-}
-
-/**
  * The output descriptor request data.
  * @property {string} descriptor - output descriptor.
  * @property {boolean} isElements? - elements transaction flag.
@@ -274,36 +208,6 @@ export interface AppendDescriptorChecksumRequest {
  */
 export interface AppendDescriptorChecksumResponse {
     descriptor: string;
-}
-
-/**
- * Tx input data for blinding.
- * @property {string} txid - utxo txid.
- * @property {number} vout - utxo vout.
- * @property {string} asset - asset hex.
- * @property {string} blindFactor? - amount blinder.
- * @property {string} assetBlindFactor? - asset blinder.
- * @property {bigint | number} amount - satoshi amount.
- */
-export interface BlindTxInRequest {
-    txid: string;
-    vout: number;
-    asset: string;
-    blindFactor?: string;
-    assetBlindFactor?: string;
-    amount: bigint | number;
-}
-
-/**
- * Tx output data for blinding.
- * @property {number} index - target txout index.
- * @property {string} confidentialKey - confidential key.
- * @property {string} blindPubkey? - (deprecated field)
- */
-export interface BlindTxOutRequest {
-    index: number;
-    confidentialKey: string;
-    blindPubkey?: string;
 }
 
 /**
@@ -350,17 +254,33 @@ export interface BlindRawTransactionResponse {
 }
 
 /**
- * private key data.
- * @property {string} privkey - private key. set is wif or hex.
- * @property {boolean} wif - use wif flag. true is wif, false is hex.
- * @property {string} network? - wif network type. (mainnet, testnet or regtest)
- * @property {boolean} isCompressed? - wif compressed flag
+ * Tx input data for blinding.
+ * @property {string} txid - utxo txid.
+ * @property {number} vout - utxo vout.
+ * @property {string} asset - asset hex.
+ * @property {string} blindFactor? - amount blinder.
+ * @property {string} assetBlindFactor? - asset blinder.
+ * @property {bigint | number} amount - satoshi amount.
  */
-export interface PrivkeyData {
-    privkey: string;
-    wif: boolean;
-    network?: string;
-    isCompressed?: boolean;
+export interface BlindTxInRequest {
+    txid: string;
+    vout: number;
+    asset: string;
+    blindFactor?: string;
+    assetBlindFactor?: string;
+    amount: bigint | number;
+}
+
+/**
+ * Tx output data for blinding.
+ * @property {number} index - target txout index.
+ * @property {string} confidentialKey - confidential key.
+ * @property {string} blindPubkey? - (deprecated field)
+ */
+export interface BlindTxOutRequest {
+    index: number;
+    confidentialKey: string;
+    blindPubkey?: string;
 }
 
 /**
@@ -381,6 +301,17 @@ export interface CalculateEcSignatureRequest {
  */
 export interface CalculateEcSignatureResponse {
     signature: string;
+}
+
+/** @property {number} knapsackMinChange? - knapsack logic's threshold. Recommended value is 1. (knapsack minimum change amount.) */
+export interface CoinSelectionFeeInfomationField {
+    txFeeAmount?: bigint | number;
+    feeRate?: number;
+    longTermFeeRate?: number;
+    knapsackMinChange?: number;
+    feeAsset?: string;
+    exponent?: number;
+    minimumBits?: number;
 }
 
 /**
@@ -407,13 +338,11 @@ export interface ConvertAesResponse {
     hex: string;
 }
 
-/** */
 export interface ConvertEntropyToMnemonicRequest {
     entropy: string;
     language?: string;
 }
 
-/** */
 export interface ConvertEntropyToMnemonicResponse {
     mnemonic: string[];
 }
@@ -436,13 +365,11 @@ export interface ConvertMnemonicToSeedResponse {
     entropy?: string;
 }
 
-/** */
 export interface CreateAddressKeyData {
     hex: string;
     type: string;
 }
 
-/** */
 export interface CreateAddressRequest {
     isElements?: boolean;
     keyData?: CreateAddressKeyData;
@@ -460,7 +387,6 @@ export interface CreateAddressResponse {
     redeemScript?: string;
 }
 
-/** */
 export interface CreateDescriptorKeyRequest {
     key: string;
     parentExtkey?: string;
@@ -477,12 +403,92 @@ export interface CreateDescriptorRequest {
     requireNum?: number;
 }
 
-/** */
 export interface CreateDescriptorResponse {
     descriptor: string;
 }
 
-/** */
+export interface CreateDestroyAmountRequest {
+    version?: number;
+    locktime?: number;
+    txins?: ElementsDestroyAmountTxIn[];
+    txouts?: ElementsDestroyAmountTxOut[];
+    destroy: ElementsDestroyAmount;
+    fee?: ElementsDestroyAmountFee;
+}
+
+export interface CreateDestroyAmountResponse {
+    hex: string;
+}
+
+/** @property {string} tx - transaction hex */
+export interface CreateElementsSignatureHashRequest {
+    tx: string;
+    txin: CreateElementsSignatureHashTxIn;
+}
+
+export interface CreateElementsSignatureHashResponse {
+    sighash: string;
+}
+
+export interface CreateElementsSignatureHashTxIn {
+    txid: string;
+    vout: number;
+    keyData: ElementsSignatureHashKeyData;
+    amount?: bigint | number;
+    confidentialValueCommitment?: string;
+    hashType: string;
+    sighashType?: string;
+    sighashAnyoneCanPay?: boolean;
+}
+
+export interface CreateExtkeyFromParentKeyRequest {
+    network: string;
+    extkeyType?: string;
+    parentKey: string;
+    parentDepth: number;
+    parentChainCode: string;
+    childNumber: number;
+    hardened?: boolean;
+}
+
+export interface CreateExtkeyFromParentKeyResponse {
+    extkey: string;
+}
+
+export interface CreateExtkeyFromParentPathRequest {
+    extkey: string;
+    network: string;
+    extkeyType: string;
+    childNumberArray?: number[];
+    path?: string;
+}
+
+export interface CreateExtkeyFromParentPathResponse {
+    extkey: string;
+}
+
+export interface CreateExtkeyFromParentRequest {
+    extkey: string;
+    network: string;
+    extkeyType: string;
+    childNumber: number;
+    hardened?: boolean;
+}
+
+export interface CreateExtkeyFromParentResponse {
+    extkey: string;
+}
+
+export interface CreateExtkeyFromSeedRequest {
+    seed: string;
+    network: string;
+    extkeyType?: string;
+}
+
+export interface CreateExtkeyFromSeedResponse {
+    extkey: string;
+}
+
 export interface CreateExtkeyRequest {
     network: string;
     extkeyType?: string;
@@ -495,99 +501,46 @@ export interface CreateExtkeyRequest {
     hardened?: boolean;
 }
 
-/** */
 export interface CreateExtkeyResponse {
     extkey: string;
 }
 
-/** */
-export interface CreateExtkeyFromParentRequest {
-    extkey: string;
-    network: string;
-    extkeyType: string;
-    childNumber: number;
-    hardened?: boolean;
-}
-
-/** */
-export interface CreateExtkeyFromParentResponse {
-    extkey: string;
-}
-
-/** */
-export interface CreateExtkeyFromParentKeyRequest {
-    network: string;
-    extkeyType?: string;
-    parentKey: string;
-    parentDepth: number;
-    parentChainCode: string;
-    childNumber: number;
-    hardened?: boolean;
-}
-
-/** */
-export interface CreateExtkeyFromParentKeyResponse {
-    extkey: string;
-}
-
-/** */
-export interface CreateExtkeyFromParentPathRequest {
-    extkey: string;
-    network: string;
-    extkeyType: string;
-    childNumberArray?: number[];
-    path?: string;
-}
-
-/** */
-export interface CreateExtkeyFromParentPathResponse {
-    extkey: string;
-}
-
-/** */
-export interface CreateExtkeyFromSeedRequest {
-    seed: string;
-    network: string;
-    extkeyType?: string;
-}
-
-/** */
-export interface CreateExtkeyFromSeedResponse {
-    extkey: string;
-}
-
-/** */
 export interface CreateExtPubkeyRequest {
     extkey: string;
     network: string;
 }
 
-/** */
 export interface CreateExtPubkeyResponse {
     extkey: string;
 }
 
-/** */
 export interface CreateKeyPairRequest {
     wif: boolean;
     network?: string;
     isCompressed?: boolean;
 }
 
-/** */
 export interface CreateKeyPairResponse {
     privkey: string;
     pubkey: string;
 }
 
-/** */
-export interface MultisigScriptSigData {
-    hex: string;
-    type?: string;
-    derEncode?: boolean;
-    sighashType?: string;
-    sighashAnyoneCanPay?: boolean;
-    relatedPubkey?: string;
+export interface CreateMultisigRequest {
+    nrequired: number;
+    keys: string[];
+    isElements?: boolean;
+    network: string;
+    hashType: string;
+}
+
+/**
+ * @property {string} redeemScript? - (required for P2SH or P2SH-P2WSH) redeem script for unlocking script
+ * @property {string} witnessScript? - (required for P2WSH or P2SH-P2WSH) witness script for witness stack
+ */
+export interface CreateMultisigResponse {
+    address: string;
+    redeemScript?: string;
+    witnessScript?: string;
 }
 
 /** @property {string} redeemScript - multisig script */
@@ -596,19 +549,92 @@ export interface CreateMultisigScriptSigRequest {
     redeemScript: string;
 }
 
-/** */
 export interface CreateMultisigScriptSigResponse {
     hex: string;
 }
 
-/** */
+/**
+ * @property {string} pubkey - pubkey related to unlocking peg-in utxo. (This field is only avalable when lockingScript is empty.)
+ * @property {string} redeemScript? - default is empty. set claim script to direct.
+ */
+export interface CreatePegInAddressRequest {
+    fedpegscript: string;
+    pubkey: string;
+    redeemScript?: string;
+    network?: string;
+    hashType?: string;
+}
+
+export interface CreatePegInAddressResponse {
+    mainchainAddress: string;
+    claimScript: string;
+    tweakFedpegscript: string;
+}
+
+export interface CreateRawPeginRequest {
+    version?: number;
+    locktime?: number;
+    txins: ElementsPeginTxIn[];
+    txouts?: ElementsPeginTxOut[];
+    fee?: ElementsPeginTxOutFee;
+    isRandomSortTxOut?: boolean;
+}
+
+export interface CreateRawPeginResponse {
+    hex: string;
+}
+
+export interface CreateRawPegoutRequest {
+    version?: number;
+    locktime?: number;
+    txins?: ElementsPegoutTxIn[];
+    txouts?: ElementsPegoutTxOut[];
+    pegout: ElementsPegout;
+    fee?: ElementsPegoutTxOutFee;
+}
+
+export interface CreateRawPegoutResponse {
+    hex: string;
+    btcAddress?: string;
+}
+
+export interface CreateRawTransactionRequest {
+    version?: number;
+    locktime?: number;
+    txins?: TxInRequest[];
+    txouts?: TxOutRequest[];
+}
+
+export interface CreateRawTransactionResponse {
+    hex: string;
+}
+
 export interface CreateScriptRequest {
     items: string[];
 }
 
-/** */
 export interface CreateScriptResponse {
     hex: string;
+}
+
+/** @property {string} tx - transaction hex */
+export interface CreateSignatureHashRequest {
+    tx: string;
+    txin: CreateSignatureHashTxInRequest;
+}
+
+export interface CreateSignatureHashResponse {
+    sighash: string;
+}
+
+export interface CreateSignatureHashTxInRequest {
+    txid: string;
+    vout: number;
+    keyData: SignatureHashKeyData;
+    amount: bigint | number;
+    hashType: string;
+    sighashType?: string;
+    sighashAnyoneCanPay?: boolean;
 }
 
 /**
@@ -630,35 +656,10 @@ export interface DecodeDerSignatureToRawRequest {
     signature: string;
 }
 
-/** */
 export interface DecodeDerSignatureToRawResponse {
     signature: string;
 }
 
-/** */
-export interface DecodeRawTransactionRequest {
-    hex: string;
-    network?: string;
-    iswitness?: boolean;
-}
-
-/** */
-export interface DecodeUnlockingScript {
-    asm?: string;
-    hex?: string;
-}
-
-/** */
-export interface DecodeRawTransactionTxIn {
-    coinbase?: string;
-    txid?: string;
-    vout?: number;
-    scriptSig?: DecodeUnlockingScript;
-    txinwitness?: string[];
-    sequence?: number;
-}
-
-/** */
 export interface DecodeLockingScript {
     asm?: string;
     hex?: string;
@@ -667,14 +668,12 @@ export interface DecodeLockingScript {
     addresses?: string[];
 }
 
-/** */
-export interface DecodeRawTransactionTxOut {
-    value: bigint;
-    n: number;
-    scriptPubKey?: DecodeLockingScript;
+export interface DecodeRawTransactionRequest {
+    hex: string;
+    network?: string;
+    iswitness?: boolean;
 }
 
-/** */
 export interface DecodeRawTransactionResponse {
     txid: string;
     hash: string;
@@ -687,14 +686,57 @@ export interface DecodeRawTransactionResponse {
     vout?: DecodeRawTransactionTxOut[];
 }
 
-/** */
-export interface ElementsAddTxInRequest {
-    txid: string;
-    vout: number;
+export interface DecodeRawTransactionTxIn {
+    coinbase?: string;
+    txid?: string;
+    vout?: number;
+    scriptSig?: DecodeUnlockingScript;
+    txinwitness?: string[];
     sequence?: number;
 }
 
-/** */
+export interface DecodeRawTransactionTxOut {
+    value: bigint;
+    n: number;
+    scriptPubKey?: DecodeLockingScript;
+}
+
+export interface DecodeUnlockingScript {
+    asm: string;
+    hex: string;
+}
+
+export interface DescriptorKeyJson {
+    keyType: string;
+    key: string;
+}
+
+export interface DescriptorScriptJson {
+    depth: number;
+    lockingScript: string;
+    address: string;
+    hashType: string;
+    redeemScript?: string;
+    keyType?: string;
+    key?: string;
+    keys?: DescriptorKeyJson[];
+    reqNum?: number;
+}
+
+export interface ElementsAddDestroyAmount {
+    amount: bigint | number;
+    asset: string;
+    directNonce?: string;
+}
+
+export interface ElementsAddPeginTxIn {
+    txid: string;
+    vout: number;
+    sequence?: number;
+    peginwitness: ElementsAddPeginWitness;
+    isRemoveMainchainTxWitness?: boolean;
+}
+
 export interface ElementsAddPeginWitness {
     amount: bigint | number;
     asset: string;
@@ -704,33 +746,6 @@ export interface ElementsAddPeginWitness {
     mainchainTxoutproof: string;
 }
 
-/** */
-export interface ElementsAddPeginTxIn {
-    txid: string;
-    vout: number;
-    sequence?: number;
-    peginwitness: ElementsAddPeginWitness;
-    isRemoveMainchainTxWitness?: boolean;
-}
-
-/** */
-export interface ElementsAddTxOut {
-    address: string;
-    amount: bigint | number;
-    asset: string;
-    directLockingScript?: string;
-    directNonce?: string;
-    isRemoveNonce?: boolean;
-}
-
-/** */
-export interface ElementsAddDestroyAmount {
-    amount: bigint | number;
-    asset: string;
-    directNonce?: string;
-}
-
-/** */
 export interface ElementsAddPegout {
     amount: bigint | number;
     asset: string;
@@ -743,12 +758,6 @@ export interface ElementsAddPegout {
     bitcoinDescriptor: string;
     bip32Counter: number;
     whitelist: string;
-}
-
-/** */
-export interface ElementsAddTxOutFee {
-    amount: bigint | number;
-    asset: string;
 }
 
 /** @property {string} tx - transaction hex */
@@ -769,15 +778,13 @@ export interface ElementsAddRawTransactionResponse {
     btcAddresses?: string[];
 }
 
-/** */
-export interface ElementsDestroyAmountTxIn {
+export interface ElementsAddTxInRequest {
     txid: string;
     vout: number;
     sequence?: number;
 }
 
-/** */
-export interface ElementsDestroyAmountTxOut {
+export interface ElementsAddTxOut {
     address: string;
     amount: bigint | number;
     asset: string;
@@ -786,182 +793,11 @@ export interface ElementsDestroyAmountTxOut {
     isRemoveNonce?: boolean;
 }
 
-/** */
-export interface ElementsDestroyAmount {
-    amount: bigint | number;
-    asset: string;
-    directNonce?: string;
-}
-
-/** */
-export interface ElementsDestroyAmountFee {
+export interface ElementsAddTxOutFee {
     amount: bigint | number;
     asset: string;
 }
 
-/** */
-export interface CreateDestroyAmountRequest {
-    version?: number;
-    locktime?: number;
-    txins?: ElementsDestroyAmountTxIn[];
-    txouts?: ElementsDestroyAmountTxOut[];
-    destroy: ElementsDestroyAmount;
-    fee?: ElementsDestroyAmountFee;
-}
-
-/** */
-export interface CreateDestroyAmountResponse {
-    hex: string;
-}
-
-/**
- * @property {string} pubkey - pubkey related to unlocking peg-in utxo. (This field is only avalable when lockingScript is empty.)
- * @property {string} redeemScript? - default is empty. set claim script to direct.
- */
-export interface CreatePegInAddressRequest {
-    fedpegscript: string;
-    pubkey: string;
-    redeemScript?: string;
-    network?: string;
-    hashType?: string;
-}
-
-/** */
-export interface CreatePegInAddressResponse {
-    mainchainAddress: string;
-    claimScript: string;
-    tweakFedpegscript: string;
-}
-
-/** */
-export interface ElementsPeginWitness {
-    amount: bigint | number;
-    asset: string;
-    mainchainGenesisBlockHash: string;
-    claimScript: string;
-    mainchainRawTransaction: string;
-    mainchainTxoutproof: string;
-}
-
-/** */
-export interface ElementsPeginTxIn {
-    isPegin?: boolean;
-    txid: string;
-    vout: number;
-    sequence?: number;
-    peginwitness?: ElementsPeginWitness;
-    isRemoveMainchainTxWitness?: boolean;
-}
-
-/** */
-export interface ElementsPeginTxOut {
-    address: string;
-    amount: bigint | number;
-    asset: string;
-    directLockingScript?: string;
-    directNonce?: string;
-    isRemoveNonce?: boolean;
-}
-
-/** */
-export interface ElementsPeginTxOutFee {
-    amount: bigint | number;
-    asset: string;
-}
-
-/** */
-export interface CreateRawPeginRequest {
-    version?: number;
-    locktime?: number;
-    txins: ElementsPeginTxIn[];
-    txouts?: ElementsPeginTxOut[];
-    fee?: ElementsPeginTxOutFee;
-    isRandomSortTxOut?: boolean;
-}
-
-/** */
-export interface CreateRawPeginResponse {
-    hex: string;
-}
-
-/** */
-export interface ElementsPegoutTxIn {
-    txid: string;
-    vout: number;
-    sequence?: number;
-}
-
-/** */
-export interface ElementsPegoutTxOut {
-    address: string;
-    amount: bigint | number;
-    asset: string;
-    directLockingScript?: string;
-    directNonce?: string;
-    isRemoveNonce?: boolean;
-}
-
-/** */
-export interface ElementsPegout {
-    amount: bigint | number;
-    asset: string;
-    network: string;
-    elementsNetwork: string;
-    mainchainGenesisBlockHash: string;
-    btcAddress?: string;
-    onlinePubkey: string;
-    masterOnlineKey: string;
-    bitcoinDescriptor: string;
-    bip32Counter: number;
-    whitelist: string;
-}
-
-/** */
-export interface ElementsPegoutTxOutFee {
-    amount: bigint | number;
-    asset: string;
-}
-
-/** */
-export interface CreateRawPegoutRequest {
-    version?: number;
-    locktime?: number;
-    txins?: ElementsPegoutTxIn[];
-    txouts?: ElementsPegoutTxOut[];
-    pegout: ElementsPegout;
-    fee?: ElementsPegoutTxOutFee;
-}
-
-/** */
-export interface CreateRawPegoutResponse {
-    hex: string;
-    btcAddress?: string;
-}
-
-/** */
-export interface ElementsTxInRequest {
-    txid: string;
-    vout: number;
-    sequence?: number;
-}
-
-/** */
-export interface ElementsTxOutRequest {
-    address: string;
-    amount: bigint | number;
-    asset: string;
-    directLockingScript?: string;
-    directNonce?: string;
-    isRemoveNonce?: boolean;
-}
-
-/** */
-export interface ElementsTxOutFeeRequest {
-    amount: bigint | number;
-    asset: string;
-}
-
-/** */
 export interface ElementsCreateRawTransactionRequest {
     version?: number;
     locktime?: number;
@@ -970,23 +806,7 @@ export interface ElementsCreateRawTransactionRequest {
     fee?: ElementsTxOutFeeRequest;
 }
 
-/** */
 export interface ElementsCreateRawTransactionResponse {
-    hex: string;
-}
-
-/** @property {boolean} fullDump? - tx data all dump option. */
-export interface ElementsDecodeRawTransactionRequest {
-    hex: string;
-    network?: string;
-    mainchainNetwork?: string;
-    iswitness?: boolean;
-    fullDump?: boolean;
-}
-
-/** */
-export interface ElementsDecodeUnlockingScript {
-    asm: string;
     hex: string;
 }
 
@@ -1006,20 +826,6 @@ export interface ElementsDecodeIssuance {
     tokenRangeproof?: string;
 }
 
-/** */
-export interface ElementsDecodeRawTransactionTxIn {
-    coinbase?: string;
-    txid?: string;
-    vout?: number;
-    scriptSig?: ElementsDecodeUnlockingScript;
-    is_pegin?: boolean;
-    sequence?: bigint;
-    txinwitness?: string[];
-    pegin_witness?: string[];
-    issuance?: ElementsDecodeIssuance;
-}
-
-/** */
 export interface ElementsDecodeLockingScript {
     asm?: string;
     hex?: string;
@@ -1034,7 +840,41 @@ export interface ElementsDecodeLockingScript {
     pegout_addresses?: string[];
 }
 
-/** */
+/** @property {boolean} fullDump? - tx data all dump option. */
+export interface ElementsDecodeRawTransactionRequest {
+    hex: string;
+    network?: string;
+    mainchainNetwork?: string;
+    iswitness?: boolean;
+    fullDump?: boolean;
+}
+
+export interface ElementsDecodeRawTransactionResponse {
+    txid: string;
+    hash: string;
+    wtxid: string;
+    withash: string;
+    version: number;
+    size: number;
+    vsize: number;
+    weight: number;
+    locktime: number;
+    vin?: ElementsDecodeRawTransactionTxIn[];
+    vout?: ElementsDecodeRawTransactionTxOut[];
+}
+
+export interface ElementsDecodeRawTransactionTxIn {
+    coinbase?: string;
+    txid?: string;
+    vout?: number;
+    scriptSig?: DecodeUnlockingScript;
+    is_pegin?: boolean;
+    sequence?: bigint;
+    txinwitness?: string[];
+    pegin_witness?: string[];
+    issuance?: ElementsDecodeIssuance;
+}
+
 export interface ElementsDecodeRawTransactionTxOut {
     value?: bigint;
     'value-minimum?': bigint;
@@ -1052,155 +892,121 @@ export interface ElementsDecodeRawTransactionTxOut {
     rangeproof?: string;
 }
 
-/** */
-export interface ElementsDecodeRawTransactionResponse {
-    txid: string;
-    hash: string;
-    wtxid: string;
-    withash: string;
-    version: number;
-    size: number;
-    vsize: number;
-    weight: number;
-    locktime: number;
-    vin?: ElementsDecodeRawTransactionTxIn[];
-    vout?: ElementsDecodeRawTransactionTxOut[];
-}
-
-/** */
-export interface GetConfidentialAddressRequest {
-    unblindedAddress: string;
-    key: string;
-}
-
-/** */
-export interface GetConfidentialAddressResponse {
-    confidentialAddress: string;
-}
-
-/** */
-export interface GetUnblindedAddressRequest {
-    confidentialAddress: string;
-}
-
-/** */
-export interface GetUnblindedAddressResponse {
-    unblindedAddress: string;
-    confidentialKey: string;
-}
-
-/** */
-export interface IssuanceDataRequest {
-    txid: string;
-    vout: number;
-    assetAmount: bigint | number;
-    assetAddress: string;
-    tokenAmount: bigint | number;
-    tokenAddress: string;
-    isBlind?: boolean;
-    contractHash?: string;
-    isRemoveNonce?: boolean;
-}
-
-/** @property {string} tx - transaction hex */
-export interface SetRawIssueAssetRequest {
-    tx: string;
-    isRandomSortTxOut?: boolean;
-    issuances: IssuanceDataRequest[];
-}
-
-/** */
-export interface IssuanceDataResponse {
-    txid: string;
-    vout: number;
-    asset: string;
-    entropy: string;
-    token?: string;
-}
-
-/** */
-export interface SetRawIssueAssetResponse {
-    hex: string;
-    issuances: IssuanceDataResponse[];
-}
-
-/** */
-export interface ReissuanceDataRequest {
-    txid: string;
-    vout: number;
+export interface ElementsDestroyAmount {
     amount: bigint | number;
+    asset: string;
+    directNonce?: string;
+}
+
+export interface ElementsDestroyAmountFee {
+    amount: bigint | number;
+    asset: string;
+}
+
+export interface ElementsDestroyAmountTxIn {
+    txid: string;
+    vout: number;
+    sequence?: number;
+}
+
+export interface ElementsDestroyAmountTxOut {
     address: string;
-    assetBlindingNonce: string;
-    assetEntropy: string;
+    amount: bigint | number;
+    asset: string;
+    directLockingScript?: string;
+    directNonce?: string;
     isRemoveNonce?: boolean;
 }
 
-/** @property {string} tx - transaction hex */
-export interface SetRawReissueAssetRequest {
-    tx: string;
-    isRandomSortTxOut?: boolean;
-    issuances: ReissuanceDataRequest[];
-}
-
-/** */
-export interface ReissuanceDataResponse {
+export interface ElementsPeginTxIn {
+    isPegin?: boolean;
     txid: string;
     vout: number;
+    sequence?: number;
+    peginwitness?: ElementsPeginWitness;
+    isRemoveMainchainTxWitness?: boolean;
+}
+
+export interface ElementsPeginTxOut {
+    address: string;
+    amount: bigint | number;
     asset: string;
-    entropy: string;
+    directLockingScript?: string;
+    directNonce?: string;
+    isRemoveNonce?: boolean;
 }
 
-/** */
-export interface SetRawReissueAssetResponse {
-    hex: string;
-    issuances: ReissuanceDataResponse[];
-}
-
-/** */
-export interface UnblindTxOut {
-    index: number;
-    blindingKey: string;
-}
-
-/** */
-export interface UnblindIssuance {
-    txid: string;
-    vout: number;
-    assetBlindingKey?: string;
-    tokenBlindingKey?: string;
-}
-
-/** @property {string} tx - transaction hex */
-export interface UnblindRawTransactionRequest {
-    tx: string;
-    txouts?: UnblindTxOut[];
-    issuances?: UnblindIssuance[];
-}
-
-/** */
-export interface UnblindOutput {
-    index: number;
+export interface ElementsPeginTxOutFee {
+    amount: bigint | number;
     asset: string;
-    blindFactor: string;
-    assetBlindFactor: string;
-    amount: bigint;
 }
 
-/** */
-export interface UnblindIssuanceOutput {
+export interface ElementsPeginWitness {
+    amount: bigint | number;
+    asset: string;
+    mainchainGenesisBlockHash: string;
+    claimScript: string;
+    mainchainRawTransaction: string;
+    mainchainTxoutproof: string;
+}
+
+export interface ElementsPegout {
+    amount: bigint | number;
+    asset: string;
+    network: string;
+    elementsNetwork: string;
+    mainchainGenesisBlockHash: string;
+    btcAddress?: string;
+    onlinePubkey: string;
+    masterOnlineKey: string;
+    bitcoinDescriptor: string;
+    bip32Counter: number;
+    whitelist: string;
+}
+
+export interface ElementsPegoutTxIn {
     txid: string;
     vout: number;
-    asset?: string;
-    assetamount?: bigint;
-    token?: string;
-    tokenamount?: bigint;
+    sequence?: number;
 }
 
-/** */
-export interface UnblindRawTransactionResponse {
+export interface ElementsPegoutTxOut {
+    address: string;
+    amount: bigint | number;
+    asset: string;
+    directLockingScript?: string;
+    directNonce?: string;
+    isRemoveNonce?: boolean;
+}
+
+export interface ElementsPegoutTxOutFee {
+    amount: bigint | number;
+    asset: string;
+}
+
+export interface ElementsSignatureHashKeyData {
     hex: string;
-    outputs?: UnblindOutput[];
-    issuanceOutputs?: UnblindIssuanceOutput[];
+    type: string;
+}
+
+export interface ElementsTxInRequest {
+    txid: string;
+    vout: number;
+    sequence?: number;
+}
+
+export interface ElementsTxOutFeeRequest {
+    amount: bigint | number;
+    asset: string;
+}
+
+export interface ElementsTxOutRequest {
+    address: string;
+    amount: bigint | number;
+    asset: string;
+    directLockingScript?: string;
+    directNonce?: string;
+    isRemoveNonce?: boolean;
 }
 
 /** @property {string} hex - base58 target byte hex */
@@ -1221,36 +1027,12 @@ export interface EncodeSignatureByDerRequest {
     sighashAnyoneCanPay?: boolean;
 }
 
-/** */
 export interface EncodeSignatureByDerResponse {
     signature: string;
 }
 
-/** */
-export interface InnerErrorResponse {
-    code: number;
-    type: string;
-    message: string;
-}
-
-/** */
 export interface ErrorResponse {
     error: InnerErrorResponse;
-}
-
-/** @property {string} scriptSigTemplate? - ScriptSig template is for scriptHash calculation fee. */
-export interface SelectUtxoData {
-    txid: string;
-    vout: number;
-    asset?: string;
-    redeemScript?: string;
-    descriptor?: string;
-    isIssuance?: boolean;
-    isBlindIssuance?: boolean;
-    isPegin?: boolean;
-    peginBtcTxSize?: bigint | number;
-    fedpegScript?: string;
-    scriptSigTemplate?: string;
 }
 
 /** @property {string} tx - transaction hex */
@@ -1278,32 +1060,10 @@ export interface EstimateFeeResponse {
     utxoFeeAmount?: bigint;
 }
 
-/** @property {string} scriptSigTemplate? - ScriptSig template is for scriptHash calculation fee. */
-export interface FundUtxoJsonData {
+export interface FailSignTxIn {
     txid: string;
     vout: number;
-    address: string;
-    amount: bigint | number;
-    asset?: string;
-    descriptor?: string;
-    scriptSigTemplate?: string;
-}
-
-/** @property {string} scriptSigTemplate? - ScriptSig template is for scriptHash calculation fee. */
-export interface FundSelectUtxoData {
-    txid: string;
-    vout: number;
-    address: string;
-    amount: bigint | number;
-    asset?: string;
-    redeemScript?: string;
-    descriptor?: string;
-    isIssuance?: boolean;
-    isBlindIssuance?: boolean;
-    isPegin?: boolean;
-    peginBtcTxSize?: number;
-    fedpegScript?: string;
-    scriptSigTemplate?: string;
+    reason: string;
 }
 
 /**
@@ -1345,11 +1105,38 @@ export interface FundRawTransactionRequest {
     feeInfo?: FundFeeInfomation;
 }
 
-/** */
 export interface FundRawTransactionResponse {
     hex: string;
     usedAddresses?: string[];
     feeAmount?: bigint;
+}
+
+/** @property {string} scriptSigTemplate? - ScriptSig template is for scriptHash calculation fee. */
+export interface FundSelectUtxoData {
+    txid: string;
+    vout: number;
+    address: string;
+    amount: bigint | number;
+    asset?: string;
+    redeemScript?: string;
+    descriptor?: string;
+    isIssuance?: boolean;
+    isBlindIssuance?: boolean;
+    isPegin?: boolean;
+    peginBtcTxSize?: number;
+    fedpegScript?: string;
+    scriptSigTemplate?: string;
+}
+
+/** @property {string} scriptSigTemplate? - ScriptSig template is for scriptHash calculation fee. */
+export interface FundUtxoJsonData {
+    txid: string;
+    vout: number;
+    address: string;
+    amount: bigint | number;
+    asset?: string;
+    descriptor?: string;
+    scriptSigTemplate?: string;
 }
 
 /** @property {string} redeemScript - redeem script on multisig */
@@ -1360,7 +1147,6 @@ export interface GetAddressesFromMultisigRequest {
     hashType?: string;
 }
 
-/** */
 export interface GetAddressesFromMultisigResponse {
     addresses: string[];
     pubkeys: string[];
@@ -1382,7 +1168,6 @@ export interface GetAddressInfoResponse {
     hash?: string;
 }
 
-/** */
 export interface GetCommitmentRequest {
     amount: bigint | number;
     asset: string;
@@ -1390,20 +1175,26 @@ export interface GetCommitmentRequest {
     blindFactor: string;
 }
 
-/** */
 export interface GetCommitmentResponse {
     assetCommitment: string;
     amountCommitment: string;
 }
 
-/** */
 export interface GetCompressedPubkeyRequest {
     pubkey: string;
 }
 
-/** */
 export interface GetCompressedPubkeyResponse {
     pubkey: string;
+}
+
+export interface GetConfidentialAddressRequest {
+    unblindedAddress: string;
+    key: string;
+}
+
+export interface GetConfidentialAddressResponse {
+    confidentialAddress: string;
 }
 
 /** @property {string} address? - use if empty locking script. */
@@ -1413,17 +1204,14 @@ export interface GetDefaultBlindingKeyRequest {
     address?: string;
 }
 
-/** */
 export interface GetDefaultBlindingKeyResponse {
     blindingKey: string;
 }
 
-/** */
 export interface GetExtkeyInfoRequest {
     extkey: string;
 }
 
-/** */
 export interface GetExtkeyInfoResponse {
     network: string;
     version: string;
@@ -1433,29 +1221,24 @@ export interface GetExtkeyInfoResponse {
     chainCode: string;
 }
 
-/** */
 export interface GetIssuanceBlindingKeyRequest {
     masterBlindingKey: string;
     txid: string;
     vout: number;
 }
 
-/** */
 export interface GetIssuanceBlindingKeyResponse {
     blindingKey: string;
 }
 
-/** */
 export interface GetMnemonicWordlistRequest {
     language: string;
 }
 
-/** */
 export interface GetMnemonicWordlistResponse {
     wordlist: string[];
 }
 
-/** */
 export interface GetPrivkeyFromExtkeyRequest {
     extkey: string;
     network: string;
@@ -1463,7 +1246,6 @@ export interface GetPrivkeyFromExtkeyRequest {
     isCompressed?: boolean;
 }
 
-/** */
 export interface GetPrivkeyFromExtkeyResponse {
     privkey: string;
 }
@@ -1492,32 +1274,36 @@ export interface GetPrivkeyWifResponse {
     wif: string;
 }
 
-/** */
 export interface GetPubkeyFromExtkeyRequest {
     extkey: string;
     network: string;
 }
 
-/** */
 export interface GetPubkeyFromExtkeyResponse {
     pubkey: string;
 }
 
-/** */
 export interface GetPubkeyFromPrivkeyRequest {
     privkey: string;
     isCompressed?: boolean;
 }
 
-/** */
 export interface GetPubkeyFromPrivkeyResponse {
     pubkey: string;
 }
 
-/** */
-export interface GetWitnessStackNumTxInRequest {
-    txid: string;
-    vout: number;
+export interface GetSupportedFunctionResponse {
+    bitcoin: boolean;
+    elements: boolean;
+}
+
+export interface GetUnblindedAddressRequest {
+    confidentialAddress: string;
+}
+
+export interface GetUnblindedAddressResponse {
+    unblindedAddress: string;
+    confidentialKey: string;
 }
 
 /** @property {string} tx - transaction hex */
@@ -1527,28 +1313,66 @@ export interface GetWitnessStackNumRequest {
     txin: GetWitnessStackNumTxInRequest;
 }
 
-/** */
 export interface GetWitnessStackNumResponse {
     count: number;
 }
 
-/** */
-export interface CreateMultisigRequest {
-    nrequired: number;
-    keys: string[];
-    isElements?: boolean;
-    network: string;
-    hashType: string;
+export interface GetWitnessStackNumTxInRequest {
+    txid: string;
+    vout: number;
+}
+
+export interface InnerErrorResponse {
+    code: number;
+    type: string;
+    message: string;
+}
+
+export interface IssuanceDataRequest {
+    txid: string;
+    vout: number;
+    assetAmount: bigint | number;
+    assetAddress: string;
+    tokenAmount: bigint | number;
+    tokenAddress: string;
+    isBlind?: boolean;
+    contractHash?: string;
+    isRemoveNonce?: boolean;
+}
+
+export interface IssuanceDataResponse {
+    txid: string;
+    vout: number;
+    asset: string;
+    entropy: string;
+    token?: string;
+}
+
+export interface MultisigScriptSigData {
+    hex: string;
+    type?: string;
+    derEncode?: boolean;
+    sighashType?: string;
+    sighashAnyoneCanPay?: boolean;
+    relatedPubkey?: string;
 }
 
 /**
- * @property {string} redeemScript? - (required for P2SH or P2SH-P2WSH) redeem script for unlocking script
- * @property {string} witnessScript? - (required for P2WSH or P2SH-P2WSH) witness script for witness stack
+ * Multisig signature data.
+ * @property {string} hex - signature hex.
+ * @property {string} type? - parameter type. (sign only)
+ * @property {boolean} derEncode? - der encode option flag
+ * @property {string} sighashType? - signature hash type. (all, none or single)
+ * @property {boolean} sighashAnyoneCanPay? - sighashType anyone can pay flag.
+ * @property {string} relatedPubkey? - a pubkey related to signature.
  */
-export interface CreateMultisigResponse {
-    address: string;
-    redeemScript?: string;
-    witnessScript?: string;
+export interface MultisigSignData {
+    hex: string;
+    type?: string;
+    derEncode?: boolean;
+    sighashType?: string;
+    sighashAnyoneCanPay?: boolean;
+    relatedPubkey?: string;
 }
 
 /** @property {string} descriptor - output descriptor */
@@ -1559,26 +1383,6 @@ export interface ParseDescriptorRequest {
     bip32DerivationPath?: string;
 }
 
-/** */
-export interface DescriptorKeyJson {
-    keyType: string;
-    key: string;
-}
-
-/** */
-export interface DescriptorScriptJson {
-    depth: number;
-    lockingScript: string;
-    address: string;
-    hashType: string;
-    redeemScript?: string;
-    keyType?: string;
-    key?: string;
-    keys?: DescriptorKeyJson[];
-    reqNum?: number;
-}
-
-/** */
 export interface ParseDescriptorResponse {
     type: string;
     address?: string;
@@ -1594,35 +1398,86 @@ export interface ParseScriptRequest {
     script: string;
 }
 
-/** */
 export interface ParseScriptResponse {
     scriptItems: string[];
 }
 
-/** */
-export interface UtxoJsonData {
+/**
+ * private key data.
+ * @property {string} privkey - private key. set is wif or hex.
+ * @property {boolean} wif - use wif flag. true is wif, false is hex.
+ * @property {string} network? - wif network type. (mainnet, testnet or regtest)
+ * @property {boolean} isCompressed? - wif compressed flag
+ */
+export interface PrivkeyData {
+    privkey: string;
+    wif: boolean;
+    network?: string;
+    isCompressed?: boolean;
+}
+
+/**
+ * pubkey hash signature data
+ * @property {string} hex - signature hex.
+ * @property {string} type? - parameter type. (sign only)
+ * @property {boolean} derEncode? - der encode option flag
+ * @property {string} sighashType? - signature hash type. (all, none or single)
+ * @property {boolean} sighashAnyoneCanPay? - sighashType anyone can pay flag.
+ */
+export interface PubkeyHashSignData {
+    hex: string;
+    type?: string;
+    derEncode?: boolean;
+    sighashType?: string;
+    sighashAnyoneCanPay?: boolean;
+}
+
+export interface ReissuanceDataRequest {
     txid: string;
     vout: number;
-    amount: bigint;
-    asset?: string;
-    descriptor?: string;
+    amount: bigint | number;
+    address: string;
+    assetBlindingNonce: string;
+    assetEntropy: string;
+    isRemoveNonce?: boolean;
 }
 
-/** */
-export interface TargetAmountMapData {
+export interface ReissuanceDataResponse {
+    txid: string;
+    vout: number;
     asset: string;
-    amount: bigint;
+    entropy: string;
 }
 
-/** @property {number} knapsackMinChange? - knapsack logic's threshold. Recommended value is 1. (knapsack minimum change amount.) */
-export interface CoinSelectionFeeInfomationField {
-    txFeeAmount?: bigint | number;
-    feeRate?: number;
-    longTermFeeRate?: number;
-    knapsackMinChange?: number;
-    feeAsset?: string;
-    exponent?: number;
-    minimumBits?: number;
+/**
+ * signature data
+ * @property {string} hex - If the type is auto or op_code, character string input is enabled. Others are hex byte array only.
+ * @property {string} type? - parameter type. (binary, sign)
+ * @property {boolean} derEncode? - der encode option flag. Valid when type is auto or sign.
+ * @property {string} sighashType? - signature hash type. (all, none, single)
+ * @property {boolean} sighashAnyoneCanPay? - sighashType anyone can pay flag.
+ */
+export interface ScriptHashSignData {
+    hex: string;
+    type?: string;
+    derEncode?: boolean;
+    sighashType?: string;
+    sighashAnyoneCanPay?: boolean;
+}
+
+/** @property {string} scriptSigTemplate? - ScriptSig template is for scriptHash calculation fee. */
+export interface SelectUtxoData {
+    txid: string;
+    vout: number;
+    asset?: string;
+    redeemScript?: string;
+    descriptor?: string;
+    isIssuance?: boolean;
+    isBlindIssuance?: boolean;
+    isPegin?: boolean;
+    peginBtcTxSize?: bigint | number;
+    fedpegScript?: string;
+    scriptSigTemplate?: string;
 }
 
 /** @property {bigint | number} targetAmount? - Amount more than the specified amount is set in txout. default is 0 (disable). (This field is available only bitcoin.) */
@@ -1634,35 +1489,12 @@ export interface SelectUtxosRequest {
     feeInfo?: CoinSelectionFeeInfomationField;
 }
 
-/** */
-export interface UtxoJsonData {
-    txid: string;
-    vout: number;
-    amount: bigint;
-    asset?: string;
-    descriptor?: string;
-}
-
-/** */
-export interface TargetAmountMapData {
-    asset: string;
-    amount: bigint;
-}
-
-/** */
 export interface SelectUtxosResponse {
     utxos: UtxoJsonData[];
     selectedAmount?: bigint;
     selectedAmounts?: TargetAmountMapData[];
     feeAmount?: bigint;
     utxoFeeAmount: bigint;
-}
-
-/** */
-export interface SerializeLedgerFormatTxOut {
-    index: number;
-    asset: string;
-    amount: bigint | number;
 }
 
 /** @property {string} tx - transaction hex */
@@ -1673,67 +1505,74 @@ export interface SerializeLedgerFormatRequest {
     isAuthorization: boolean;
 }
 
-/** */
 export interface SerializeLedgerFormatResponse {
     serialize: string;
     sha256: string;
 }
 
-/** */
+export interface SerializeLedgerFormatTxOut {
+    index: number;
+    asset: string;
+    amount: bigint | number;
+}
+
+/** @property {string} tx - transaction hex */
+export interface SetRawIssueAssetRequest {
+    tx: string;
+    isRandomSortTxOut?: boolean;
+    issuances: IssuanceDataRequest[];
+}
+
+export interface SetRawIssueAssetResponse {
+    hex: string;
+    issuances: IssuanceDataResponse[];
+}
+
+/** @property {string} tx - transaction hex */
+export interface SetRawReissueAssetRequest {
+    tx: string;
+    isRandomSortTxOut?: boolean;
+    issuances: ReissuanceDataRequest[];
+}
+
+export interface SetRawReissueAssetResponse {
+    hex: string;
+    issuances: ReissuanceDataResponse[];
+}
+
 export interface SignatureHashKeyData {
     hex: string;
     type: string;
 }
 
-/** */
-export interface CreateSignatureHashTxInRequest {
-    txid: string;
-    vout: number;
-    keyData: SignatureHashKeyData;
-    amount: bigint | number;
-    hashType: string;
-    sighashType?: string;
-    sighashAnyoneCanPay?: boolean;
-}
-
-/** @property {string} tx - transaction hex */
-export interface CreateSignatureHashRequest {
-    tx: string;
-    txin: CreateSignatureHashTxInRequest;
-}
-
-/** */
-export interface CreateSignatureHashResponse {
-    sighash: string;
-}
-
-/** */
-export interface ElementsSignatureHashKeyData {
+/**
+ * The sign data.
+ * @property {string} hex - If the type is auto or op_code, character string input is enabled. Others are hex byte array only.
+ * @property {string} type? - parameter type. (auto, binary, sign, pubkey, redeem_script, op_code)
+ * @property {boolean} derEncode? - der encode option flag. Valid when type is auto or sign.
+ * @property {string} sighashType? - signature hash type. (all, none, single)
+ * @property {boolean} sighashAnyoneCanPay? - sighashType anyone can pay flag.
+ */
+export interface SignData {
     hex: string;
-    type: string;
-}
-
-/** */
-export interface CreateElementsSignatureHashTxIn {
-    txid: string;
-    vout: number;
-    keyData: ElementsSignatureHashKeyData;
-    amount?: bigint | number;
-    confidentialValueCommitment?: string;
-    hashType: string;
+    type?: string;
+    derEncode?: boolean;
     sighashType?: string;
     sighashAnyoneCanPay?: boolean;
 }
 
-/** @property {string} tx - transaction hex */
-export interface CreateElementsSignatureHashRequest {
+/**
+ * Add signatures to pubkey hash input
+ * @property {string} tx - transaction hex
+ */
+export interface SignWithPrivkeyRequest {
+    isElements?: boolean;
     tx: string;
-    txin: CreateElementsSignatureHashTxIn;
+    txin?: SignWithPrivkeyTxInRequest;
 }
 
-/** */
-export interface CreateElementsSignatureHashResponse {
-    sighash: string;
+export interface SignWithPrivkeyResponse {
+    hex: string;
 }
 
 /**
@@ -1753,55 +1592,67 @@ export interface SignWithPrivkeyTxInRequest {
     isGrindR?: boolean;
 }
 
-/**
- * Add signatures to pubkey hash input
- * @property {string} tx - transaction hex
- */
-export interface SignWithPrivkeyRequest {
-    isElements?: boolean;
-    tx: string;
-    txin?: SignWithPrivkeyTxInRequest;
+/** @property {bigint | number} amount - Amount more than the specified amount is set in txout. default is 0 (disable). */
+export interface TargetAmountMapData {
+    asset?: string;
+    amount: bigint | number;
+    amount: bigint;
 }
 
-/** */
-export interface SignWithPrivkeyResponse {
-    hex: string;
-}
-
-/** */
-export interface GetSupportedFunctionResponse {
-    bitcoin: boolean;
-    elements: boolean;
-}
-
-/** */
 export interface TxInRequest {
     txid: string;
     vout: number;
     sequence?: number;
 }
 
-/** */
 export interface TxOutRequest {
     address: string;
     amount: bigint | number;
     directLockingScript?: string;
 }
 
-/** */
-export interface CreateRawTransactionRequest {
-    version?: number;
-    locktime?: number;
-    txins?: TxInRequest[];
-    txouts?: TxOutRequest[];
+export interface UnblindIssuance {
+    txid: string;
+    vout: number;
+    assetBlindingKey?: string;
+    tokenBlindingKey?: string;
 }
 
-/** */
-export interface CreateRawTransactionResponse {
+export interface UnblindIssuanceOutput {
+    txid: string;
+    vout: number;
+    asset?: string;
+    assetamount?: bigint;
+    token?: string;
+    tokenamount?: bigint;
+}
+
+export interface UnblindOutput {
+    index: number;
+    asset: string;
+    blindFactor: string;
+    assetBlindFactor: string;
+    amount: bigint;
+}
+
+/** @property {string} tx - transaction hex */
+export interface UnblindRawTransactionRequest {
+    tx: string;
+    txouts?: UnblindTxOut[];
+    issuances?: UnblindIssuance[];
+}
+
+export interface UnblindRawTransactionResponse {
     hex: string;
+    outputs?: UnblindOutput[];
+    issuanceOutputs?: UnblindIssuanceOutput[];
 }
 
-/** */
+export interface UnblindTxOut {
+    index: number;
+    blindingKey: string;
+}
+
 export interface UpdateTxOutAmountData {
     amount: bigint | number;
     index?: number;
@@ -1816,26 +1667,8 @@ export interface UpdateTxOutAmountRequest {
     txouts?: UpdateTxOutAmountData[];
 }
 
-/** */
 export interface UpdateTxOutAmountResponse {
     hex: string;
-}
-
-/** */
-export interface WitnessStackData {
-    index: number;
-    hex: string;
-    type?: string;
-    derEncode?: boolean;
-    sighashType?: string;
-    sighashAnyoneCanPay?: boolean;
-}
-
-/** */
-export interface UpdateWitnessStackTxInRequest {
-    txid: string;
-    vout: number;
-    witnessStack: WitnessStackData;
 }
 
 /** @property {string} tx - transaction hex */
@@ -1845,12 +1678,27 @@ export interface UpdateWitnessStackRequest {
     txin?: UpdateWitnessStackTxInRequest;
 }
 
-/** */
 export interface UpdateWitnessStackResponse {
     hex?: string;
 }
 
-/** */
+export interface UpdateWitnessStackTxInRequest {
+    txid: string;
+    vout: number;
+    witnessStack: WitnessStackData;
+}
+
+/** @property {string} scriptSigTemplate? - ScriptSig template is for scriptHash calculation fee. */
+export interface UtxoJsonData {
+    txid: string;
+    vout: number;
+    amount: bigint | number;
+    asset?: string;
+    descriptor?: string;
+    scriptSigTemplate?: string;
+    amount: bigint;
+}
+
 export interface VerifyignTxInUtxoData {
     txid: string;
     vout: number;
@@ -1864,26 +1712,16 @@ export interface VerifyignTxInUtxoData {
  * @property {string} tx - transaction hex
  * @property {boolean} isElements? - elements transaction flag.
  */
-export interface VerifySignRequest {
+export interface VerifySignatureRequest {
     tx: string;
     isElements?: boolean;
-    txins: VerifyignTxInUtxoData[];
+    txin: VerifySignatureTxInRequest;
 }
 
-/** */
-export interface FailSignTxIn {
-    txid: string;
-    vout: number;
-    reason: string;
-}
-
-/** */
-export interface VerifySignResponse {
+export interface VerifySignatureResponse {
     success: boolean;
-    failTxins?: FailSignTxIn[];
 }
 
-/** */
 export interface VerifySignatureTxInRequest {
     txid: string;
     vout: number;
@@ -1901,433 +1739,442 @@ export interface VerifySignatureTxInRequest {
  * @property {string} tx - transaction hex
  * @property {boolean} isElements? - elements transaction flag.
  */
-export interface VerifySignatureRequest {
+export interface VerifySignRequest {
     tx: string;
     isElements?: boolean;
-    txin: VerifySignatureTxInRequest;
+    txins: VerifyignTxInUtxoData[];
 }
 
-/** */
-export interface VerifySignatureResponse {
+export interface VerifySignResponse {
     success: boolean;
+    failTxins?: FailSignTxIn[];
+}
+
+export interface WitnessStackData {
+    index: number;
+    hex: string;
+    type?: string;
+    derEncode?: boolean;
+    sighashType?: string;
+    sighashAnyoneCanPay?: boolean;
 }
 
 /**
  * Add multisig signatures to the transaction.
- * @param {AddMultisigSignRequest} - request data.
+ * @param {AddMultisigSignRequest} jsonObject - request data.
  * @return {AddMultisigSignResponse} - response data.
  */
 export function AddMultisigSign(jsonObject: AddMultisigSignRequest): AddMultisigSignResponse;
 
 /**
  * Add a signature and pubkey to the transaction.
- * @param {AddPubkeyHashSignRequest} - request data.
+ * @param {AddPubkeyHashSignRequest} jsonObject - request data.
  * @return {AddPubkeyHashSignResponse} - response data.
  */
 export function AddPubkeyHashSign(jsonObject: AddPubkeyHashSignRequest): AddPubkeyHashSignResponse;
 
 /**
  * Add tx inputs and tx outputs to the transaction.
- * @param {AddRawTransactionRequest} - request data.
+ * @param {AddRawTransactionRequest} jsonObject - request data.
  * @return {AddRawTransactionResponse} - response data.
  */
 export function AddRawTransaction(jsonObject: AddRawTransactionRequest): AddRawTransactionResponse;
 
 /**
  * Add a signature and redeem script to the transaction.
- * @param {AddScriptHashSignRequest} - request data.
+ * @param {AddScriptHashSignRequest} jsonObject - request data.
  * @return {AddScriptHashSignResponse} - response data.
  */
 export function AddScriptHashSign(jsonObject: AddScriptHashSignRequest): AddScriptHashSignResponse;
 
 /**
  * Add a sign data to the transaction.
- * @param {AddSignRequest} - request data.
+ * @param {AddSignRequest} jsonObject - request data.
  * @return {AddSignResponse} - response data.
  */
 export function AddSign(jsonObject: AddSignRequest): AddSignResponse;
 
 /**
  * Get output descriptor added checksum.
- * @param {AppendDescriptorChecksumRequest} - request data.
+ * @param {AppendDescriptorChecksumRequest} jsonObject - request data.
  * @return {AppendDescriptorChecksumResponse} - response data.
  */
 export function AppendDescriptorChecksum(jsonObject: AppendDescriptorChecksumRequest): AppendDescriptorChecksumResponse;
 
 /**
  * blind the transaction.
- * @param {BlindRawTransactionRequest} - request data.
+ * @param {BlindRawTransactionRequest} jsonObject - request data.
  * @return {BlindRawTransactionResponse} - response data.
  */
 export function BlindRawTransaction(jsonObject: BlindRawTransactionRequest): BlindRawTransactionResponse;
 
 /**
  * calculate ec signature.
- * @param {CalculateEcSignatureRequest} - request data.
+ * @param {CalculateEcSignatureRequest} jsonObject - request data.
  * @return {CalculateEcSignatureResponse} - response data.
  */
 export function CalculateEcSignature(jsonObject: CalculateEcSignatureRequest): CalculateEcSignatureResponse;
 
 /**
  * Encode/Decode AES.
- * @param {ConvertAesRequest} - request data.
+ * @param {ConvertAesRequest} jsonObject - request data.
  * @return {ConvertAesResponse} - response data.
  */
 export function ConvertAes(jsonObject: ConvertAesRequest): ConvertAesResponse;
 
 /**
- * @param {ConvertEntropyToMnemonicRequest} - request data.
+ * @param {ConvertEntropyToMnemonicRequest} jsonObject - request data.
  * @return {ConvertEntropyToMnemonicResponse} - response data.
  */
 export function ConvertEntropyToMnemonic(jsonObject: ConvertEntropyToMnemonicRequest): ConvertEntropyToMnemonicResponse;
 
 /**
- * @param {ConvertMnemonicToSeedRequest} - request data.
+ * @param {ConvertMnemonicToSeedRequest} jsonObject - request data.
  * @return {ConvertMnemonicToSeedResponse} - response data.
  */
 export function ConvertMnemonicToSeed(jsonObject: ConvertMnemonicToSeedRequest): ConvertMnemonicToSeedResponse;
 
 /**
- * @param {CreateAddressRequest} - request data.
+ * @param {CreateAddressRequest} jsonObject - request data.
  * @return {CreateAddressResponse} - response data.
  */
 export function CreateAddress(jsonObject: CreateAddressRequest): CreateAddressResponse;
 
 /**
- * @param {CreateDescriptorRequest} - request data.
+ * @param {CreateDescriptorRequest} jsonObject - request data.
  * @return {CreateDescriptorResponse} - response data.
  */
 export function CreateDescriptor(jsonObject: CreateDescriptorRequest): CreateDescriptorResponse;
 
 /**
- * @param {CreateExtkeyRequest} - request data.
- * @return {CreateExtkeyResponse} - response data.
- */
-export function CreateExtkey(jsonObject: CreateExtkeyRequest): CreateExtkeyResponse;
-
-/**
- * @param {CreateExtkeyFromParentRequest} - request data.
- * @return {CreateExtkeyFromParentResponse} - response data.
- */
-export function CreateExtkeyFromParent(jsonObject: CreateExtkeyFromParentRequest): CreateExtkeyFromParentResponse;
-
-/**
- * @param {CreateExtkeyFromParentKeyRequest} - request data.
- * @return {CreateExtkeyFromParentKeyResponse} - response data.
- */
-export function CreateExtkeyFromParentKey(jsonObject: CreateExtkeyFromParentKeyRequest): CreateExtkeyFromParentKeyResponse;
-
-/**
- * @param {CreateExtkeyFromParentPathRequest} - request data.
- * @return {CreateExtkeyFromParentPathResponse} - response data.
- */
-export function CreateExtkeyFromParentPath(jsonObject: CreateExtkeyFromParentPathRequest): CreateExtkeyFromParentPathResponse;
-
-/**
- * @param {CreateExtkeyFromSeedRequest} - request data.
- * @return {CreateExtkeyFromSeedResponse} - response data.
- */
-export function CreateExtkeyFromSeed(jsonObject: CreateExtkeyFromSeedRequest): CreateExtkeyFromSeedResponse;
-
-/**
- * @param {CreateExtPubkeyRequest} - request data.
- * @return {CreateExtPubkeyResponse} - response data.
- */
-export function CreateExtPubkey(jsonObject: CreateExtPubkeyRequest): CreateExtPubkeyResponse;
-
-/**
- * @param {CreateKeyPairRequest} - request data.
- * @return {CreateKeyPairResponse} - response data.
- */
-export function CreateKeyPair(jsonObject: CreateKeyPairRequest): CreateKeyPairResponse;
-
-/**
- * @param {CreateMultisigScriptSigRequest} - request data.
- * @return {CreateMultisigScriptSigResponse} - response data.
- */
-export function CreateMultisigScriptSig(jsonObject: CreateMultisigScriptSigRequest): CreateMultisigScriptSigResponse;
-
-/**
- * @param {CreateScriptRequest} - request data.
- * @return {CreateScriptResponse} - response data.
- */
-export function CreateScript(jsonObject: CreateScriptRequest): CreateScriptResponse;
-
-/**
- * @param {DecodeBase58Request} - request data.
- * @return {DecodeBase58Response} - response data.
- */
-export function DecodeBase58(jsonObject: DecodeBase58Request): DecodeBase58Response;
-
-/**
- * @param {DecodeDerSignatureToRawRequest} - request data.
- * @return {DecodeDerSignatureToRawResponse} - response data.
- */
-export function DecodeDerSignatureToRaw(jsonObject: DecodeDerSignatureToRawRequest): DecodeDerSignatureToRawResponse;
-
-/**
- * @param {DecodeRawTransactionRequest} - request data.
- * @return {DecodeRawTransactionResponse} - response data.
- */
-export function DecodeRawTransaction(jsonObject: DecodeRawTransactionRequest): DecodeRawTransactionResponse;
-
-/**
- * @param {ElementsAddRawTransactionRequest} - request data.
- * @return {ElementsAddRawTransactionResponse} - response data.
- */
-export function ElementsAddRawTransaction(jsonObject: ElementsAddRawTransactionRequest): ElementsAddRawTransactionResponse;
-
-/**
- * @param {CreateDestroyAmountRequest} - request data.
+ * @param {CreateDestroyAmountRequest} jsonObject - request data.
  * @return {CreateDestroyAmountResponse} - response data.
  */
 export function CreateDestroyAmount(jsonObject: CreateDestroyAmountRequest): CreateDestroyAmountResponse;
 
 /**
- * @param {CreatePegInAddressRequest} - request data.
- * @return {CreatePegInAddressResponse} - response data.
- */
-export function CreatePegInAddress(jsonObject: CreatePegInAddressRequest): CreatePegInAddressResponse;
-
-/**
- * @param {CreateRawPeginRequest} - request data.
- * @return {CreateRawPeginResponse} - response data.
- */
-export function CreateRawPegin(jsonObject: CreateRawPeginRequest): CreateRawPeginResponse;
-
-/**
- * @param {CreateRawPegoutRequest} - request data.
- * @return {CreateRawPegoutResponse} - response data.
- */
-export function CreateRawPegout(jsonObject: CreateRawPegoutRequest): CreateRawPegoutResponse;
-
-/**
- * @param {ElementsCreateRawTransactionRequest} - request data.
- * @return {ElementsCreateRawTransactionResponse} - response data.
- */
-export function ElementsCreateRawTransaction(jsonObject: ElementsCreateRawTransactionRequest): ElementsCreateRawTransactionResponse;
-
-/**
- * @param {ElementsDecodeRawTransactionRequest} - request data.
- * @return {ElementsDecodeRawTransactionResponse} - response data.
- */
-export function ElementsDecodeRawTransaction(jsonObject: ElementsDecodeRawTransactionRequest): ElementsDecodeRawTransactionResponse;
-
-/**
- * @param {GetConfidentialAddressRequest} - request data.
- * @return {GetConfidentialAddressResponse} - response data.
- */
-export function GetConfidentialAddress(jsonObject: GetConfidentialAddressRequest): GetConfidentialAddressResponse;
-
-/**
- * @param {GetUnblindedAddressRequest} - request data.
- * @return {GetUnblindedAddressResponse} - response data.
- */
-export function GetUnblindedAddress(jsonObject: GetUnblindedAddressRequest): GetUnblindedAddressResponse;
-
-/**
- * @param {SetRawIssueAssetRequest} - request data.
- * @return {SetRawIssueAssetResponse} - response data.
- */
-export function SetRawIssueAsset(jsonObject: SetRawIssueAssetRequest): SetRawIssueAssetResponse;
-
-/**
- * @param {SetRawReissueAssetRequest} - request data.
- * @return {SetRawReissueAssetResponse} - response data.
- */
-export function SetRawReissueAsset(jsonObject: SetRawReissueAssetRequest): SetRawReissueAssetResponse;
-
-/**
- * @param {UnblindRawTransactionRequest} - request data.
- * @return {UnblindRawTransactionResponse} - response data.
- */
-export function UnblindRawTransaction(jsonObject: UnblindRawTransactionRequest): UnblindRawTransactionResponse;
-
-/**
- * @param {EncodeBase58Request} - request data.
- * @return {EncodeBase58Response} - response data.
- */
-export function EncodeBase58(jsonObject: EncodeBase58Request): EncodeBase58Response;
-
-/**
- * @param {EncodeSignatureByDerRequest} - request data.
- * @return {EncodeSignatureByDerResponse} - response data.
- */
-export function EncodeSignatureByDer(jsonObject: EncodeSignatureByDerRequest): EncodeSignatureByDerResponse;
-
-/**
- * @param {EstimateFeeRequest} - request data.
- * @return {EstimateFeeResponse} - response data.
- */
-export function EstimateFee(jsonObject: EstimateFeeRequest): EstimateFeeResponse;
-
-/**
- * @param {FundRawTransactionRequest} - request data.
- * @return {FundRawTransactionResponse} - response data.
- */
-export function FundRawTransaction(jsonObject: FundRawTransactionRequest): FundRawTransactionResponse;
-
-/**
- * @param {GetAddressesFromMultisigRequest} - request data.
- * @return {GetAddressesFromMultisigResponse} - response data.
- */
-export function GetAddressesFromMultisig(jsonObject: GetAddressesFromMultisigRequest): GetAddressesFromMultisigResponse;
-
-/**
- * @param {GetAddressInfoRequest} - request data.
- * @return {GetAddressInfoResponse} - response data.
- */
-export function GetAddressInfo(jsonObject: GetAddressInfoRequest): GetAddressInfoResponse;
-
-/**
- * @param {GetCommitmentRequest} - request data.
- * @return {GetCommitmentResponse} - response data.
- */
-export function GetCommitment(jsonObject: GetCommitmentRequest): GetCommitmentResponse;
-
-/**
- * @param {GetCompressedPubkeyRequest} - request data.
- * @return {GetCompressedPubkeyResponse} - response data.
- */
-export function GetCompressedPubkey(jsonObject: GetCompressedPubkeyRequest): GetCompressedPubkeyResponse;
-
-/**
- * @param {GetDefaultBlindingKeyRequest} - request data.
- * @return {GetDefaultBlindingKeyResponse} - response data.
- */
-export function GetDefaultBlindingKey(jsonObject: GetDefaultBlindingKeyRequest): GetDefaultBlindingKeyResponse;
-
-/**
- * @param {GetExtkeyInfoRequest} - request data.
- * @return {GetExtkeyInfoResponse} - response data.
- */
-export function GetExtkeyInfo(jsonObject: GetExtkeyInfoRequest): GetExtkeyInfoResponse;
-
-/**
- * @param {GetIssuanceBlindingKeyRequest} - request data.
- * @return {GetIssuanceBlindingKeyResponse} - response data.
- */
-export function GetIssuanceBlindingKey(jsonObject: GetIssuanceBlindingKeyRequest): GetIssuanceBlindingKeyResponse;
-
-/**
- * @param {GetMnemonicWordlistRequest} - request data.
- * @return {GetMnemonicWordlistResponse} - response data.
- */
-export function GetMnemonicWordlist(jsonObject: GetMnemonicWordlistRequest): GetMnemonicWordlistResponse;
-
-/**
- * @param {GetPrivkeyFromExtkeyRequest} - request data.
- * @return {GetPrivkeyFromExtkeyResponse} - response data.
- */
-export function GetPrivkeyFromExtkey(jsonObject: GetPrivkeyFromExtkeyRequest): GetPrivkeyFromExtkeyResponse;
-
-/**
- * @param {GetPrivkeyFromWifRequest} - request data.
- * @return {GetPrivkeyFromWifResponse} - response data.
- */
-export function GetPrivkeyFromWif(jsonObject: GetPrivkeyFromWifRequest): GetPrivkeyFromWifResponse;
-
-/**
- * @param {GetPrivkeyWifRequest} - request data.
- * @return {GetPrivkeyWifResponse} - response data.
- */
-export function GetPrivkeyWif(jsonObject: GetPrivkeyWifRequest): GetPrivkeyWifResponse;
-
-/**
- * @param {GetPubkeyFromExtkeyRequest} - request data.
- * @return {GetPubkeyFromExtkeyResponse} - response data.
- */
-export function GetPubkeyFromExtkey(jsonObject: GetPubkeyFromExtkeyRequest): GetPubkeyFromExtkeyResponse;
-
-/**
- * @param {GetPubkeyFromPrivkeyRequest} - request data.
- * @return {GetPubkeyFromPrivkeyResponse} - response data.
- */
-export function GetPubkeyFromPrivkey(jsonObject: GetPubkeyFromPrivkeyRequest): GetPubkeyFromPrivkeyResponse;
-
-/**
- * @param {GetWitnessStackNumRequest} - request data.
- * @return {GetWitnessStackNumResponse} - response data.
- */
-export function GetWitnessStackNum(jsonObject: GetWitnessStackNumRequest): GetWitnessStackNumResponse;
-
-/**
- * @param {CreateMultisigRequest} - request data.
- * @return {CreateMultisigResponse} - response data.
- */
-export function CreateMultisig(jsonObject: CreateMultisigRequest): CreateMultisigResponse;
-
-/**
- * @param {ParseDescriptorRequest} - request data.
- * @return {ParseDescriptorResponse} - response data.
- */
-export function ParseDescriptor(jsonObject: ParseDescriptorRequest): ParseDescriptorResponse;
-
-/**
- * @param {ParseScriptRequest} - request data.
- * @return {ParseScriptResponse} - response data.
- */
-export function ParseScript(jsonObject: ParseScriptRequest): ParseScriptResponse;
-
-/**
- * @param {SelectUtxosRequest} - request data.
- * @return {SelectUtxosResponse} - response data.
- */
-export function SelectUtxos(jsonObject: SelectUtxosRequest): SelectUtxosResponse;
-
-/**
- * @param {SerializeLedgerFormatRequest} - request data.
- * @return {SerializeLedgerFormatResponse} - response data.
- */
-export function SerializeLedgerFormat(jsonObject: SerializeLedgerFormatRequest): SerializeLedgerFormatResponse;
-
-/**
- * @param {CreateSignatureHashRequest} - request data.
- * @return {CreateSignatureHashResponse} - response data.
- */
-export function CreateSignatureHash(jsonObject: CreateSignatureHashRequest): CreateSignatureHashResponse;
-
-/**
- * @param {CreateElementsSignatureHashRequest} - request data.
+ * @param {CreateElementsSignatureHashRequest} jsonObject - request data.
  * @return {CreateElementsSignatureHashResponse} - response data.
  */
 export function CreateElementsSignatureHash(jsonObject: CreateElementsSignatureHashRequest): CreateElementsSignatureHashResponse;
 
 /**
- * @param {SignWithPrivkeyRequest} - request data.
- * @return {SignWithPrivkeyResponse} - response data.
+ * @param {CreateExtkeyRequest} jsonObject - request data.
+ * @return {CreateExtkeyResponse} - response data.
  */
-export function SignWithPrivkey(jsonObject: SignWithPrivkeyRequest): SignWithPrivkeyResponse;
-
-/** @return {GetSupportedFunctionResponse} - response data. */
-export function GetSupportedFunction(): GetSupportedFunctionResponse;
+export function CreateExtkey(jsonObject: CreateExtkeyRequest): CreateExtkeyResponse;
 
 /**
- * @param {CreateRawTransactionRequest} - request data.
+ * @param {CreateExtkeyFromParentRequest} jsonObject - request data.
+ * @return {CreateExtkeyFromParentResponse} - response data.
+ */
+export function CreateExtkeyFromParent(jsonObject: CreateExtkeyFromParentRequest): CreateExtkeyFromParentResponse;
+
+/**
+ * @param {CreateExtkeyFromParentKeyRequest} jsonObject - request data.
+ * @return {CreateExtkeyFromParentKeyResponse} - response data.
+ */
+export function CreateExtkeyFromParentKey(jsonObject: CreateExtkeyFromParentKeyRequest): CreateExtkeyFromParentKeyResponse;
+
+/**
+ * @param {CreateExtkeyFromParentPathRequest} jsonObject - request data.
+ * @return {CreateExtkeyFromParentPathResponse} - response data.
+ */
+export function CreateExtkeyFromParentPath(jsonObject: CreateExtkeyFromParentPathRequest): CreateExtkeyFromParentPathResponse;
+
+/**
+ * @param {CreateExtkeyFromSeedRequest} jsonObject - request data.
+ * @return {CreateExtkeyFromSeedResponse} - response data.
+ */
+export function CreateExtkeyFromSeed(jsonObject: CreateExtkeyFromSeedRequest): CreateExtkeyFromSeedResponse;
+
+/**
+ * @param {CreateExtPubkeyRequest} jsonObject - request data.
+ * @return {CreateExtPubkeyResponse} - response data.
+ */
+export function CreateExtPubkey(jsonObject: CreateExtPubkeyRequest): CreateExtPubkeyResponse;
+
+/**
+ * @param {CreateKeyPairRequest} jsonObject - request data.
+ * @return {CreateKeyPairResponse} - response data.
+ */
+export function CreateKeyPair(jsonObject: CreateKeyPairRequest): CreateKeyPairResponse;
+
+/**
+ * @param {CreateMultisigRequest} jsonObject - request data.
+ * @return {CreateMultisigResponse} - response data.
+ */
+export function CreateMultisig(jsonObject: CreateMultisigRequest): CreateMultisigResponse;
+
+/**
+ * @param {CreateMultisigScriptSigRequest} jsonObject - request data.
+ * @return {CreateMultisigScriptSigResponse} - response data.
+ */
+export function CreateMultisigScriptSig(jsonObject: CreateMultisigScriptSigRequest): CreateMultisigScriptSigResponse;
+
+/**
+ * @param {CreatePegInAddressRequest} jsonObject - request data.
+ * @return {CreatePegInAddressResponse} - response data.
+ */
+export function CreatePegInAddress(jsonObject: CreatePegInAddressRequest): CreatePegInAddressResponse;
+
+/**
+ * @param {CreateRawPeginRequest} jsonObject - request data.
+ * @return {CreateRawPeginResponse} - response data.
+ */
+export function CreateRawPegin(jsonObject: CreateRawPeginRequest): CreateRawPeginResponse;
+
+/**
+ * @param {CreateRawPegoutRequest} jsonObject - request data.
+ * @return {CreateRawPegoutResponse} - response data.
+ */
+export function CreateRawPegout(jsonObject: CreateRawPegoutRequest): CreateRawPegoutResponse;
+
+/**
+ * @param {CreateRawTransactionRequest} jsonObject - request data.
  * @return {CreateRawTransactionResponse} - response data.
  */
 export function CreateRawTransaction(jsonObject: CreateRawTransactionRequest): CreateRawTransactionResponse;
 
 /**
- * @param {UpdateTxOutAmountRequest} - request data.
+ * @param {CreateScriptRequest} jsonObject - request data.
+ * @return {CreateScriptResponse} - response data.
+ */
+export function CreateScript(jsonObject: CreateScriptRequest): CreateScriptResponse;
+
+/**
+ * @param {CreateSignatureHashRequest} jsonObject - request data.
+ * @return {CreateSignatureHashResponse} - response data.
+ */
+export function CreateSignatureHash(jsonObject: CreateSignatureHashRequest): CreateSignatureHashResponse;
+
+/**
+ * @param {DecodeBase58Request} jsonObject - request data.
+ * @return {DecodeBase58Response} - response data.
+ */
+export function DecodeBase58(jsonObject: DecodeBase58Request): DecodeBase58Response;
+
+/**
+ * @param {DecodeDerSignatureToRawRequest} jsonObject - request data.
+ * @return {DecodeDerSignatureToRawResponse} - response data.
+ */
+export function DecodeDerSignatureToRaw(jsonObject: DecodeDerSignatureToRawRequest): DecodeDerSignatureToRawResponse;
+
+/**
+ * @param {DecodeRawTransactionRequest} jsonObject - request data.
+ * @return {DecodeRawTransactionResponse} - response data.
+ */
+export function DecodeRawTransaction(jsonObject: DecodeRawTransactionRequest): DecodeRawTransactionResponse;
+
+/**
+ * @param {ElementsAddRawTransactionRequest} jsonObject - request data.
+ * @return {ElementsAddRawTransactionResponse} - response data.
+ */
+export function ElementsAddRawTransaction(jsonObject: ElementsAddRawTransactionRequest): ElementsAddRawTransactionResponse;
+
+/**
+ * @param {ElementsCreateRawTransactionRequest} jsonObject - request data.
+ * @return {ElementsCreateRawTransactionResponse} - response data.
+ */
+export function ElementsCreateRawTransaction(jsonObject: ElementsCreateRawTransactionRequest): ElementsCreateRawTransactionResponse;
+
+/**
+ * @param {ElementsDecodeRawTransactionRequest} jsonObject - request data.
+ * @return {ElementsDecodeRawTransactionResponse} - response data.
+ */
+export function ElementsDecodeRawTransaction(jsonObject: ElementsDecodeRawTransactionRequest): ElementsDecodeRawTransactionResponse;
+
+/**
+ * @param {EncodeBase58Request} jsonObject - request data.
+ * @return {EncodeBase58Response} - response data.
+ */
+export function EncodeBase58(jsonObject: EncodeBase58Request): EncodeBase58Response;
+
+/**
+ * @param {EncodeSignatureByDerRequest} jsonObject - request data.
+ * @return {EncodeSignatureByDerResponse} - response data.
+ */
+export function EncodeSignatureByDer(jsonObject: EncodeSignatureByDerRequest): EncodeSignatureByDerResponse;
+
+/**
+ * @param {EstimateFeeRequest} jsonObject - request data.
+ * @return {EstimateFeeResponse} - response data.
+ */
+export function EstimateFee(jsonObject: EstimateFeeRequest): EstimateFeeResponse;
+
+/**
+ * @param {FundRawTransactionRequest} jsonObject - request data.
+ * @return {FundRawTransactionResponse} - response data.
+ */
+export function FundRawTransaction(jsonObject: FundRawTransactionRequest): FundRawTransactionResponse;
+
+/**
+ * @param {GetAddressesFromMultisigRequest} jsonObject - request data.
+ * @return {GetAddressesFromMultisigResponse} - response data.
+ */
+export function GetAddressesFromMultisig(jsonObject: GetAddressesFromMultisigRequest): GetAddressesFromMultisigResponse;
+
+/**
+ * @param {GetAddressInfoRequest} jsonObject - request data.
+ * @return {GetAddressInfoResponse} - response data.
+ */
+export function GetAddressInfo(jsonObject: GetAddressInfoRequest): GetAddressInfoResponse;
+
+/**
+ * @param {GetCommitmentRequest} jsonObject - request data.
+ * @return {GetCommitmentResponse} - response data.
+ */
+export function GetCommitment(jsonObject: GetCommitmentRequest): GetCommitmentResponse;
+
+/**
+ * @param {GetCompressedPubkeyRequest} jsonObject - request data.
+ * @return {GetCompressedPubkeyResponse} - response data.
+ */
+export function GetCompressedPubkey(jsonObject: GetCompressedPubkeyRequest): GetCompressedPubkeyResponse;
+
+/**
+ * @param {GetConfidentialAddressRequest} jsonObject - request data.
+ * @return {GetConfidentialAddressResponse} - response data.
+ */
+export function GetConfidentialAddress(jsonObject: GetConfidentialAddressRequest): GetConfidentialAddressResponse;
+
+/**
+ * @param {GetDefaultBlindingKeyRequest} jsonObject - request data.
+ * @return {GetDefaultBlindingKeyResponse} - response data.
+ */
+export function GetDefaultBlindingKey(jsonObject: GetDefaultBlindingKeyRequest): GetDefaultBlindingKeyResponse;
+
+/**
+ * @param {GetExtkeyInfoRequest} jsonObject - request data.
+ * @return {GetExtkeyInfoResponse} - response data.
+ */
+export function GetExtkeyInfo(jsonObject: GetExtkeyInfoRequest): GetExtkeyInfoResponse;
+
+/**
+ * @param {GetIssuanceBlindingKeyRequest} jsonObject - request data.
+ * @return {GetIssuanceBlindingKeyResponse} - response data.
+ */
+export function GetIssuanceBlindingKey(jsonObject: GetIssuanceBlindingKeyRequest): GetIssuanceBlindingKeyResponse;
+
+/**
+ * @param {GetMnemonicWordlistRequest} jsonObject - request data.
+ * @return {GetMnemonicWordlistResponse} - response data.
+ */
+export function GetMnemonicWordlist(jsonObject: GetMnemonicWordlistRequest): GetMnemonicWordlistResponse;
+
+/**
+ * @param {GetPrivkeyFromExtkeyRequest} jsonObject - request data.
+ * @return {GetPrivkeyFromExtkeyResponse} - response data.
+ */
+export function GetPrivkeyFromExtkey(jsonObject: GetPrivkeyFromExtkeyRequest): GetPrivkeyFromExtkeyResponse;
+
+/**
+ * @param {GetPrivkeyFromWifRequest} jsonObject - request data.
+ * @return {GetPrivkeyFromWifResponse} - response data.
+ */
+export function GetPrivkeyFromWif(jsonObject: GetPrivkeyFromWifRequest): GetPrivkeyFromWifResponse;
+
+/**
+ * @param {GetPrivkeyWifRequest} jsonObject - request data.
+ * @return {GetPrivkeyWifResponse} - response data.
+ */
+export function GetPrivkeyWif(jsonObject: GetPrivkeyWifRequest): GetPrivkeyWifResponse;
+
+/**
+ * @param {GetPubkeyFromExtkeyRequest} jsonObject - request data.
+ * @return {GetPubkeyFromExtkeyResponse} - response data.
+ */
+export function GetPubkeyFromExtkey(jsonObject: GetPubkeyFromExtkeyRequest): GetPubkeyFromExtkeyResponse;
+
+/**
+ * @param {GetPubkeyFromPrivkeyRequest} jsonObject - request data.
+ * @return {GetPubkeyFromPrivkeyResponse} - response data.
+ */
+export function GetPubkeyFromPrivkey(jsonObject: GetPubkeyFromPrivkeyRequest): GetPubkeyFromPrivkeyResponse;
+
+/** @return {GetSupportedFunctionResponse} - response data. */
+export function GetSupportedFunction(): GetSupportedFunctionResponse;
+
+/**
+ * @param {GetUnblindedAddressRequest} jsonObject - request data.
+ * @return {GetUnblindedAddressResponse} - response data.
+ */
+export function GetUnblindedAddress(jsonObject: GetUnblindedAddressRequest): GetUnblindedAddressResponse;
+
+/**
+ * @param {GetWitnessStackNumRequest} jsonObject - request data.
+ * @return {GetWitnessStackNumResponse} - response data.
+ */
+export function GetWitnessStackNum(jsonObject: GetWitnessStackNumRequest): GetWitnessStackNumResponse;
+
+/**
+ * @param {ParseDescriptorRequest} jsonObject - request data.
+ * @return {ParseDescriptorResponse} - response data.
+ */
+export function ParseDescriptor(jsonObject: ParseDescriptorRequest): ParseDescriptorResponse;
+
+/**
+ * @param {ParseScriptRequest} jsonObject - request data.
+ * @return {ParseScriptResponse} - response data.
+ */
+export function ParseScript(jsonObject: ParseScriptRequest): ParseScriptResponse;
+
+/**
+ * @param {SelectUtxosRequest} jsonObject - request data.
+ * @return {SelectUtxosResponse} - response data.
+ */
+export function SelectUtxos(jsonObject: SelectUtxosRequest): SelectUtxosResponse;
+
+/**
+ * @param {SerializeLedgerFormatRequest} jsonObject - request data.
+ * @return {SerializeLedgerFormatResponse} - response data.
+ */
+export function SerializeLedgerFormat(jsonObject: SerializeLedgerFormatRequest): SerializeLedgerFormatResponse;
+
+/**
+ * @param {SetRawIssueAssetRequest} jsonObject - request data.
+ * @return {SetRawIssueAssetResponse} - response data.
+ */
+export function SetRawIssueAsset(jsonObject: SetRawIssueAssetRequest): SetRawIssueAssetResponse;
+
+/**
+ * @param {SetRawReissueAssetRequest} jsonObject - request data.
+ * @return {SetRawReissueAssetResponse} - response data.
+ */
+export function SetRawReissueAsset(jsonObject: SetRawReissueAssetRequest): SetRawReissueAssetResponse;
+
+/**
+ * @param {SignWithPrivkeyRequest} jsonObject - request data.
+ * @return {SignWithPrivkeyResponse} - response data.
+ */
+export function SignWithPrivkey(jsonObject: SignWithPrivkeyRequest): SignWithPrivkeyResponse;
+
+/**
+ * @param {UnblindRawTransactionRequest} jsonObject - request data.
+ * @return {UnblindRawTransactionResponse} - response data.
+ */
+export function UnblindRawTransaction(jsonObject: UnblindRawTransactionRequest): UnblindRawTransactionResponse;
+
+/**
+ * @param {UpdateTxOutAmountRequest} jsonObject - request data.
  * @return {UpdateTxOutAmountResponse} - response data.
  */
 export function UpdateTxOutAmount(jsonObject: UpdateTxOutAmountRequest): UpdateTxOutAmountResponse;
 
 /**
- * @param {UpdateWitnessStackRequest} - request data.
+ * @param {UpdateWitnessStackRequest} jsonObject - request data.
  * @return {UpdateWitnessStackResponse} - response data.
  */
 export function UpdateWitnessStack(jsonObject: UpdateWitnessStackRequest): UpdateWitnessStackResponse;
 
 /**
- * @param {VerifySignRequest} - request data.
+ * @param {VerifySignRequest} jsonObject - request data.
  * @return {VerifySignResponse} - response data.
  */
 export function VerifySign(jsonObject: VerifySignRequest): VerifySignResponse;
 
 /**
- * @param {VerifySignatureRequest} - request data.
+ * @param {VerifySignatureRequest} jsonObject - request data.
  * @return {VerifySignatureResponse} - response data.
  */
 export function VerifySignature(jsonObject: VerifySignatureRequest): VerifySignatureResponse;

@@ -46,9 +46,9 @@
         "scriptSig": {
           ":class": "DecodeUnlockingScript",
           "asm": "",
-          "asm:require": "optional",
+          "asm:require": "require",
           "hex": "",
-          "hex:require": "optional"
+          "hex:require": "require"
         },
         "txinwitness:require": "optional",
         "txinwitness": [

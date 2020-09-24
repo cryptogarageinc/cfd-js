@@ -1,4 +1,4 @@
-// Copyright 2019 CryptoGarage
+// Copyright 2020 CryptoGarage
 /**
  * @file cfd_js_api_json_autogen.cpp
  *
@@ -21,6 +21,174 @@ using cfd::core::JsonValueVector;
 using cfd::core::JsonVector;
 // clang-format off
 // @formatter:off
+
+// ------------------------------------------------------------------------
+// DecodeUnlockingScript
+// ------------------------------------------------------------------------
+cfd::core::JsonTableMap<DecodeUnlockingScript>
+  DecodeUnlockingScript::json_mapper;
+std::vector<std::string> DecodeUnlockingScript::item_list;
+
+void DecodeUnlockingScript::CollectFieldName() {
+  if (!json_mapper.empty()) {
+    return;
+  }
+  cfd::core::CLASS_FUNCTION_TABLE<DecodeUnlockingScript> func_table;  // NOLINT
+
+  func_table = {
+    DecodeUnlockingScript::GetAsmString,
+    DecodeUnlockingScript::SetAsmString,
+    DecodeUnlockingScript::GetAsmFieldType,
+  };
+  json_mapper.emplace("asm", func_table);
+  item_list.push_back("asm");
+  func_table = {
+    DecodeUnlockingScript::GetHexString,
+    DecodeUnlockingScript::SetHexString,
+    DecodeUnlockingScript::GetHexFieldType,
+  };
+  json_mapper.emplace("hex", func_table);
+  item_list.push_back("hex");
+}
+
+void DecodeUnlockingScript::ConvertFromStruct(
+    const DecodeUnlockingScriptStruct& data) {
+  asm__ = data.asm_;
+  hex_ = data.hex;
+  ignore_items = data.ignore_items;
+}
+
+DecodeUnlockingScriptStruct DecodeUnlockingScript::ConvertToStruct() const {  // NOLINT
+  DecodeUnlockingScriptStruct result;
+  result.asm_ = asm__;
+  result.hex = hex_;
+  result.ignore_items = ignore_items;
+  return result;
+}
+
+// ------------------------------------------------------------------------
+// TargetAmountMapData
+// ------------------------------------------------------------------------
+cfd::core::JsonTableMap<TargetAmountMapData>
+  TargetAmountMapData::json_mapper;
+std::vector<std::string> TargetAmountMapData::item_list;
+
+void TargetAmountMapData::CollectFieldName() {
+  if (!json_mapper.empty()) {
+    return;
+  }
+  cfd::core::CLASS_FUNCTION_TABLE<TargetAmountMapData> func_table;  // NOLINT
+
+  func_table = {
+    TargetAmountMapData::GetAssetString,
+    TargetAmountMapData::SetAssetString,
+    TargetAmountMapData::GetAssetFieldType,
+  };
+  json_mapper.emplace("asset", func_table);
+  item_list.push_back("asset");
+  func_table = {
+    TargetAmountMapData::GetAmountString,
+    TargetAmountMapData::SetAmountString,
+    TargetAmountMapData::GetAmountFieldType,
+  };
+  json_mapper.emplace("amount", func_table);
+  item_list.push_back("amount");
+}
+
+void TargetAmountMapData::ConvertFromStruct(
+    const TargetAmountMapDataStruct& data) {
+  asset_ = data.asset;
+  amount_ = data.amount;
+  ignore_items = data.ignore_items;
+}
+
+TargetAmountMapDataStruct TargetAmountMapData::ConvertToStruct() const {  // NOLINT
+  TargetAmountMapDataStruct result;
+  result.asset = asset_;
+  result.amount = amount_;
+  result.ignore_items = ignore_items;
+  return result;
+}
+
+// ------------------------------------------------------------------------
+// UtxoJsonData
+// ------------------------------------------------------------------------
+cfd::core::JsonTableMap<UtxoJsonData>
+  UtxoJsonData::json_mapper;
+std::vector<std::string> UtxoJsonData::item_list;
+
+void UtxoJsonData::CollectFieldName() {
+  if (!json_mapper.empty()) {
+    return;
+  }
+  cfd::core::CLASS_FUNCTION_TABLE<UtxoJsonData> func_table;  // NOLINT
+
+  func_table = {
+    UtxoJsonData::GetTxidString,
+    UtxoJsonData::SetTxidString,
+    UtxoJsonData::GetTxidFieldType,
+  };
+  json_mapper.emplace("txid", func_table);
+  item_list.push_back("txid");
+  func_table = {
+    UtxoJsonData::GetVoutString,
+    UtxoJsonData::SetVoutString,
+    UtxoJsonData::GetVoutFieldType,
+  };
+  json_mapper.emplace("vout", func_table);
+  item_list.push_back("vout");
+  func_table = {
+    UtxoJsonData::GetAmountString,
+    UtxoJsonData::SetAmountString,
+    UtxoJsonData::GetAmountFieldType,
+  };
+  json_mapper.emplace("amount", func_table);
+  item_list.push_back("amount");
+  func_table = {
+    UtxoJsonData::GetAssetString,
+    UtxoJsonData::SetAssetString,
+    UtxoJsonData::GetAssetFieldType,
+  };
+  json_mapper.emplace("asset", func_table);
+  item_list.push_back("asset");
+  func_table = {
+    UtxoJsonData::GetDescriptorString,
+    UtxoJsonData::SetDescriptorString,
+    UtxoJsonData::GetDescriptorFieldType,
+  };
+  json_mapper.emplace("descriptor", func_table);
+  item_list.push_back("descriptor");
+  func_table = {
+    UtxoJsonData::GetScriptSigTemplateString,
+    UtxoJsonData::SetScriptSigTemplateString,
+    UtxoJsonData::GetScriptSigTemplateFieldType,
+  };
+  json_mapper.emplace("scriptSigTemplate", func_table);
+  item_list.push_back("scriptSigTemplate");
+}
+
+void UtxoJsonData::ConvertFromStruct(
+    const UtxoJsonDataStruct& data) {
+  txid_ = data.txid;
+  vout_ = data.vout;
+  amount_ = data.amount;
+  asset_ = data.asset;
+  descriptor_ = data.descriptor;
+  script_sig_template_ = data.script_sig_template;
+  ignore_items = data.ignore_items;
+}
+
+UtxoJsonDataStruct UtxoJsonData::ConvertToStruct() const {  // NOLINT
+  UtxoJsonDataStruct result;
+  result.txid = txid_;
+  result.vout = vout_;
+  result.amount = amount_;
+  result.asset = asset_;
+  result.descriptor = descriptor_;
+  result.script_sig_template = script_sig_template_;
+  result.ignore_items = ignore_items;
+  return result;
+}
 
 // ------------------------------------------------------------------------
 // MultisigSignData
@@ -3495,50 +3663,6 @@ DecodeRawTransactionRequestStruct DecodeRawTransactionRequest::ConvertToStruct()
 }
 
 // ------------------------------------------------------------------------
-// DecodeUnlockingScript
-// ------------------------------------------------------------------------
-cfd::core::JsonTableMap<DecodeUnlockingScript>
-  DecodeUnlockingScript::json_mapper;
-std::vector<std::string> DecodeUnlockingScript::item_list;
-
-void DecodeUnlockingScript::CollectFieldName() {
-  if (!json_mapper.empty()) {
-    return;
-  }
-  cfd::core::CLASS_FUNCTION_TABLE<DecodeUnlockingScript> func_table;  // NOLINT
-
-  func_table = {
-    DecodeUnlockingScript::GetAsmString,
-    DecodeUnlockingScript::SetAsmString,
-    DecodeUnlockingScript::GetAsmFieldType,
-  };
-  json_mapper.emplace("asm", func_table);
-  item_list.push_back("asm");
-  func_table = {
-    DecodeUnlockingScript::GetHexString,
-    DecodeUnlockingScript::SetHexString,
-    DecodeUnlockingScript::GetHexFieldType,
-  };
-  json_mapper.emplace("hex", func_table);
-  item_list.push_back("hex");
-}
-
-void DecodeUnlockingScript::ConvertFromStruct(
-    const DecodeUnlockingScriptStruct& data) {
-  asm__ = data.asm_;
-  hex_ = data.hex;
-  ignore_items = data.ignore_items;
-}
-
-DecodeUnlockingScriptStruct DecodeUnlockingScript::ConvertToStruct() const {  // NOLINT
-  DecodeUnlockingScriptStruct result;
-  result.asm_ = asm__;
-  result.hex = hex_;
-  result.ignore_items = ignore_items;
-  return result;
-}
-
-// ------------------------------------------------------------------------
 // DecodeRawTransactionTxIn
 // ------------------------------------------------------------------------
 cfd::core::JsonTableMap<DecodeRawTransactionTxIn>
@@ -6141,50 +6265,6 @@ ElementsDecodeRawTransactionRequestStruct ElementsDecodeRawTransactionRequest::C
   result.mainchain_network = mainchain_network_;
   result.iswitness = iswitness_;
   result.full_dump = full_dump_;
-  result.ignore_items = ignore_items;
-  return result;
-}
-
-// ------------------------------------------------------------------------
-// ElementsDecodeUnlockingScript
-// ------------------------------------------------------------------------
-cfd::core::JsonTableMap<ElementsDecodeUnlockingScript>
-  ElementsDecodeUnlockingScript::json_mapper;
-std::vector<std::string> ElementsDecodeUnlockingScript::item_list;
-
-void ElementsDecodeUnlockingScript::CollectFieldName() {
-  if (!json_mapper.empty()) {
-    return;
-  }
-  cfd::core::CLASS_FUNCTION_TABLE<ElementsDecodeUnlockingScript> func_table;  // NOLINT
-
-  func_table = {
-    ElementsDecodeUnlockingScript::GetAsmString,
-    ElementsDecodeUnlockingScript::SetAsmString,
-    ElementsDecodeUnlockingScript::GetAsmFieldType,
-  };
-  json_mapper.emplace("asm", func_table);
-  item_list.push_back("asm");
-  func_table = {
-    ElementsDecodeUnlockingScript::GetHexString,
-    ElementsDecodeUnlockingScript::SetHexString,
-    ElementsDecodeUnlockingScript::GetHexFieldType,
-  };
-  json_mapper.emplace("hex", func_table);
-  item_list.push_back("hex");
-}
-
-void ElementsDecodeUnlockingScript::ConvertFromStruct(
-    const ElementsDecodeUnlockingScriptStruct& data) {
-  asm__ = data.asm_;
-  hex_ = data.hex;
-  ignore_items = data.ignore_items;
-}
-
-ElementsDecodeUnlockingScriptStruct ElementsDecodeUnlockingScript::ConvertToStruct() const {  // NOLINT
-  ElementsDecodeUnlockingScriptStruct result;
-  result.asm_ = asm__;
-  result.hex = hex_;
   result.ignore_items = ignore_items;
   return result;
 }
@@ -8947,121 +9027,6 @@ FundRawTransactionResponseStruct FundRawTransactionResponse::ConvertToStruct() c
 }
 
 // ------------------------------------------------------------------------
-// GetAddressesFromMultisigRequest
-// ------------------------------------------------------------------------
-cfd::core::JsonTableMap<GetAddressesFromMultisigRequest>
-  GetAddressesFromMultisigRequest::json_mapper;
-std::vector<std::string> GetAddressesFromMultisigRequest::item_list;
-
-void GetAddressesFromMultisigRequest::CollectFieldName() {
-  if (!json_mapper.empty()) {
-    return;
-  }
-  cfd::core::CLASS_FUNCTION_TABLE<GetAddressesFromMultisigRequest> func_table;  // NOLINT
-
-  func_table = {
-    GetAddressesFromMultisigRequest::GetIsElementsString,
-    GetAddressesFromMultisigRequest::SetIsElementsString,
-    GetAddressesFromMultisigRequest::GetIsElementsFieldType,
-  };
-  json_mapper.emplace("isElements", func_table);
-  item_list.push_back("isElements");
-  func_table = {
-    GetAddressesFromMultisigRequest::GetRedeemScriptString,
-    GetAddressesFromMultisigRequest::SetRedeemScriptString,
-    GetAddressesFromMultisigRequest::GetRedeemScriptFieldType,
-  };
-  json_mapper.emplace("redeemScript", func_table);
-  item_list.push_back("redeemScript");
-  func_table = {
-    GetAddressesFromMultisigRequest::GetNetworkString,
-    GetAddressesFromMultisigRequest::SetNetworkString,
-    GetAddressesFromMultisigRequest::GetNetworkFieldType,
-  };
-  json_mapper.emplace("network", func_table);
-  item_list.push_back("network");
-  func_table = {
-    GetAddressesFromMultisigRequest::GetHashTypeString,
-    GetAddressesFromMultisigRequest::SetHashTypeString,
-    GetAddressesFromMultisigRequest::GetHashTypeFieldType,
-  };
-  json_mapper.emplace("hashType", func_table);
-  item_list.push_back("hashType");
-}
-
-void GetAddressesFromMultisigRequest::ConvertFromStruct(
-    const GetAddressesFromMultisigRequestStruct& data) {
-  is_elements_ = data.is_elements;
-  redeem_script_ = data.redeem_script;
-  network_ = data.network;
-  hash_type_ = data.hash_type;
-  ignore_items = data.ignore_items;
-}
-
-GetAddressesFromMultisigRequestStruct GetAddressesFromMultisigRequest::ConvertToStruct() const {  // NOLINT
-  GetAddressesFromMultisigRequestStruct result;
-  result.is_elements = is_elements_;
-  result.redeem_script = redeem_script_;
-  result.network = network_;
-  result.hash_type = hash_type_;
-  result.ignore_items = ignore_items;
-  return result;
-}
-
-// ------------------------------------------------------------------------
-// GetAddressesFromMultisigResponse
-// ------------------------------------------------------------------------
-cfd::core::JsonTableMap<GetAddressesFromMultisigResponse>
-  GetAddressesFromMultisigResponse::json_mapper;
-std::vector<std::string> GetAddressesFromMultisigResponse::item_list;
-
-void GetAddressesFromMultisigResponse::CollectFieldName() {
-  if (!json_mapper.empty()) {
-    return;
-  }
-  cfd::core::CLASS_FUNCTION_TABLE<GetAddressesFromMultisigResponse> func_table;  // NOLINT
-
-  func_table = {
-    GetAddressesFromMultisigResponse::GetAddressesString,
-    GetAddressesFromMultisigResponse::SetAddressesString,
-    GetAddressesFromMultisigResponse::GetAddressesFieldType,
-  };
-  json_mapper.emplace("addresses", func_table);
-  item_list.push_back("addresses");
-  func_table = {
-    GetAddressesFromMultisigResponse::GetPubkeysString,
-    GetAddressesFromMultisigResponse::SetPubkeysString,
-    GetAddressesFromMultisigResponse::GetPubkeysFieldType,
-  };
-  json_mapper.emplace("pubkeys", func_table);
-  item_list.push_back("pubkeys");
-  func_table = {
-    GetAddressesFromMultisigResponse::GetRequireNumString,
-    GetAddressesFromMultisigResponse::SetRequireNumString,
-    GetAddressesFromMultisigResponse::GetRequireNumFieldType,
-  };
-  json_mapper.emplace("requireNum", func_table);
-  item_list.push_back("requireNum");
-}
-
-void GetAddressesFromMultisigResponse::ConvertFromStruct(
-    const GetAddressesFromMultisigResponseStruct& data) {
-  addresses_.ConvertFromStruct(data.addresses);
-  pubkeys_.ConvertFromStruct(data.pubkeys);
-  require_num_ = data.require_num;
-  ignore_items = data.ignore_items;
-}
-
-GetAddressesFromMultisigResponseStruct GetAddressesFromMultisigResponse::ConvertToStruct() const {  // NOLINT
-  GetAddressesFromMultisigResponseStruct result;
-  result.addresses = addresses_.ConvertToStruct();
-  result.pubkeys = pubkeys_.ConvertToStruct();
-  result.require_num = require_num_;
-  result.ignore_items = ignore_items;
-  return result;
-}
-
-// ------------------------------------------------------------------------
 // GetAddressInfoRequest
 // ------------------------------------------------------------------------
 cfd::core::JsonTableMap<GetAddressInfoRequest>
@@ -9172,6 +9137,121 @@ GetAddressInfoResponseStruct GetAddressInfoResponse::ConvertToStruct() const {  
   result.hash_type = hash_type_;
   result.witness_version = witness_version_;
   result.hash = hash_;
+  result.ignore_items = ignore_items;
+  return result;
+}
+
+// ------------------------------------------------------------------------
+// GetAddressesFromMultisigRequest
+// ------------------------------------------------------------------------
+cfd::core::JsonTableMap<GetAddressesFromMultisigRequest>
+  GetAddressesFromMultisigRequest::json_mapper;
+std::vector<std::string> GetAddressesFromMultisigRequest::item_list;
+
+void GetAddressesFromMultisigRequest::CollectFieldName() {
+  if (!json_mapper.empty()) {
+    return;
+  }
+  cfd::core::CLASS_FUNCTION_TABLE<GetAddressesFromMultisigRequest> func_table;  // NOLINT
+
+  func_table = {
+    GetAddressesFromMultisigRequest::GetIsElementsString,
+    GetAddressesFromMultisigRequest::SetIsElementsString,
+    GetAddressesFromMultisigRequest::GetIsElementsFieldType,
+  };
+  json_mapper.emplace("isElements", func_table);
+  item_list.push_back("isElements");
+  func_table = {
+    GetAddressesFromMultisigRequest::GetRedeemScriptString,
+    GetAddressesFromMultisigRequest::SetRedeemScriptString,
+    GetAddressesFromMultisigRequest::GetRedeemScriptFieldType,
+  };
+  json_mapper.emplace("redeemScript", func_table);
+  item_list.push_back("redeemScript");
+  func_table = {
+    GetAddressesFromMultisigRequest::GetNetworkString,
+    GetAddressesFromMultisigRequest::SetNetworkString,
+    GetAddressesFromMultisigRequest::GetNetworkFieldType,
+  };
+  json_mapper.emplace("network", func_table);
+  item_list.push_back("network");
+  func_table = {
+    GetAddressesFromMultisigRequest::GetHashTypeString,
+    GetAddressesFromMultisigRequest::SetHashTypeString,
+    GetAddressesFromMultisigRequest::GetHashTypeFieldType,
+  };
+  json_mapper.emplace("hashType", func_table);
+  item_list.push_back("hashType");
+}
+
+void GetAddressesFromMultisigRequest::ConvertFromStruct(
+    const GetAddressesFromMultisigRequestStruct& data) {
+  is_elements_ = data.is_elements;
+  redeem_script_ = data.redeem_script;
+  network_ = data.network;
+  hash_type_ = data.hash_type;
+  ignore_items = data.ignore_items;
+}
+
+GetAddressesFromMultisigRequestStruct GetAddressesFromMultisigRequest::ConvertToStruct() const {  // NOLINT
+  GetAddressesFromMultisigRequestStruct result;
+  result.is_elements = is_elements_;
+  result.redeem_script = redeem_script_;
+  result.network = network_;
+  result.hash_type = hash_type_;
+  result.ignore_items = ignore_items;
+  return result;
+}
+
+// ------------------------------------------------------------------------
+// GetAddressesFromMultisigResponse
+// ------------------------------------------------------------------------
+cfd::core::JsonTableMap<GetAddressesFromMultisigResponse>
+  GetAddressesFromMultisigResponse::json_mapper;
+std::vector<std::string> GetAddressesFromMultisigResponse::item_list;
+
+void GetAddressesFromMultisigResponse::CollectFieldName() {
+  if (!json_mapper.empty()) {
+    return;
+  }
+  cfd::core::CLASS_FUNCTION_TABLE<GetAddressesFromMultisigResponse> func_table;  // NOLINT
+
+  func_table = {
+    GetAddressesFromMultisigResponse::GetAddressesString,
+    GetAddressesFromMultisigResponse::SetAddressesString,
+    GetAddressesFromMultisigResponse::GetAddressesFieldType,
+  };
+  json_mapper.emplace("addresses", func_table);
+  item_list.push_back("addresses");
+  func_table = {
+    GetAddressesFromMultisigResponse::GetPubkeysString,
+    GetAddressesFromMultisigResponse::SetPubkeysString,
+    GetAddressesFromMultisigResponse::GetPubkeysFieldType,
+  };
+  json_mapper.emplace("pubkeys", func_table);
+  item_list.push_back("pubkeys");
+  func_table = {
+    GetAddressesFromMultisigResponse::GetRequireNumString,
+    GetAddressesFromMultisigResponse::SetRequireNumString,
+    GetAddressesFromMultisigResponse::GetRequireNumFieldType,
+  };
+  json_mapper.emplace("requireNum", func_table);
+  item_list.push_back("requireNum");
+}
+
+void GetAddressesFromMultisigResponse::ConvertFromStruct(
+    const GetAddressesFromMultisigResponseStruct& data) {
+  addresses_.ConvertFromStruct(data.addresses);
+  pubkeys_.ConvertFromStruct(data.pubkeys);
+  require_num_ = data.require_num;
+  ignore_items = data.ignore_items;
+}
+
+GetAddressesFromMultisigResponseStruct GetAddressesFromMultisigResponse::ConvertToStruct() const {  // NOLINT
+  GetAddressesFromMultisigResponseStruct result;
+  result.addresses = addresses_.ConvertToStruct();
+  result.pubkeys = pubkeys_.ConvertToStruct();
+  result.require_num = require_num_;
   result.ignore_items = ignore_items;
   return result;
 }
@@ -10768,130 +10848,6 @@ void ParseScriptResponse::ConvertFromStruct(
 ParseScriptResponseStruct ParseScriptResponse::ConvertToStruct() const {  // NOLINT
   ParseScriptResponseStruct result;
   result.script_items = script_items_.ConvertToStruct();
-  result.ignore_items = ignore_items;
-  return result;
-}
-
-// ------------------------------------------------------------------------
-// UtxoJsonData
-// ------------------------------------------------------------------------
-cfd::core::JsonTableMap<UtxoJsonData>
-  UtxoJsonData::json_mapper;
-std::vector<std::string> UtxoJsonData::item_list;
-
-void UtxoJsonData::CollectFieldName() {
-  if (!json_mapper.empty()) {
-    return;
-  }
-  cfd::core::CLASS_FUNCTION_TABLE<UtxoJsonData> func_table;  // NOLINT
-
-  func_table = {
-    UtxoJsonData::GetTxidString,
-    UtxoJsonData::SetTxidString,
-    UtxoJsonData::GetTxidFieldType,
-  };
-  json_mapper.emplace("txid", func_table);
-  item_list.push_back("txid");
-  func_table = {
-    UtxoJsonData::GetVoutString,
-    UtxoJsonData::SetVoutString,
-    UtxoJsonData::GetVoutFieldType,
-  };
-  json_mapper.emplace("vout", func_table);
-  item_list.push_back("vout");
-  func_table = {
-    UtxoJsonData::GetAmountString,
-    UtxoJsonData::SetAmountString,
-    UtxoJsonData::GetAmountFieldType,
-  };
-  json_mapper.emplace("amount", func_table);
-  item_list.push_back("amount");
-  func_table = {
-    UtxoJsonData::GetAssetString,
-    UtxoJsonData::SetAssetString,
-    UtxoJsonData::GetAssetFieldType,
-  };
-  json_mapper.emplace("asset", func_table);
-  item_list.push_back("asset");
-  func_table = {
-    UtxoJsonData::GetDescriptorString,
-    UtxoJsonData::SetDescriptorString,
-    UtxoJsonData::GetDescriptorFieldType,
-  };
-  json_mapper.emplace("descriptor", func_table);
-  item_list.push_back("descriptor");
-  func_table = {
-    UtxoJsonData::GetScriptSigTemplateString,
-    UtxoJsonData::SetScriptSigTemplateString,
-    UtxoJsonData::GetScriptSigTemplateFieldType,
-  };
-  json_mapper.emplace("scriptSigTemplate", func_table);
-  item_list.push_back("scriptSigTemplate");
-}
-
-void UtxoJsonData::ConvertFromStruct(
-    const UtxoJsonDataStruct& data) {
-  txid_ = data.txid;
-  vout_ = data.vout;
-  amount_ = data.amount;
-  asset_ = data.asset;
-  descriptor_ = data.descriptor;
-  script_sig_template_ = data.script_sig_template;
-  ignore_items = data.ignore_items;
-}
-
-UtxoJsonDataStruct UtxoJsonData::ConvertToStruct() const {  // NOLINT
-  UtxoJsonDataStruct result;
-  result.txid = txid_;
-  result.vout = vout_;
-  result.amount = amount_;
-  result.asset = asset_;
-  result.descriptor = descriptor_;
-  result.script_sig_template = script_sig_template_;
-  result.ignore_items = ignore_items;
-  return result;
-}
-
-// ------------------------------------------------------------------------
-// TargetAmountMapData
-// ------------------------------------------------------------------------
-cfd::core::JsonTableMap<TargetAmountMapData>
-  TargetAmountMapData::json_mapper;
-std::vector<std::string> TargetAmountMapData::item_list;
-
-void TargetAmountMapData::CollectFieldName() {
-  if (!json_mapper.empty()) {
-    return;
-  }
-  cfd::core::CLASS_FUNCTION_TABLE<TargetAmountMapData> func_table;  // NOLINT
-
-  func_table = {
-    TargetAmountMapData::GetAssetString,
-    TargetAmountMapData::SetAssetString,
-    TargetAmountMapData::GetAssetFieldType,
-  };
-  json_mapper.emplace("asset", func_table);
-  item_list.push_back("asset");
-  func_table = {
-    TargetAmountMapData::GetAmountString,
-    TargetAmountMapData::SetAmountString,
-    TargetAmountMapData::GetAmountFieldType,
-  };
-  json_mapper.emplace("amount", func_table);
-  item_list.push_back("amount");
-}
-
-void TargetAmountMapData::ConvertFromStruct(
-    const TargetAmountMapDataStruct& data) {
-  asset_ = data.asset;
-  amount_ = data.amount;
-  ignore_items = data.ignore_items;
-}
-
-TargetAmountMapDataStruct TargetAmountMapData::ConvertToStruct() const {  // NOLINT
-  TargetAmountMapDataStruct result;
-  result.asset = asset_;
-  result.amount = amount_;
   result.ignore_items = ignore_items;
   return result;
 }

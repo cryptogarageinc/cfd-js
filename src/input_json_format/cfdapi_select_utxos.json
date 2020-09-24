@@ -34,9 +34,10 @@
     "targets": [{
       ":class": "TargetAmountMapData",
       "asset": "",
+      "asset:require": "optional",
       "amount": 0,
       "amount:type": "int64_t",
-      "amount:require": "optional",
+      "amount:require": "require",
       "amount:comment": "Amount more than the specified amount is set in txout. default is 0 (disable)."
     }],
     "targets:hint": "This field is available only elements.",
@@ -99,7 +100,7 @@
     "selectedAmounts": [{
       ":class": "TargetAmountMapData",
       "asset": "",
-      "asset:require": "require",
+      "asset:require": "optional",
       "amount": 0,
       "amount:type": "int64_t",
       "amount:require": "require"

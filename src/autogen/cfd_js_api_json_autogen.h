@@ -1,4 +1,4 @@
-// Copyright 2019 CryptoGarage
+// Copyright 2020 CryptoGarage
 /**
  * @file cfd_js_api_json_autogen.h
  *
@@ -26,6 +26,749 @@ using cfd::core::JsonValueVector;
 using cfd::core::JsonVector;
 // clang-format off
 // @formatter:off
+
+// ------------------------------------------------------------------------
+// DecodeUnlockingScript
+// ------------------------------------------------------------------------
+/**
+ * @brief JSON-API (DecodeUnlockingScript) class
+ */
+class DecodeUnlockingScript
+  : public cfd::core::JsonClassBase<DecodeUnlockingScript> {
+ public:
+  DecodeUnlockingScript() {
+    CollectFieldName();
+  }
+  virtual ~DecodeUnlockingScript() {
+    // do nothing
+  }
+  /**
+   * @brief collect field name.
+   */
+  static void CollectFieldName();
+
+  /**
+   * @brief Get of asm
+   * @return asm
+   */
+  std::string GetAsm() const {
+    return asm__;
+  }
+  /**
+   * @brief Set to asm
+   * @param[in] asm_    setting value.
+   */
+  void SetAsm(  // line separate
+    const std::string& asm_) {  // NOLINT
+    this->asm__ = asm_;
+  }
+  /**
+   * @brief Get data type of asm
+   * @return Data type of asm
+   */
+  static std::string GetAsmFieldType() {
+    return "std::string";
+  }
+  /**
+   * @brief Get json string of asm field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetAsmString(  // line separate
+      const DecodeUnlockingScript& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.asm__);
+  }
+  /**
+   * @brief Set json object to asm field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetAsmString(  // line separate
+      DecodeUnlockingScript& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.asm__, json_value);
+  }
+
+  /**
+   * @brief Get of hex
+   * @return hex
+   */
+  std::string GetHex() const {
+    return hex_;
+  }
+  /**
+   * @brief Set to hex
+   * @param[in] hex    setting value.
+   */
+  void SetHex(  // line separate
+    const std::string& hex) {  // NOLINT
+    this->hex_ = hex;
+  }
+  /**
+   * @brief Get data type of hex
+   * @return Data type of hex
+   */
+  static std::string GetHexFieldType() {
+    return "std::string";
+  }
+  /**
+   * @brief Get json string of hex field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetHexString(  // line separate
+      const DecodeUnlockingScript& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.hex_);
+  }
+  /**
+   * @brief Set json object to hex field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetHexString(  // line separate
+      DecodeUnlockingScript& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.hex_, json_value);
+  }
+
+  /**
+   * @brief Set ignore item.
+   * @param[in] key   ignore target key name.
+   */
+  void SetIgnoreItem(const std::string& key) {
+    ignore_items.insert(key);
+  }
+
+  /**
+   * @brief Convert struct to class.
+   * @param[in] data   struct data.
+   */
+  void ConvertFromStruct(
+      const DecodeUnlockingScriptStruct& data);
+
+  /**
+   * @brief Convert class to struct.
+   * @return  struct data.
+   */
+  DecodeUnlockingScriptStruct ConvertToStruct()  const;
+
+ protected:
+  /**
+   * @brief definition type of Map table.
+   */
+  using DecodeUnlockingScriptMapTable =
+    cfd::core::JsonTableMap<DecodeUnlockingScript>;
+
+  /**
+   * @brief Get JSON mapping object.
+   * @return JSON mapping object.
+   * @see cfd::core::JsonClassBase::GetJsonMapper()
+   */
+  virtual const DecodeUnlockingScriptMapTable& GetJsonMapper() const {  // NOLINT
+    return json_mapper;
+  }
+  /**
+   * @brief Get item lists of JSON mapping.
+   * Fetch a list of target variable names in the order of definition.
+   * @return Item lists of JSON mapping.
+   * @see cfd::core::JsonClassBase::GetJsonItemList()
+   */
+  virtual const std::vector<std::string>& GetJsonItemList() const {
+    return item_list;
+  }
+  /**
+   * @brief Get ignore item lists of JSON mapping.
+   * Ignore the target variable at Serialize.
+   * @return Item list of JSON mapping.
+   * @see cfd::core::JsonClassBase::GetIgnoreItem()
+   */
+  virtual const std::set<std::string>& GetIgnoreItem() const {
+    return ignore_items;
+  }
+
+ private:
+ /**
+  * @brief JsonFunctionMap table
+  */
+  static DecodeUnlockingScriptMapTable json_mapper;
+  /**
+   * @brief field name list.
+   */
+  static std::vector<std::string> item_list;
+  /**
+   * @brief ignore item list.
+   */
+  std::set<std::string> ignore_items;
+
+  /**
+   * @brief JsonAPI(asm) value
+   */
+  std::string asm__ = "";
+  /**
+   * @brief JsonAPI(hex) value
+   */
+  std::string hex_ = "";
+};
+
+// ------------------------------------------------------------------------
+// TargetAmountMapData
+// ------------------------------------------------------------------------
+/**
+ * @brief JSON-API (TargetAmountMapData) class
+ */
+class TargetAmountMapData
+  : public cfd::core::JsonClassBase<TargetAmountMapData> {
+ public:
+  TargetAmountMapData() {
+    CollectFieldName();
+  }
+  virtual ~TargetAmountMapData() {
+    // do nothing
+  }
+  /**
+   * @brief collect field name.
+   */
+  static void CollectFieldName();
+
+  /**
+   * @brief Get of asset
+   * @return asset
+   */
+  std::string GetAsset() const {
+    return asset_;
+  }
+  /**
+   * @brief Set to asset
+   * @param[in] asset    setting value.
+   */
+  void SetAsset(  // line separate
+    const std::string& asset) {  // NOLINT
+    this->asset_ = asset;
+  }
+  /**
+   * @brief Get data type of asset
+   * @return Data type of asset
+   */
+  static std::string GetAssetFieldType() {
+    return "std::string";
+  }
+  /**
+   * @brief Get json string of asset field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetAssetString(  // line separate
+      const TargetAmountMapData& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.asset_);
+  }
+  /**
+   * @brief Set json object to asset field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetAssetString(  // line separate
+      TargetAmountMapData& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.asset_, json_value);
+  }
+
+  /**
+   * @brief Get of amount
+   * @return amount
+   */
+  int64_t GetAmount() const {
+    return amount_;
+  }
+  /**
+   * @brief Set to amount
+   * @param[in] amount    setting value.
+   */
+  void SetAmount(  // line separate
+    const int64_t& amount) {  // NOLINT
+    this->amount_ = amount;
+  }
+  /**
+   * @brief Get data type of amount
+   * @return Data type of amount
+   */
+  static std::string GetAmountFieldType() {
+    return "int64_t";
+  }
+  /**
+   * @brief Get json string of amount field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetAmountString(  // line separate
+      const TargetAmountMapData& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.amount_);
+  }
+  /**
+   * @brief Set json object to amount field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetAmountString(  // line separate
+      TargetAmountMapData& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.amount_, json_value);
+  }
+
+  /**
+   * @brief Set ignore item.
+   * @param[in] key   ignore target key name.
+   */
+  void SetIgnoreItem(const std::string& key) {
+    ignore_items.insert(key);
+  }
+
+  /**
+   * @brief Convert struct to class.
+   * @param[in] data   struct data.
+   */
+  void ConvertFromStruct(
+      const TargetAmountMapDataStruct& data);
+
+  /**
+   * @brief Convert class to struct.
+   * @return  struct data.
+   */
+  TargetAmountMapDataStruct ConvertToStruct()  const;
+
+ protected:
+  /**
+   * @brief definition type of Map table.
+   */
+  using TargetAmountMapDataMapTable =
+    cfd::core::JsonTableMap<TargetAmountMapData>;
+
+  /**
+   * @brief Get JSON mapping object.
+   * @return JSON mapping object.
+   * @see cfd::core::JsonClassBase::GetJsonMapper()
+   */
+  virtual const TargetAmountMapDataMapTable& GetJsonMapper() const {  // NOLINT
+    return json_mapper;
+  }
+  /**
+   * @brief Get item lists of JSON mapping.
+   * Fetch a list of target variable names in the order of definition.
+   * @return Item lists of JSON mapping.
+   * @see cfd::core::JsonClassBase::GetJsonItemList()
+   */
+  virtual const std::vector<std::string>& GetJsonItemList() const {
+    return item_list;
+  }
+  /**
+   * @brief Get ignore item lists of JSON mapping.
+   * Ignore the target variable at Serialize.
+   * @return Item list of JSON mapping.
+   * @see cfd::core::JsonClassBase::GetIgnoreItem()
+   */
+  virtual const std::set<std::string>& GetIgnoreItem() const {
+    return ignore_items;
+  }
+
+ private:
+ /**
+  * @brief JsonFunctionMap table
+  */
+  static TargetAmountMapDataMapTable json_mapper;
+  /**
+   * @brief field name list.
+   */
+  static std::vector<std::string> item_list;
+  /**
+   * @brief ignore item list.
+   */
+  std::set<std::string> ignore_items;
+
+  /**
+   * @brief JsonAPI(asset) value
+   */
+  std::string asset_ = "";
+  /**
+   * @brief JsonAPI(amount) value
+   */
+  int64_t amount_ = 0;
+};
+
+// ------------------------------------------------------------------------
+// UtxoJsonData
+// ------------------------------------------------------------------------
+/**
+ * @brief JSON-API (UtxoJsonData) class
+ */
+class UtxoJsonData
+  : public cfd::core::JsonClassBase<UtxoJsonData> {
+ public:
+  UtxoJsonData() {
+    CollectFieldName();
+  }
+  virtual ~UtxoJsonData() {
+    // do nothing
+  }
+  /**
+   * @brief collect field name.
+   */
+  static void CollectFieldName();
+
+  /**
+   * @brief Get of txid
+   * @return txid
+   */
+  std::string GetTxid() const {
+    return txid_;
+  }
+  /**
+   * @brief Set to txid
+   * @param[in] txid    setting value.
+   */
+  void SetTxid(  // line separate
+    const std::string& txid) {  // NOLINT
+    this->txid_ = txid;
+  }
+  /**
+   * @brief Get data type of txid
+   * @return Data type of txid
+   */
+  static std::string GetTxidFieldType() {
+    return "std::string";
+  }
+  /**
+   * @brief Get json string of txid field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetTxidString(  // line separate
+      const UtxoJsonData& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.txid_);
+  }
+  /**
+   * @brief Set json object to txid field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetTxidString(  // line separate
+      UtxoJsonData& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.txid_, json_value);
+  }
+
+  /**
+   * @brief Get of vout
+   * @return vout
+   */
+  uint32_t GetVout() const {
+    return vout_;
+  }
+  /**
+   * @brief Set to vout
+   * @param[in] vout    setting value.
+   */
+  void SetVout(  // line separate
+    const uint32_t& vout) {  // NOLINT
+    this->vout_ = vout;
+  }
+  /**
+   * @brief Get data type of vout
+   * @return Data type of vout
+   */
+  static std::string GetVoutFieldType() {
+    return "uint32_t";
+  }
+  /**
+   * @brief Get json string of vout field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetVoutString(  // line separate
+      const UtxoJsonData& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.vout_);
+  }
+  /**
+   * @brief Set json object to vout field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetVoutString(  // line separate
+      UtxoJsonData& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.vout_, json_value);
+  }
+
+  /**
+   * @brief Get of amount
+   * @return amount
+   */
+  int64_t GetAmount() const {
+    return amount_;
+  }
+  /**
+   * @brief Set to amount
+   * @param[in] amount    setting value.
+   */
+  void SetAmount(  // line separate
+    const int64_t& amount) {  // NOLINT
+    this->amount_ = amount;
+  }
+  /**
+   * @brief Get data type of amount
+   * @return Data type of amount
+   */
+  static std::string GetAmountFieldType() {
+    return "int64_t";
+  }
+  /**
+   * @brief Get json string of amount field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetAmountString(  // line separate
+      const UtxoJsonData& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.amount_);
+  }
+  /**
+   * @brief Set json object to amount field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetAmountString(  // line separate
+      UtxoJsonData& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.amount_, json_value);
+  }
+
+  /**
+   * @brief Get of asset
+   * @return asset
+   */
+  std::string GetAsset() const {
+    return asset_;
+  }
+  /**
+   * @brief Set to asset
+   * @param[in] asset    setting value.
+   */
+  void SetAsset(  // line separate
+    const std::string& asset) {  // NOLINT
+    this->asset_ = asset;
+  }
+  /**
+   * @brief Get data type of asset
+   * @return Data type of asset
+   */
+  static std::string GetAssetFieldType() {
+    return "std::string";
+  }
+  /**
+   * @brief Get json string of asset field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetAssetString(  // line separate
+      const UtxoJsonData& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.asset_);
+  }
+  /**
+   * @brief Set json object to asset field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetAssetString(  // line separate
+      UtxoJsonData& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.asset_, json_value);
+  }
+
+  /**
+   * @brief Get of descriptor
+   * @return descriptor
+   */
+  std::string GetDescriptor() const {
+    return descriptor_;
+  }
+  /**
+   * @brief Set to descriptor
+   * @param[in] descriptor    setting value.
+   */
+  void SetDescriptor(  // line separate
+    const std::string& descriptor) {  // NOLINT
+    this->descriptor_ = descriptor;
+  }
+  /**
+   * @brief Get data type of descriptor
+   * @return Data type of descriptor
+   */
+  static std::string GetDescriptorFieldType() {
+    return "std::string";
+  }
+  /**
+   * @brief Get json string of descriptor field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetDescriptorString(  // line separate
+      const UtxoJsonData& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.descriptor_);
+  }
+  /**
+   * @brief Set json object to descriptor field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetDescriptorString(  // line separate
+      UtxoJsonData& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.descriptor_, json_value);
+  }
+
+  /**
+   * @brief Get of scriptSigTemplate
+   * @return scriptSigTemplate
+   */
+  std::string GetScriptSigTemplate() const {
+    return script_sig_template_;
+  }
+  /**
+   * @brief Set to scriptSigTemplate
+   * @param[in] script_sig_template    setting value.
+   */
+  void SetScriptSigTemplate(  // line separate
+    const std::string& script_sig_template) {  // NOLINT
+    this->script_sig_template_ = script_sig_template;
+  }
+  /**
+   * @brief Get data type of scriptSigTemplate
+   * @return Data type of scriptSigTemplate
+   */
+  static std::string GetScriptSigTemplateFieldType() {
+    return "std::string";
+  }
+  /**
+   * @brief Get json string of scriptSigTemplate field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetScriptSigTemplateString(  // line separate
+      const UtxoJsonData& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.script_sig_template_);
+  }
+  /**
+   * @brief Set json object to scriptSigTemplate field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetScriptSigTemplateString(  // line separate
+      UtxoJsonData& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.script_sig_template_, json_value);
+  }
+
+  /**
+   * @brief Set ignore item.
+   * @param[in] key   ignore target key name.
+   */
+  void SetIgnoreItem(const std::string& key) {
+    ignore_items.insert(key);
+  }
+
+  /**
+   * @brief Convert struct to class.
+   * @param[in] data   struct data.
+   */
+  void ConvertFromStruct(
+      const UtxoJsonDataStruct& data);
+
+  /**
+   * @brief Convert class to struct.
+   * @return  struct data.
+   */
+  UtxoJsonDataStruct ConvertToStruct()  const;
+
+ protected:
+  /**
+   * @brief definition type of Map table.
+   */
+  using UtxoJsonDataMapTable =
+    cfd::core::JsonTableMap<UtxoJsonData>;
+
+  /**
+   * @brief Get JSON mapping object.
+   * @return JSON mapping object.
+   * @see cfd::core::JsonClassBase::GetJsonMapper()
+   */
+  virtual const UtxoJsonDataMapTable& GetJsonMapper() const {  // NOLINT
+    return json_mapper;
+  }
+  /**
+   * @brief Get item lists of JSON mapping.
+   * Fetch a list of target variable names in the order of definition.
+   * @return Item lists of JSON mapping.
+   * @see cfd::core::JsonClassBase::GetJsonItemList()
+   */
+  virtual const std::vector<std::string>& GetJsonItemList() const {
+    return item_list;
+  }
+  /**
+   * @brief Get ignore item lists of JSON mapping.
+   * Ignore the target variable at Serialize.
+   * @return Item list of JSON mapping.
+   * @see cfd::core::JsonClassBase::GetIgnoreItem()
+   */
+  virtual const std::set<std::string>& GetIgnoreItem() const {
+    return ignore_items;
+  }
+
+ private:
+ /**
+  * @brief JsonFunctionMap table
+  */
+  static UtxoJsonDataMapTable json_mapper;
+  /**
+   * @brief field name list.
+   */
+  static std::vector<std::string> item_list;
+  /**
+   * @brief ignore item list.
+   */
+  std::set<std::string> ignore_items;
+
+  /**
+   * @brief JsonAPI(txid) value
+   */
+  std::string txid_ = "";
+  /**
+   * @brief JsonAPI(vout) value
+   */
+  uint32_t vout_ = 0;
+  /**
+   * @brief JsonAPI(amount) value
+   */
+  int64_t amount_ = 0;
+  /**
+   * @brief JsonAPI(asset) value
+   */
+  std::string asset_ = "";
+  /**
+   * @brief JsonAPI(descriptor) value
+   */
+  std::string descriptor_ = "";
+  /**
+   * @brief JsonAPI(scriptSigTemplate) value
+   */
+  std::string script_sig_template_ = "";
+};
 
 // ------------------------------------------------------------------------
 // MultisigSignData
@@ -351,7 +1094,7 @@ class MultisigSignData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -768,7 +1511,7 @@ class AddMultisigSignTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -1017,7 +1760,7 @@ class AddMultisigSignRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -1163,7 +1906,7 @@ class AddMultisigSignResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -1473,7 +2216,7 @@ class PubkeyHashSignData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -1800,7 +2543,7 @@ class AddPubkeyHashSignTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -2041,7 +2784,7 @@ class AddPubkeyHashSignRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -2187,7 +2930,7 @@ class AddPubkeyHashSignResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -2411,7 +3154,7 @@ class AddTxIn
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -2643,7 +3386,7 @@ class AddTxOut
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -2877,7 +3620,7 @@ class AddRawTransactionRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -3023,7 +3766,7 @@ class AddRawTransactionResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -3333,7 +4076,7 @@ class ScriptHashSignData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -3660,7 +4403,7 @@ class AddScriptHashSignTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -3901,7 +4644,7 @@ class AddScriptHashSignRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -4047,7 +4790,7 @@ class AddScriptHashSignResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -4357,7 +5100,7 @@ class SignData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -4684,7 +5427,7 @@ class AddSignTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -4925,7 +5668,7 @@ class AddSignRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -5071,7 +5814,7 @@ class AddSignResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -5252,7 +5995,7 @@ class AppendDescriptorChecksumRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -5394,7 +6137,7 @@ class AppendDescriptorChecksumResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -5747,7 +6490,7 @@ class BlindTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -5991,7 +6734,7 @@ class BlindTxOutRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -6266,7 +7009,7 @@ class BlindIssuanceRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -6721,7 +7464,7 @@ class BlindRawTransactionRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -6887,7 +7630,7 @@ class BlindRawTransactionResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -7154,7 +7897,7 @@ class PrivkeyData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -7391,7 +8134,7 @@ class CalculateEcSignatureRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -7537,7 +8280,7 @@ class CalculateEcSignatureResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -7847,7 +8590,7 @@ class ConvertAesRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -8001,7 +8744,7 @@ class ConvertAesResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -8182,7 +8925,7 @@ class ConvertEntropyToMnemonicRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -8325,7 +9068,7 @@ class ConvertEntropyToMnemonicResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -8636,7 +9379,7 @@ class ConvertMnemonicToSeedRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -8833,7 +9576,7 @@ class ConvertMnemonicToSeedResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -9018,7 +9761,7 @@ class CreateAddressKeyData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -9290,7 +10033,7 @@ class CreateAddressRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -9526,7 +10269,7 @@ class CreateAddressResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -9758,7 +10501,7 @@ class CreateDescriptorKeyRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -9991,7 +10734,7 @@ class CreateDescriptorRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -10137,7 +10880,7 @@ class CreateDescriptorResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -10619,7 +11362,7 @@ class CreateExtkeyRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -10789,7 +11532,7 @@ class CreateExtkeyResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -11099,7 +11842,7 @@ class CreateExtkeyFromParentRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -11253,7 +11996,7 @@ class CreateExtkeyFromParentResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -11649,7 +12392,7 @@ class CreateExtkeyFromParentKeyRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -11811,7 +12554,7 @@ class CreateExtkeyFromParentKeyResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -12122,7 +12865,7 @@ class CreateExtkeyFromParentPathRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -12276,7 +13019,7 @@ class CreateExtkeyFromParentPathResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -12500,7 +13243,7 @@ class CreateExtkeyFromSeedRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -12646,7 +13389,7 @@ class CreateExtkeyFromSeedResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -12827,7 +13570,7 @@ class CreateExtPubkeyRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -12969,7 +13712,7 @@ class CreateExtPubkeyResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -13193,7 +13936,7 @@ class CreateKeyPairRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -13382,7 +14125,7 @@ class CreateKeyPairResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -13739,7 +14482,7 @@ class MultisigScriptSigData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -13941,7 +14684,7 @@ class CreateMultisigScriptSigRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -14083,7 +14826,7 @@ class CreateMultisigScriptSigResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -14222,7 +14965,7 @@ class CreateScriptRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -14360,7 +15103,7 @@ class CreateScriptResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -14541,7 +15284,7 @@ class DecodeBase58Request
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -14683,7 +15426,7 @@ class DecodeBase58Response
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -14821,7 +15564,7 @@ class DecodeDerSignatureToRawRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -14959,7 +15702,7 @@ class DecodeDerSignatureToRawResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -15183,7 +15926,7 @@ class DecodeRawTransactionRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -15218,191 +15961,6 @@ class DecodeRawTransactionRequest
    * @brief JsonAPI(iswitness) value
    */
   bool iswitness_ = true;
-};
-
-// ------------------------------------------------------------------------
-// DecodeUnlockingScript
-// ------------------------------------------------------------------------
-/**
- * @brief JSON-API (DecodeUnlockingScript) class
- */
-class DecodeUnlockingScript
-  : public cfd::core::JsonClassBase<DecodeUnlockingScript> {
- public:
-  DecodeUnlockingScript() {
-    CollectFieldName();
-  }
-  virtual ~DecodeUnlockingScript() {
-    // do nothing
-  }
-  /**
-   * @brief collect field name.
-   */
-  static void CollectFieldName();
-
-  /**
-   * @brief Get of asm
-   * @return asm
-   */
-  std::string GetAsm() const {
-    return asm__;
-  }
-  /**
-   * @brief Set to asm
-   * @param[in] asm_    setting value.
-   */
-  void SetAsm(  // line separate
-    const std::string& asm_) {  // NOLINT
-    this->asm__ = asm_;
-  }
-  /**
-   * @brief Get data type of asm
-   * @return Data type of asm
-   */
-  static std::string GetAsmFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of asm field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetAsmString(  // line separate
-      const DecodeUnlockingScript& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.asm__);
-  }
-  /**
-   * @brief Set json object to asm field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetAsmString(  // line separate
-      DecodeUnlockingScript& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.asm__, json_value);
-  }
-
-  /**
-   * @brief Get of hex
-   * @return hex
-   */
-  std::string GetHex() const {
-    return hex_;
-  }
-  /**
-   * @brief Set to hex
-   * @param[in] hex    setting value.
-   */
-  void SetHex(  // line separate
-    const std::string& hex) {  // NOLINT
-    this->hex_ = hex;
-  }
-  /**
-   * @brief Get data type of hex
-   * @return Data type of hex
-   */
-  static std::string GetHexFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of hex field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetHexString(  // line separate
-      const DecodeUnlockingScript& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.hex_);
-  }
-  /**
-   * @brief Set json object to hex field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetHexString(  // line separate
-      DecodeUnlockingScript& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.hex_, json_value);
-  }
-
-  /**
-   * @brief Set ignore item.
-   * @param[in] key   ignore target key name.
-   */
-  void SetIgnoreItem(const std::string& key) {
-    ignore_items.insert(key);
-  }
-
-  /**
-   * @brief Convert struct to class.
-   * @param[in] data   struct data.
-   */
-  void ConvertFromStruct(
-      const DecodeUnlockingScriptStruct& data);
-
-  /**
-   * @brief Convert class to struct.
-   * @return  struct data.
-   */
-  DecodeUnlockingScriptStruct ConvertToStruct()  const;
-
- protected:
-  /**
-   * @brief definition type of Map table.
-   */
-  using DecodeUnlockingScriptMapTable =
-    cfd::core::JsonTableMap<DecodeUnlockingScript>;
-
-  /**
-   * @brief Get JSON mapping object.
-   * @return JSON mapping object.
-   * @see cfd::core::JsonClassBase::GetJsonMapper()
-   */
-  virtual const DecodeUnlockingScriptMapTable& GetJsonMapper() const {  // NOLINT
-    return json_mapper;
-  }
-  /**
-   * @brief Get item lists of JSON mapping.
-   * Fetch a list of target variable names in the order of definition.
-   * @return Item lists of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetJsonItemList()
-   */
-  virtual const std::vector<std::string>& GetJsonItemList() const {
-    return item_list;
-  }
-  /**
-   * @brief Get ignore item lists of JSON mnapping.
-   * Ignore the target variable at Serialize.
-   * @return Item list of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetIgnoreItem()
-   */
-  virtual const std::set<std::string>& GetIgnoreItem() const {
-    return ignore_items;
-  }
-
- private:
- /**
-  * @brief JsonFunctionMap table
-  */
-  static DecodeUnlockingScriptMapTable json_mapper;
-  /**
-   * @brief field name list.
-   */
-  static std::vector<std::string> item_list;
-  /**
-   * @brief ignore item list.
-   */
-  std::set<std::string> ignore_items;
-
-  /**
-   * @brief JsonAPI(asm) value
-   */
-  std::string asm__ = "";
-  /**
-   * @brief JsonAPI(hex) value
-   */
-  std::string hex_ = "";
 };
 
 // ------------------------------------------------------------------------
@@ -15731,7 +16289,7 @@ class DecodeRawTransactionTxIn
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -16062,7 +16620,7 @@ class DecodeLockingScript
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -16303,7 +16861,7 @@ class DecodeRawTransactionTxOut
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -16795,7 +17353,7 @@ class DecodeRawTransactionResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -17051,7 +17609,7 @@ class ElementsAddTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -17412,7 +17970,7 @@ class ElementsAddPeginWitness
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -17743,7 +18301,7 @@ class ElementsAddPeginTxIn
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -18112,7 +18670,7 @@ class ElementsAddTxOut
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -18356,7 +18914,7 @@ class ElementsAddDestroyAmount
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -18932,7 +19490,7 @@ class ElementsAddPegout
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -19153,7 +19711,7 @@ class ElementsAddTxOutFee
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -19602,7 +20160,7 @@ class ElementsAddRawTransactionRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -19812,7 +20370,7 @@ class ElementsAddRawTransactionResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -20040,7 +20598,7 @@ class ElementsDestroyAmountTxIn
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -20401,7 +20959,7 @@ class ElementsDestroyAmountTxOut
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -20645,7 +21203,7 @@ class ElementsDestroyAmount
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -20834,7 +21392,7 @@ class ElementsDestroyAmountFee
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -21195,7 +21753,7 @@ class CreateDestroyAmountRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -21353,7 +21911,7 @@ class CreateDestroyAmountResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -21663,7 +22221,7 @@ class CreatePegInAddressRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -21903,7 +22461,7 @@ class CreatePegInAddressResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -22264,7 +22822,7 @@ class ElementsPeginWitness
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -22638,7 +23196,7 @@ class ElementsPeginTxIn
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -23011,7 +23569,7 @@ class ElementsPeginTxOut
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -23212,7 +23770,7 @@ class ElementsPeginTxOutFee
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -23572,7 +24130,7 @@ class CreateRawPeginRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -23730,7 +24288,7 @@ class CreateRawPeginResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -23954,7 +24512,7 @@ class ElementsPegoutTxIn
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -24315,7 +24873,7 @@ class ElementsPegoutTxOut
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -24903,7 +25461,7 @@ class ElementsPegout
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -25124,7 +25682,7 @@ class ElementsPegoutTxOutFee
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -25485,7 +26043,7 @@ class CreateRawPegoutRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -25686,7 +26244,7 @@ class CreateRawPegoutResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -25914,7 +26472,7 @@ class ElementsTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -26275,7 +26833,7 @@ class ElementsTxOutRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -26476,7 +27034,7 @@ class ElementsTxOutFeeRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -26793,7 +27351,7 @@ class ElementsCreateRawTransactionRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -26947,7 +27505,7 @@ class ElementsCreateRawTransactionResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -27257,7 +27815,7 @@ class ElementsDecodeRawTransactionRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -27300,191 +27858,6 @@ class ElementsDecodeRawTransactionRequest
    * @brief JsonAPI(fullDump) value
    */
   bool full_dump_ = false;
-};
-
-// ------------------------------------------------------------------------
-// ElementsDecodeUnlockingScript
-// ------------------------------------------------------------------------
-/**
- * @brief JSON-API (ElementsDecodeUnlockingScript) class
- */
-class ElementsDecodeUnlockingScript
-  : public cfd::core::JsonClassBase<ElementsDecodeUnlockingScript> {
- public:
-  ElementsDecodeUnlockingScript() {
-    CollectFieldName();
-  }
-  virtual ~ElementsDecodeUnlockingScript() {
-    // do nothing
-  }
-  /**
-   * @brief collect field name.
-   */
-  static void CollectFieldName();
-
-  /**
-   * @brief Get of asm
-   * @return asm
-   */
-  std::string GetAsm() const {
-    return asm__;
-  }
-  /**
-   * @brief Set to asm
-   * @param[in] asm_    setting value.
-   */
-  void SetAsm(  // line separate
-    const std::string& asm_) {  // NOLINT
-    this->asm__ = asm_;
-  }
-  /**
-   * @brief Get data type of asm
-   * @return Data type of asm
-   */
-  static std::string GetAsmFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of asm field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetAsmString(  // line separate
-      const ElementsDecodeUnlockingScript& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.asm__);
-  }
-  /**
-   * @brief Set json object to asm field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetAsmString(  // line separate
-      ElementsDecodeUnlockingScript& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.asm__, json_value);
-  }
-
-  /**
-   * @brief Get of hex
-   * @return hex
-   */
-  std::string GetHex() const {
-    return hex_;
-  }
-  /**
-   * @brief Set to hex
-   * @param[in] hex    setting value.
-   */
-  void SetHex(  // line separate
-    const std::string& hex) {  // NOLINT
-    this->hex_ = hex;
-  }
-  /**
-   * @brief Get data type of hex
-   * @return Data type of hex
-   */
-  static std::string GetHexFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of hex field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetHexString(  // line separate
-      const ElementsDecodeUnlockingScript& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.hex_);
-  }
-  /**
-   * @brief Set json object to hex field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetHexString(  // line separate
-      ElementsDecodeUnlockingScript& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.hex_, json_value);
-  }
-
-  /**
-   * @brief Set ignore item.
-   * @param[in] key   ignore target key name.
-   */
-  void SetIgnoreItem(const std::string& key) {
-    ignore_items.insert(key);
-  }
-
-  /**
-   * @brief Convert struct to class.
-   * @param[in] data   struct data.
-   */
-  void ConvertFromStruct(
-      const ElementsDecodeUnlockingScriptStruct& data);
-
-  /**
-   * @brief Convert class to struct.
-   * @return  struct data.
-   */
-  ElementsDecodeUnlockingScriptStruct ConvertToStruct()  const;
-
- protected:
-  /**
-   * @brief definition type of Map table.
-   */
-  using ElementsDecodeUnlockingScriptMapTable =
-    cfd::core::JsonTableMap<ElementsDecodeUnlockingScript>;
-
-  /**
-   * @brief Get JSON mapping object.
-   * @return JSON mapping object.
-   * @see cfd::core::JsonClassBase::GetJsonMapper()
-   */
-  virtual const ElementsDecodeUnlockingScriptMapTable& GetJsonMapper() const {  // NOLINT
-    return json_mapper;
-  }
-  /**
-   * @brief Get item lists of JSON mapping.
-   * Fetch a list of target variable names in the order of definition.
-   * @return Item lists of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetJsonItemList()
-   */
-  virtual const std::vector<std::string>& GetJsonItemList() const {
-    return item_list;
-  }
-  /**
-   * @brief Get ignore item lists of JSON mnapping.
-   * Ignore the target variable at Serialize.
-   * @return Item list of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetIgnoreItem()
-   */
-  virtual const std::set<std::string>& GetIgnoreItem() const {
-    return ignore_items;
-  }
-
- private:
- /**
-  * @brief JsonFunctionMap table
-  */
-  static ElementsDecodeUnlockingScriptMapTable json_mapper;
-  /**
-   * @brief field name list.
-   */
-  static std::vector<std::string> item_list;
-  /**
-   * @brief ignore item list.
-   */
-  std::set<std::string> ignore_items;
-
-  /**
-   * @brief JsonAPI(asm) value
-   */
-  std::string asm__ = "";
-  /**
-   * @brief JsonAPI(hex) value
-   */
-  std::string hex_ = "";
 };
 
 // ------------------------------------------------------------------------
@@ -28069,7 +28442,7 @@ class ElementsDecodeIssuance
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -28295,7 +28668,7 @@ class ElementsDecodeRawTransactionTxIn
    * @brief Get of scriptSig.
    * @return scriptSig
    */
-  ElementsDecodeUnlockingScript& GetScriptSig() {  // NOLINT
+  DecodeUnlockingScript& GetScriptSig() {  // NOLINT
     return script_sig_;
   }
   /**
@@ -28303,7 +28676,7 @@ class ElementsDecodeRawTransactionTxIn
    * @param[in] script_sig    setting value.
    */
   void SetScriptSig(  // line separate
-      const ElementsDecodeUnlockingScript& script_sig) {  // NOLINT
+      const DecodeUnlockingScript& script_sig) {  // NOLINT
     this->script_sig_ = script_sig;
   }
   /**
@@ -28311,7 +28684,7 @@ class ElementsDecodeRawTransactionTxIn
    * @return Data type of scriptSig.
    */
   static std::string GetScriptSigFieldType() {
-    return "ElementsDecodeUnlockingScript";  // NOLINT
+    return "DecodeUnlockingScript";  // NOLINT
   }
   /**
    * @brief Get json string of scriptSig field.
@@ -28599,7 +28972,7 @@ class ElementsDecodeRawTransactionTxIn
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -28637,7 +29010,7 @@ class ElementsDecodeRawTransactionTxIn
   /**
    * @brief JsonAPI(scriptSig) value
    */
-  ElementsDecodeUnlockingScript script_sig_;  // NOLINT
+  DecodeUnlockingScript script_sig_;  // NOLINT
   /**
    * @brief JsonAPI(is_pegin) value
    */
@@ -29201,7 +29574,7 @@ class ElementsDecodeLockingScript
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -29939,7 +30312,7 @@ class ElementsDecodeRawTransactionTxOut
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -30561,7 +30934,7 @@ class ElementsDecodeRawTransactionResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -30782,7 +31155,7 @@ class GetConfidentialAddressRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -30924,7 +31297,7 @@ class GetConfidentialAddressResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -31062,7 +31435,7 @@ class GetUnblindedAddressRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -31243,7 +31616,7 @@ class GetUnblindedAddressResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -31729,7 +32102,7 @@ class IssuanceDataRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -31986,7 +32359,7 @@ class SetRawIssueAssetRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -32304,7 +32677,7 @@ class IssuanceDataResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -32502,7 +32875,7 @@ class SetRawIssueAssetResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -32902,7 +33275,7 @@ class ReissuanceDataRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -33151,7 +33524,7 @@ class SetRawReissueAssetRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -33426,7 +33799,7 @@ class ReissuanceDataResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -33620,7 +33993,7 @@ class SetRawReissueAssetResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -33805,7 +34178,7 @@ class UnblindTxOut
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -34076,7 +34449,7 @@ class UnblindIssuance
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -34314,7 +34687,7 @@ class UnblindRawTransactionRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -34632,7 +35005,7 @@ class UnblindOutput
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -35001,7 +35374,7 @@ class UnblindIssuanceOutput
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -35247,7 +35620,7 @@ class UnblindRawTransactionResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -35436,7 +35809,7 @@ class EncodeBase58Request
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -35578,7 +35951,7 @@ class EncodeBase58Response
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -35802,7 +36175,7 @@ class EncodeSignatureByDerRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -35948,7 +36321,7 @@ class EncodeSignatureByDerResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -36172,7 +36545,7 @@ class InnerErrorResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -36308,7 +36681,7 @@ class ErrorResponseBase
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -36876,7 +37249,7 @@ class SelectUtxoData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -37356,7 +37729,7 @@ class EstimateFeeRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -37651,7 +38024,7 @@ class EstimateFeeResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -38059,7 +38432,7 @@ class FundUtxoJsonData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -38737,7 +39110,7 @@ class FundSelectUtxoData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -39009,7 +39382,7 @@ class FundAmountMapData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -39456,7 +39829,7 @@ class FundFeeInfomation
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -39970,7 +40343,7 @@ class FundRawTransactionRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -40227,7 +40600,7 @@ class FundRawTransactionResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -40262,519 +40635,6 @@ class FundRawTransactionResponse
    * @brief JsonAPI(feeAmount) value
    */
   int64_t fee_amount_ = 0;
-};
-
-// ------------------------------------------------------------------------
-// GetAddressesFromMultisigRequest
-// ------------------------------------------------------------------------
-/**
- * @brief JSON-API (GetAddressesFromMultisigRequest) class
- */
-class GetAddressesFromMultisigRequest
-  : public cfd::core::JsonClassBase<GetAddressesFromMultisigRequest> {
- public:
-  GetAddressesFromMultisigRequest() {
-    CollectFieldName();
-  }
-  virtual ~GetAddressesFromMultisigRequest() {
-    // do nothing
-  }
-  /**
-   * @brief collect field name.
-   */
-  static void CollectFieldName();
-
-  /**
-   * @brief Get of isElements
-   * @return isElements
-   */
-  bool GetIsElements() const {
-    return is_elements_;
-  }
-  /**
-   * @brief Set to isElements
-   * @param[in] is_elements    setting value.
-   */
-  void SetIsElements(  // line separate
-    const bool& is_elements) {  // NOLINT
-    this->is_elements_ = is_elements;
-  }
-  /**
-   * @brief Get data type of isElements
-   * @return Data type of isElements
-   */
-  static std::string GetIsElementsFieldType() {
-    return "bool";
-  }
-  /**
-   * @brief Get json string of isElements field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetIsElementsString(  // line separate
-      const GetAddressesFromMultisigRequest& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.is_elements_);
-  }
-  /**
-   * @brief Set json object to isElements field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetIsElementsString(  // line separate
-      GetAddressesFromMultisigRequest& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.is_elements_, json_value);
-  }
-
-  /**
-   * @brief Get of redeemScript
-   * @return redeemScript
-   */
-  std::string GetRedeemScript() const {
-    return redeem_script_;
-  }
-  /**
-   * @brief Set to redeemScript
-   * @param[in] redeem_script    setting value.
-   */
-  void SetRedeemScript(  // line separate
-    const std::string& redeem_script) {  // NOLINT
-    this->redeem_script_ = redeem_script;
-  }
-  /**
-   * @brief Get data type of redeemScript
-   * @return Data type of redeemScript
-   */
-  static std::string GetRedeemScriptFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of redeemScript field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetRedeemScriptString(  // line separate
-      const GetAddressesFromMultisigRequest& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.redeem_script_);
-  }
-  /**
-   * @brief Set json object to redeemScript field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetRedeemScriptString(  // line separate
-      GetAddressesFromMultisigRequest& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.redeem_script_, json_value);
-  }
-
-  /**
-   * @brief Get of network
-   * @return network
-   */
-  std::string GetNetwork() const {
-    return network_;
-  }
-  /**
-   * @brief Set to network
-   * @param[in] network    setting value.
-   */
-  void SetNetwork(  // line separate
-    const std::string& network) {  // NOLINT
-    this->network_ = network;
-  }
-  /**
-   * @brief Get data type of network
-   * @return Data type of network
-   */
-  static std::string GetNetworkFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of network field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetNetworkString(  // line separate
-      const GetAddressesFromMultisigRequest& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.network_);
-  }
-  /**
-   * @brief Set json object to network field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetNetworkString(  // line separate
-      GetAddressesFromMultisigRequest& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.network_, json_value);
-  }
-
-  /**
-   * @brief Get of hashType
-   * @return hashType
-   */
-  std::string GetHashType() const {
-    return hash_type_;
-  }
-  /**
-   * @brief Set to hashType
-   * @param[in] hash_type    setting value.
-   */
-  void SetHashType(  // line separate
-    const std::string& hash_type) {  // NOLINT
-    this->hash_type_ = hash_type;
-  }
-  /**
-   * @brief Get data type of hashType
-   * @return Data type of hashType
-   */
-  static std::string GetHashTypeFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of hashType field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetHashTypeString(  // line separate
-      const GetAddressesFromMultisigRequest& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.hash_type_);
-  }
-  /**
-   * @brief Set json object to hashType field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetHashTypeString(  // line separate
-      GetAddressesFromMultisigRequest& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.hash_type_, json_value);
-  }
-
-  /**
-   * @brief Set ignore item.
-   * @param[in] key   ignore target key name.
-   */
-  void SetIgnoreItem(const std::string& key) {
-    ignore_items.insert(key);
-  }
-
-  /**
-   * @brief Convert struct to class.
-   * @param[in] data   struct data.
-   */
-  void ConvertFromStruct(
-      const GetAddressesFromMultisigRequestStruct& data);
-
-  /**
-   * @brief Convert class to struct.
-   * @return  struct data.
-   */
-  GetAddressesFromMultisigRequestStruct ConvertToStruct()  const;
-
- protected:
-  /**
-   * @brief definition type of Map table.
-   */
-  using GetAddressesFromMultisigRequestMapTable =
-    cfd::core::JsonTableMap<GetAddressesFromMultisigRequest>;
-
-  /**
-   * @brief Get JSON mapping object.
-   * @return JSON mapping object.
-   * @see cfd::core::JsonClassBase::GetJsonMapper()
-   */
-  virtual const GetAddressesFromMultisigRequestMapTable& GetJsonMapper() const {  // NOLINT
-    return json_mapper;
-  }
-  /**
-   * @brief Get item lists of JSON mapping.
-   * Fetch a list of target variable names in the order of definition.
-   * @return Item lists of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetJsonItemList()
-   */
-  virtual const std::vector<std::string>& GetJsonItemList() const {
-    return item_list;
-  }
-  /**
-   * @brief Get ignore item lists of JSON mnapping.
-   * Ignore the target variable at Serialize.
-   * @return Item list of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetIgnoreItem()
-   */
-  virtual const std::set<std::string>& GetIgnoreItem() const {
-    return ignore_items;
-  }
-
- private:
- /**
-  * @brief JsonFunctionMap table
-  */
-  static GetAddressesFromMultisigRequestMapTable json_mapper;
-  /**
-   * @brief field name list.
-   */
-  static std::vector<std::string> item_list;
-  /**
-   * @brief ignore item list.
-   */
-  std::set<std::string> ignore_items;
-
-  /**
-   * @brief JsonAPI(isElements) value
-   */
-  bool is_elements_ = false;
-  /**
-   * @brief JsonAPI(redeemScript) value
-   */
-  std::string redeem_script_ = "";
-  /**
-   * @brief JsonAPI(network) value
-   */
-  std::string network_ = "mainnet";
-  /**
-   * @brief JsonAPI(hashType) value
-   */
-  std::string hash_type_ = "p2wpkh";
-};
-
-// ------------------------------------------------------------------------
-// GetAddressesFromMultisigResponse
-// ------------------------------------------------------------------------
-/**
- * @brief JSON-API (GetAddressesFromMultisigResponse) class
- */
-class GetAddressesFromMultisigResponse
-  : public cfd::core::JsonClassBase<GetAddressesFromMultisigResponse> {
- public:
-  GetAddressesFromMultisigResponse() {
-    CollectFieldName();
-  }
-  virtual ~GetAddressesFromMultisigResponse() {
-    // do nothing
-  }
-  /**
-   * @brief collect field name.
-   */
-  static void CollectFieldName();
-
-  /**
-   * @brief Get of addresses.
-   * @return addresses
-   */
-  JsonValueVector<std::string>& GetAddresses() {  // NOLINT
-    return addresses_;
-  }
-  /**
-   * @brief Set to addresses.
-   * @param[in] addresses    setting value.
-   */
-  void SetAddresses(  // line separate
-      const JsonValueVector<std::string>& addresses) {  // NOLINT
-    this->addresses_ = addresses;
-  }
-  /**
-   * @brief Get data type of addresses.
-   * @return Data type of addresses.
-   */
-  static std::string GetAddressesFieldType() {
-    return "JsonValueVector<std::string>";  // NOLINT
-  }
-  /**
-   * @brief Get json string of addresses field.
-   * @param[in,out] obj     class object
-   * @return JSON string.
-   */
-  static std::string GetAddressesString(  // line separate
-      const GetAddressesFromMultisigResponse& obj) {  // NOLINT
-    // Do not set to const, because substitution of member variables
-    // may occur in pre / post processing inside Serialize
-    return obj.addresses_.Serialize();
-  }
-  /**
-   * @brief Set json object to addresses field.
-   * @param[in,out] obj     class object
-   * @param[in] json_value  JSON object
-   */
-  static void SetAddressesString(  // line separate
-      GetAddressesFromMultisigResponse& obj,  // NOLINT
-      const UniValue& json_value) {
-    obj.addresses_.DeserializeUniValue(json_value);
-  }
-
-  /**
-   * @brief Get of pubkeys.
-   * @return pubkeys
-   */
-  JsonValueVector<std::string>& GetPubkeys() {  // NOLINT
-    return pubkeys_;
-  }
-  /**
-   * @brief Set to pubkeys.
-   * @param[in] pubkeys    setting value.
-   */
-  void SetPubkeys(  // line separate
-      const JsonValueVector<std::string>& pubkeys) {  // NOLINT
-    this->pubkeys_ = pubkeys;
-  }
-  /**
-   * @brief Get data type of pubkeys.
-   * @return Data type of pubkeys.
-   */
-  static std::string GetPubkeysFieldType() {
-    return "JsonValueVector<std::string>";  // NOLINT
-  }
-  /**
-   * @brief Get json string of pubkeys field.
-   * @param[in,out] obj     class object
-   * @return JSON string.
-   */
-  static std::string GetPubkeysString(  // line separate
-      const GetAddressesFromMultisigResponse& obj) {  // NOLINT
-    // Do not set to const, because substitution of member variables
-    // may occur in pre / post processing inside Serialize
-    return obj.pubkeys_.Serialize();
-  }
-  /**
-   * @brief Set json object to pubkeys field.
-   * @param[in,out] obj     class object
-   * @param[in] json_value  JSON object
-   */
-  static void SetPubkeysString(  // line separate
-      GetAddressesFromMultisigResponse& obj,  // NOLINT
-      const UniValue& json_value) {
-    obj.pubkeys_.DeserializeUniValue(json_value);
-  }
-
-  /**
-   * @brief Get of requireNum
-   * @return requireNum
-   */
-  uint32_t GetRequireNum() const {
-    return require_num_;
-  }
-  /**
-   * @brief Set to requireNum
-   * @param[in] require_num    setting value.
-   */
-  void SetRequireNum(  // line separate
-    const uint32_t& require_num) {  // NOLINT
-    this->require_num_ = require_num;
-  }
-  /**
-   * @brief Get data type of requireNum
-   * @return Data type of requireNum
-   */
-  static std::string GetRequireNumFieldType() {
-    return "uint32_t";
-  }
-  /**
-   * @brief Get json string of requireNum field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetRequireNumString(  // line separate
-      const GetAddressesFromMultisigResponse& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.require_num_);
-  }
-  /**
-   * @brief Set json object to requireNum field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetRequireNumString(  // line separate
-      GetAddressesFromMultisigResponse& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.require_num_, json_value);
-  }
-
-  /**
-   * @brief Set ignore item.
-   * @param[in] key   ignore target key name.
-   */
-  void SetIgnoreItem(const std::string& key) {
-    ignore_items.insert(key);
-  }
-
-  /**
-   * @brief Convert struct to class.
-   * @param[in] data   struct data.
-   */
-  void ConvertFromStruct(
-      const GetAddressesFromMultisigResponseStruct& data);
-
-  /**
-   * @brief Convert class to struct.
-   * @return  struct data.
-   */
-  GetAddressesFromMultisigResponseStruct ConvertToStruct()  const;
-
- protected:
-  /**
-   * @brief definition type of Map table.
-   */
-  using GetAddressesFromMultisigResponseMapTable =
-    cfd::core::JsonTableMap<GetAddressesFromMultisigResponse>;
-
-  /**
-   * @brief Get JSON mapping object.
-   * @return JSON mapping object.
-   * @see cfd::core::JsonClassBase::GetJsonMapper()
-   */
-  virtual const GetAddressesFromMultisigResponseMapTable& GetJsonMapper() const {  // NOLINT
-    return json_mapper;
-  }
-  /**
-   * @brief Get item lists of JSON mapping.
-   * Fetch a list of target variable names in the order of definition.
-   * @return Item lists of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetJsonItemList()
-   */
-  virtual const std::vector<std::string>& GetJsonItemList() const {
-    return item_list;
-  }
-  /**
-   * @brief Get ignore item lists of JSON mnapping.
-   * Ignore the target variable at Serialize.
-   * @return Item list of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetIgnoreItem()
-   */
-  virtual const std::set<std::string>& GetIgnoreItem() const {
-    return ignore_items;
-  }
-
- private:
- /**
-  * @brief JsonFunctionMap table
-  */
-  static GetAddressesFromMultisigResponseMapTable json_mapper;
-  /**
-   * @brief field name list.
-   */
-  static std::vector<std::string> item_list;
-  /**
-   * @brief ignore item list.
-   */
-  std::set<std::string> ignore_items;
-
-  /**
-   * @brief JsonAPI(addresses) value
-   */
-  JsonValueVector<std::string> addresses_;  // NOLINT
-  /**
-   * @brief JsonAPI(pubkeys) value
-   */
-  JsonValueVector<std::string> pubkeys_;  // NOLINT
-  /**
-   * @brief JsonAPI(requireNum) value
-   */
-  uint32_t require_num_ = 0;
 };
 
 // ------------------------------------------------------------------------
@@ -40929,7 +40789,7 @@ class GetAddressInfoRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -41243,7 +41103,7 @@ class GetAddressInfoResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -41286,6 +41146,519 @@ class GetAddressInfoResponse
    * @brief JsonAPI(hash) value
    */
   std::string hash_ = "";
+};
+
+// ------------------------------------------------------------------------
+// GetAddressesFromMultisigRequest
+// ------------------------------------------------------------------------
+/**
+ * @brief JSON-API (GetAddressesFromMultisigRequest) class
+ */
+class GetAddressesFromMultisigRequest
+  : public cfd::core::JsonClassBase<GetAddressesFromMultisigRequest> {
+ public:
+  GetAddressesFromMultisigRequest() {
+    CollectFieldName();
+  }
+  virtual ~GetAddressesFromMultisigRequest() {
+    // do nothing
+  }
+  /**
+   * @brief collect field name.
+   */
+  static void CollectFieldName();
+
+  /**
+   * @brief Get of isElements
+   * @return isElements
+   */
+  bool GetIsElements() const {
+    return is_elements_;
+  }
+  /**
+   * @brief Set to isElements
+   * @param[in] is_elements    setting value.
+   */
+  void SetIsElements(  // line separate
+    const bool& is_elements) {  // NOLINT
+    this->is_elements_ = is_elements;
+  }
+  /**
+   * @brief Get data type of isElements
+   * @return Data type of isElements
+   */
+  static std::string GetIsElementsFieldType() {
+    return "bool";
+  }
+  /**
+   * @brief Get json string of isElements field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetIsElementsString(  // line separate
+      const GetAddressesFromMultisigRequest& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.is_elements_);
+  }
+  /**
+   * @brief Set json object to isElements field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetIsElementsString(  // line separate
+      GetAddressesFromMultisigRequest& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.is_elements_, json_value);
+  }
+
+  /**
+   * @brief Get of redeemScript
+   * @return redeemScript
+   */
+  std::string GetRedeemScript() const {
+    return redeem_script_;
+  }
+  /**
+   * @brief Set to redeemScript
+   * @param[in] redeem_script    setting value.
+   */
+  void SetRedeemScript(  // line separate
+    const std::string& redeem_script) {  // NOLINT
+    this->redeem_script_ = redeem_script;
+  }
+  /**
+   * @brief Get data type of redeemScript
+   * @return Data type of redeemScript
+   */
+  static std::string GetRedeemScriptFieldType() {
+    return "std::string";
+  }
+  /**
+   * @brief Get json string of redeemScript field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetRedeemScriptString(  // line separate
+      const GetAddressesFromMultisigRequest& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.redeem_script_);
+  }
+  /**
+   * @brief Set json object to redeemScript field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetRedeemScriptString(  // line separate
+      GetAddressesFromMultisigRequest& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.redeem_script_, json_value);
+  }
+
+  /**
+   * @brief Get of network
+   * @return network
+   */
+  std::string GetNetwork() const {
+    return network_;
+  }
+  /**
+   * @brief Set to network
+   * @param[in] network    setting value.
+   */
+  void SetNetwork(  // line separate
+    const std::string& network) {  // NOLINT
+    this->network_ = network;
+  }
+  /**
+   * @brief Get data type of network
+   * @return Data type of network
+   */
+  static std::string GetNetworkFieldType() {
+    return "std::string";
+  }
+  /**
+   * @brief Get json string of network field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetNetworkString(  // line separate
+      const GetAddressesFromMultisigRequest& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.network_);
+  }
+  /**
+   * @brief Set json object to network field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetNetworkString(  // line separate
+      GetAddressesFromMultisigRequest& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.network_, json_value);
+  }
+
+  /**
+   * @brief Get of hashType
+   * @return hashType
+   */
+  std::string GetHashType() const {
+    return hash_type_;
+  }
+  /**
+   * @brief Set to hashType
+   * @param[in] hash_type    setting value.
+   */
+  void SetHashType(  // line separate
+    const std::string& hash_type) {  // NOLINT
+    this->hash_type_ = hash_type;
+  }
+  /**
+   * @brief Get data type of hashType
+   * @return Data type of hashType
+   */
+  static std::string GetHashTypeFieldType() {
+    return "std::string";
+  }
+  /**
+   * @brief Get json string of hashType field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetHashTypeString(  // line separate
+      const GetAddressesFromMultisigRequest& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.hash_type_);
+  }
+  /**
+   * @brief Set json object to hashType field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetHashTypeString(  // line separate
+      GetAddressesFromMultisigRequest& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.hash_type_, json_value);
+  }
+
+  /**
+   * @brief Set ignore item.
+   * @param[in] key   ignore target key name.
+   */
+  void SetIgnoreItem(const std::string& key) {
+    ignore_items.insert(key);
+  }
+
+  /**
+   * @brief Convert struct to class.
+   * @param[in] data   struct data.
+   */
+  void ConvertFromStruct(
+      const GetAddressesFromMultisigRequestStruct& data);
+
+  /**
+   * @brief Convert class to struct.
+   * @return  struct data.
+   */
+  GetAddressesFromMultisigRequestStruct ConvertToStruct()  const;
+
+ protected:
+  /**
+   * @brief definition type of Map table.
+   */
+  using GetAddressesFromMultisigRequestMapTable =
+    cfd::core::JsonTableMap<GetAddressesFromMultisigRequest>;
+
+  /**
+   * @brief Get JSON mapping object.
+   * @return JSON mapping object.
+   * @see cfd::core::JsonClassBase::GetJsonMapper()
+   */
+  virtual const GetAddressesFromMultisigRequestMapTable& GetJsonMapper() const {  // NOLINT
+    return json_mapper;
+  }
+  /**
+   * @brief Get item lists of JSON mapping.
+   * Fetch a list of target variable names in the order of definition.
+   * @return Item lists of JSON mapping.
+   * @see cfd::core::JsonClassBase::GetJsonItemList()
+   */
+  virtual const std::vector<std::string>& GetJsonItemList() const {
+    return item_list;
+  }
+  /**
+   * @brief Get ignore item lists of JSON mapping.
+   * Ignore the target variable at Serialize.
+   * @return Item list of JSON mapping.
+   * @see cfd::core::JsonClassBase::GetIgnoreItem()
+   */
+  virtual const std::set<std::string>& GetIgnoreItem() const {
+    return ignore_items;
+  }
+
+ private:
+ /**
+  * @brief JsonFunctionMap table
+  */
+  static GetAddressesFromMultisigRequestMapTable json_mapper;
+  /**
+   * @brief field name list.
+   */
+  static std::vector<std::string> item_list;
+  /**
+   * @brief ignore item list.
+   */
+  std::set<std::string> ignore_items;
+
+  /**
+   * @brief JsonAPI(isElements) value
+   */
+  bool is_elements_ = false;
+  /**
+   * @brief JsonAPI(redeemScript) value
+   */
+  std::string redeem_script_ = "";
+  /**
+   * @brief JsonAPI(network) value
+   */
+  std::string network_ = "mainnet";
+  /**
+   * @brief JsonAPI(hashType) value
+   */
+  std::string hash_type_ = "p2wpkh";
+};
+
+// ------------------------------------------------------------------------
+// GetAddressesFromMultisigResponse
+// ------------------------------------------------------------------------
+/**
+ * @brief JSON-API (GetAddressesFromMultisigResponse) class
+ */
+class GetAddressesFromMultisigResponse
+  : public cfd::core::JsonClassBase<GetAddressesFromMultisigResponse> {
+ public:
+  GetAddressesFromMultisigResponse() {
+    CollectFieldName();
+  }
+  virtual ~GetAddressesFromMultisigResponse() {
+    // do nothing
+  }
+  /**
+   * @brief collect field name.
+   */
+  static void CollectFieldName();
+
+  /**
+   * @brief Get of addresses.
+   * @return addresses
+   */
+  JsonValueVector<std::string>& GetAddresses() {  // NOLINT
+    return addresses_;
+  }
+  /**
+   * @brief Set to addresses.
+   * @param[in] addresses    setting value.
+   */
+  void SetAddresses(  // line separate
+      const JsonValueVector<std::string>& addresses) {  // NOLINT
+    this->addresses_ = addresses;
+  }
+  /**
+   * @brief Get data type of addresses.
+   * @return Data type of addresses.
+   */
+  static std::string GetAddressesFieldType() {
+    return "JsonValueVector<std::string>";  // NOLINT
+  }
+  /**
+   * @brief Get json string of addresses field.
+   * @param[in,out] obj     class object
+   * @return JSON string.
+   */
+  static std::string GetAddressesString(  // line separate
+      const GetAddressesFromMultisigResponse& obj) {  // NOLINT
+    // Do not set to const, because substitution of member variables
+    // may occur in pre / post processing inside Serialize
+    return obj.addresses_.Serialize();
+  }
+  /**
+   * @brief Set json object to addresses field.
+   * @param[in,out] obj     class object
+   * @param[in] json_value  JSON object
+   */
+  static void SetAddressesString(  // line separate
+      GetAddressesFromMultisigResponse& obj,  // NOLINT
+      const UniValue& json_value) {
+    obj.addresses_.DeserializeUniValue(json_value);
+  }
+
+  /**
+   * @brief Get of pubkeys.
+   * @return pubkeys
+   */
+  JsonValueVector<std::string>& GetPubkeys() {  // NOLINT
+    return pubkeys_;
+  }
+  /**
+   * @brief Set to pubkeys.
+   * @param[in] pubkeys    setting value.
+   */
+  void SetPubkeys(  // line separate
+      const JsonValueVector<std::string>& pubkeys) {  // NOLINT
+    this->pubkeys_ = pubkeys;
+  }
+  /**
+   * @brief Get data type of pubkeys.
+   * @return Data type of pubkeys.
+   */
+  static std::string GetPubkeysFieldType() {
+    return "JsonValueVector<std::string>";  // NOLINT
+  }
+  /**
+   * @brief Get json string of pubkeys field.
+   * @param[in,out] obj     class object
+   * @return JSON string.
+   */
+  static std::string GetPubkeysString(  // line separate
+      const GetAddressesFromMultisigResponse& obj) {  // NOLINT
+    // Do not set to const, because substitution of member variables
+    // may occur in pre / post processing inside Serialize
+    return obj.pubkeys_.Serialize();
+  }
+  /**
+   * @brief Set json object to pubkeys field.
+   * @param[in,out] obj     class object
+   * @param[in] json_value  JSON object
+   */
+  static void SetPubkeysString(  // line separate
+      GetAddressesFromMultisigResponse& obj,  // NOLINT
+      const UniValue& json_value) {
+    obj.pubkeys_.DeserializeUniValue(json_value);
+  }
+
+  /**
+   * @brief Get of requireNum
+   * @return requireNum
+   */
+  uint32_t GetRequireNum() const {
+    return require_num_;
+  }
+  /**
+   * @brief Set to requireNum
+   * @param[in] require_num    setting value.
+   */
+  void SetRequireNum(  // line separate
+    const uint32_t& require_num) {  // NOLINT
+    this->require_num_ = require_num;
+  }
+  /**
+   * @brief Get data type of requireNum
+   * @return Data type of requireNum
+   */
+  static std::string GetRequireNumFieldType() {
+    return "uint32_t";
+  }
+  /**
+   * @brief Get json string of requireNum field.
+   * @param[in,out] obj     class object.
+   * @return JSON string
+   */
+  static std::string GetRequireNumString(  // line separate
+      const GetAddressesFromMultisigResponse& obj) {  // NOLINT
+    return cfd::core::ConvertToString(obj.require_num_);
+  }
+  /**
+   * @brief Set json object to requireNum field.
+   * @param[in,out] obj     class object.
+   * @param[in] json_value  JSON object.
+   */
+  static void SetRequireNumString(  // line separate
+      GetAddressesFromMultisigResponse& obj,  // NOLINT
+      const UniValue& json_value) {
+    cfd::core::ConvertFromUniValue(  // line separate
+      obj.require_num_, json_value);
+  }
+
+  /**
+   * @brief Set ignore item.
+   * @param[in] key   ignore target key name.
+   */
+  void SetIgnoreItem(const std::string& key) {
+    ignore_items.insert(key);
+  }
+
+  /**
+   * @brief Convert struct to class.
+   * @param[in] data   struct data.
+   */
+  void ConvertFromStruct(
+      const GetAddressesFromMultisigResponseStruct& data);
+
+  /**
+   * @brief Convert class to struct.
+   * @return  struct data.
+   */
+  GetAddressesFromMultisigResponseStruct ConvertToStruct()  const;
+
+ protected:
+  /**
+   * @brief definition type of Map table.
+   */
+  using GetAddressesFromMultisigResponseMapTable =
+    cfd::core::JsonTableMap<GetAddressesFromMultisigResponse>;
+
+  /**
+   * @brief Get JSON mapping object.
+   * @return JSON mapping object.
+   * @see cfd::core::JsonClassBase::GetJsonMapper()
+   */
+  virtual const GetAddressesFromMultisigResponseMapTable& GetJsonMapper() const {  // NOLINT
+    return json_mapper;
+  }
+  /**
+   * @brief Get item lists of JSON mapping.
+   * Fetch a list of target variable names in the order of definition.
+   * @return Item lists of JSON mapping.
+   * @see cfd::core::JsonClassBase::GetJsonItemList()
+   */
+  virtual const std::vector<std::string>& GetJsonItemList() const {
+    return item_list;
+  }
+  /**
+   * @brief Get ignore item lists of JSON mapping.
+   * Ignore the target variable at Serialize.
+   * @return Item list of JSON mapping.
+   * @see cfd::core::JsonClassBase::GetIgnoreItem()
+   */
+  virtual const std::set<std::string>& GetIgnoreItem() const {
+    return ignore_items;
+  }
+
+ private:
+ /**
+  * @brief JsonFunctionMap table
+  */
+  static GetAddressesFromMultisigResponseMapTable json_mapper;
+  /**
+   * @brief field name list.
+   */
+  static std::vector<std::string> item_list;
+  /**
+   * @brief ignore item list.
+   */
+  std::set<std::string> ignore_items;
+
+  /**
+   * @brief JsonAPI(addresses) value
+   */
+  JsonValueVector<std::string> addresses_;  // NOLINT
+  /**
+   * @brief JsonAPI(pubkeys) value
+   */
+  JsonValueVector<std::string> pubkeys_;  // NOLINT
+  /**
+   * @brief JsonAPI(requireNum) value
+   */
+  uint32_t require_num_ = 0;
 };
 
 // ------------------------------------------------------------------------
@@ -41526,7 +41899,7 @@ class GetCommitmentRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -41719,7 +42092,7 @@ class GetCommitmentResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -41861,7 +42234,7 @@ class GetCompressedPubkeyRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -41999,7 +42372,7 @@ class GetCompressedPubkeyResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -42223,7 +42596,7 @@ class GetDefaultBlindingKeyRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -42369,7 +42742,7 @@ class GetDefaultBlindingKeyResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -42507,7 +42880,7 @@ class GetExtkeyInfoRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -42860,7 +43233,7 @@ class GetExtkeyInfoResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -43104,7 +43477,7 @@ class GetIssuanceBlindingKeyRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -43250,7 +43623,7 @@ class GetIssuanceBlindingKeyResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -43388,7 +43761,7 @@ class GetMnemonicWordlistRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -43527,7 +43900,7 @@ class GetMnemonicWordlistResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -43794,7 +44167,7 @@ class GetPrivkeyFromExtkeyRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -43944,7 +44317,7 @@ class GetPrivkeyFromExtkeyResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -44082,7 +44455,7 @@ class GetPrivkeyFromWifRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -44306,7 +44679,7 @@ class GetPrivkeyFromWifResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -44538,7 +44911,7 @@ class GetPrivkeyWifRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -44684,7 +45057,7 @@ class GetPrivkeyWifResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -44865,7 +45238,7 @@ class GetPubkeyFromExtkeyRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -45007,7 +45380,7 @@ class GetPubkeyFromExtkeyResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -45188,7 +45561,7 @@ class GetPubkeyFromPrivkeyRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -45330,7 +45703,7 @@ class GetPubkeyFromPrivkeyResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -45511,7 +45884,7 @@ class GetWitnessStackNumTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -45740,7 +46113,7 @@ class GetWitnessStackNumRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -45886,7 +46259,7 @@ class GetWitnessStackNumResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -46197,7 +46570,7 @@ class CreateMultisigRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -46437,7 +46810,7 @@ class CreateMultisigResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -46712,7 +47085,7 @@ class ParseDescriptorRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -46905,7 +47278,7 @@ class DescriptorKeyJson
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -47392,7 +47765,7 @@ class DescriptorScriptJson
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -47821,7 +48194,7 @@ class ParseDescriptorResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -47983,7 +48356,7 @@ class ParseScriptRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -48122,7 +48495,7 @@ class ParseScriptResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -48149,564 +48522,6 @@ class ParseScriptResponse
    * @brief JsonAPI(scriptItems) value
    */
   JsonValueVector<std::string> script_items_;  // NOLINT
-};
-
-// ------------------------------------------------------------------------
-// UtxoJsonData
-// ------------------------------------------------------------------------
-/**
- * @brief JSON-API (UtxoJsonData) class
- */
-class UtxoJsonData
-  : public cfd::core::JsonClassBase<UtxoJsonData> {
- public:
-  UtxoJsonData() {
-    CollectFieldName();
-  }
-  virtual ~UtxoJsonData() {
-    // do nothing
-  }
-  /**
-   * @brief collect field name.
-   */
-  static void CollectFieldName();
-
-  /**
-   * @brief Get of txid
-   * @return txid
-   */
-  std::string GetTxid() const {
-    return txid_;
-  }
-  /**
-   * @brief Set to txid
-   * @param[in] txid    setting value.
-   */
-  void SetTxid(  // line separate
-    const std::string& txid) {  // NOLINT
-    this->txid_ = txid;
-  }
-  /**
-   * @brief Get data type of txid
-   * @return Data type of txid
-   */
-  static std::string GetTxidFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of txid field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetTxidString(  // line separate
-      const UtxoJsonData& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.txid_);
-  }
-  /**
-   * @brief Set json object to txid field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetTxidString(  // line separate
-      UtxoJsonData& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.txid_, json_value);
-  }
-
-  /**
-   * @brief Get of vout
-   * @return vout
-   */
-  uint32_t GetVout() const {
-    return vout_;
-  }
-  /**
-   * @brief Set to vout
-   * @param[in] vout    setting value.
-   */
-  void SetVout(  // line separate
-    const uint32_t& vout) {  // NOLINT
-    this->vout_ = vout;
-  }
-  /**
-   * @brief Get data type of vout
-   * @return Data type of vout
-   */
-  static std::string GetVoutFieldType() {
-    return "uint32_t";
-  }
-  /**
-   * @brief Get json string of vout field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetVoutString(  // line separate
-      const UtxoJsonData& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.vout_);
-  }
-  /**
-   * @brief Set json object to vout field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetVoutString(  // line separate
-      UtxoJsonData& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.vout_, json_value);
-  }
-
-  /**
-   * @brief Get of amount
-   * @return amount
-   */
-  int64_t GetAmount() const {
-    return amount_;
-  }
-  /**
-   * @brief Set to amount
-   * @param[in] amount    setting value.
-   */
-  void SetAmount(  // line separate
-    const int64_t& amount) {  // NOLINT
-    this->amount_ = amount;
-  }
-  /**
-   * @brief Get data type of amount
-   * @return Data type of amount
-   */
-  static std::string GetAmountFieldType() {
-    return "int64_t";
-  }
-  /**
-   * @brief Get json string of amount field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetAmountString(  // line separate
-      const UtxoJsonData& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.amount_);
-  }
-  /**
-   * @brief Set json object to amount field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetAmountString(  // line separate
-      UtxoJsonData& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.amount_, json_value);
-  }
-
-  /**
-   * @brief Get of asset
-   * @return asset
-   */
-  std::string GetAsset() const {
-    return asset_;
-  }
-  /**
-   * @brief Set to asset
-   * @param[in] asset    setting value.
-   */
-  void SetAsset(  // line separate
-    const std::string& asset) {  // NOLINT
-    this->asset_ = asset;
-  }
-  /**
-   * @brief Get data type of asset
-   * @return Data type of asset
-   */
-  static std::string GetAssetFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of asset field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetAssetString(  // line separate
-      const UtxoJsonData& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.asset_);
-  }
-  /**
-   * @brief Set json object to asset field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetAssetString(  // line separate
-      UtxoJsonData& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.asset_, json_value);
-  }
-
-  /**
-   * @brief Get of descriptor
-   * @return descriptor
-   */
-  std::string GetDescriptor() const {
-    return descriptor_;
-  }
-  /**
-   * @brief Set to descriptor
-   * @param[in] descriptor    setting value.
-   */
-  void SetDescriptor(  // line separate
-    const std::string& descriptor) {  // NOLINT
-    this->descriptor_ = descriptor;
-  }
-  /**
-   * @brief Get data type of descriptor
-   * @return Data type of descriptor
-   */
-  static std::string GetDescriptorFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of descriptor field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetDescriptorString(  // line separate
-      const UtxoJsonData& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.descriptor_);
-  }
-  /**
-   * @brief Set json object to descriptor field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetDescriptorString(  // line separate
-      UtxoJsonData& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.descriptor_, json_value);
-  }
-
-  /**
-   * @brief Get of scriptSigTemplate
-   * @return scriptSigTemplate
-   */
-  std::string GetScriptSigTemplate() const {
-    return script_sig_template_;
-  }
-  /**
-   * @brief Set to scriptSigTemplate
-   * @param[in] script_sig_template    setting value.
-   */
-  void SetScriptSigTemplate(  // line separate
-    const std::string& script_sig_template) {  // NOLINT
-    this->script_sig_template_ = script_sig_template;
-  }
-  /**
-   * @brief Get data type of scriptSigTemplate
-   * @return Data type of scriptSigTemplate
-   */
-  static std::string GetScriptSigTemplateFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of scriptSigTemplate field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetScriptSigTemplateString(  // line separate
-      const UtxoJsonData& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.script_sig_template_);
-  }
-  /**
-   * @brief Set json object to scriptSigTemplate field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetScriptSigTemplateString(  // line separate
-      UtxoJsonData& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.script_sig_template_, json_value);
-  }
-
-  /**
-   * @brief Set ignore item.
-   * @param[in] key   ignore target key name.
-   */
-  void SetIgnoreItem(const std::string& key) {
-    ignore_items.insert(key);
-  }
-
-  /**
-   * @brief Convert struct to class.
-   * @param[in] data   struct data.
-   */
-  void ConvertFromStruct(
-      const UtxoJsonDataStruct& data);
-
-  /**
-   * @brief Convert class to struct.
-   * @return  struct data.
-   */
-  UtxoJsonDataStruct ConvertToStruct()  const;
-
- protected:
-  /**
-   * @brief definition type of Map table.
-   */
-  using UtxoJsonDataMapTable =
-    cfd::core::JsonTableMap<UtxoJsonData>;
-
-  /**
-   * @brief Get JSON mapping object.
-   * @return JSON mapping object.
-   * @see cfd::core::JsonClassBase::GetJsonMapper()
-   */
-  virtual const UtxoJsonDataMapTable& GetJsonMapper() const {  // NOLINT
-    return json_mapper;
-  }
-  /**
-   * @brief Get item lists of JSON mapping.
-   * Fetch a list of target variable names in the order of definition.
-   * @return Item lists of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetJsonItemList()
-   */
-  virtual const std::vector<std::string>& GetJsonItemList() const {
-    return item_list;
-  }
-  /**
-   * @brief Get ignore item lists of JSON mnapping.
-   * Ignore the target variable at Serialize.
-   * @return Item list of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetIgnoreItem()
-   */
-  virtual const std::set<std::string>& GetIgnoreItem() const {
-    return ignore_items;
-  }
-
- private:
- /**
-  * @brief JsonFunctionMap table
-  */
-  static UtxoJsonDataMapTable json_mapper;
-  /**
-   * @brief field name list.
-   */
-  static std::vector<std::string> item_list;
-  /**
-   * @brief ignore item list.
-   */
-  std::set<std::string> ignore_items;
-
-  /**
-   * @brief JsonAPI(txid) value
-   */
-  std::string txid_ = "";
-  /**
-   * @brief JsonAPI(vout) value
-   */
-  uint32_t vout_ = 0;
-  /**
-   * @brief JsonAPI(amount) value
-   */
-  int64_t amount_ = 0;
-  /**
-   * @brief JsonAPI(asset) value
-   */
-  std::string asset_ = "";
-  /**
-   * @brief JsonAPI(descriptor) value
-   */
-  std::string descriptor_ = "";
-  /**
-   * @brief JsonAPI(scriptSigTemplate) value
-   */
-  std::string script_sig_template_ = "";
-};
-
-// ------------------------------------------------------------------------
-// TargetAmountMapData
-// ------------------------------------------------------------------------
-/**
- * @brief JSON-API (TargetAmountMapData) class
- */
-class TargetAmountMapData
-  : public cfd::core::JsonClassBase<TargetAmountMapData> {
- public:
-  TargetAmountMapData() {
-    CollectFieldName();
-  }
-  virtual ~TargetAmountMapData() {
-    // do nothing
-  }
-  /**
-   * @brief collect field name.
-   */
-  static void CollectFieldName();
-
-  /**
-   * @brief Get of asset
-   * @return asset
-   */
-  std::string GetAsset() const {
-    return asset_;
-  }
-  /**
-   * @brief Set to asset
-   * @param[in] asset    setting value.
-   */
-  void SetAsset(  // line separate
-    const std::string& asset) {  // NOLINT
-    this->asset_ = asset;
-  }
-  /**
-   * @brief Get data type of asset
-   * @return Data type of asset
-   */
-  static std::string GetAssetFieldType() {
-    return "std::string";
-  }
-  /**
-   * @brief Get json string of asset field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetAssetString(  // line separate
-      const TargetAmountMapData& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.asset_);
-  }
-  /**
-   * @brief Set json object to asset field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetAssetString(  // line separate
-      TargetAmountMapData& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.asset_, json_value);
-  }
-
-  /**
-   * @brief Get of amount
-   * @return amount
-   */
-  int64_t GetAmount() const {
-    return amount_;
-  }
-  /**
-   * @brief Set to amount
-   * @param[in] amount    setting value.
-   */
-  void SetAmount(  // line separate
-    const int64_t& amount) {  // NOLINT
-    this->amount_ = amount;
-  }
-  /**
-   * @brief Get data type of amount
-   * @return Data type of amount
-   */
-  static std::string GetAmountFieldType() {
-    return "int64_t";
-  }
-  /**
-   * @brief Get json string of amount field.
-   * @param[in,out] obj     class object.
-   * @return JSON string
-   */
-  static std::string GetAmountString(  // line separate
-      const TargetAmountMapData& obj) {  // NOLINT
-    return cfd::core::ConvertToString(obj.amount_);
-  }
-  /**
-   * @brief Set json object to amount field.
-   * @param[in,out] obj     class object.
-   * @param[in] json_value  JSON object.
-   */
-  static void SetAmountString(  // line separate
-      TargetAmountMapData& obj,  // NOLINT
-      const UniValue& json_value) {
-    cfd::core::ConvertFromUniValue(  // line separate
-      obj.amount_, json_value);
-  }
-
-  /**
-   * @brief Set ignore item.
-   * @param[in] key   ignore target key name.
-   */
-  void SetIgnoreItem(const std::string& key) {
-    ignore_items.insert(key);
-  }
-
-  /**
-   * @brief Convert struct to class.
-   * @param[in] data   struct data.
-   */
-  void ConvertFromStruct(
-      const TargetAmountMapDataStruct& data);
-
-  /**
-   * @brief Convert class to struct.
-   * @return  struct data.
-   */
-  TargetAmountMapDataStruct ConvertToStruct()  const;
-
- protected:
-  /**
-   * @brief definition type of Map table.
-   */
-  using TargetAmountMapDataMapTable =
-    cfd::core::JsonTableMap<TargetAmountMapData>;
-
-  /**
-   * @brief Get JSON mapping object.
-   * @return JSON mapping object.
-   * @see cfd::core::JsonClassBase::GetJsonMapper()
-   */
-  virtual const TargetAmountMapDataMapTable& GetJsonMapper() const {  // NOLINT
-    return json_mapper;
-  }
-  /**
-   * @brief Get item lists of JSON mapping.
-   * Fetch a list of target variable names in the order of definition.
-   * @return Item lists of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetJsonItemList()
-   */
-  virtual const std::vector<std::string>& GetJsonItemList() const {
-    return item_list;
-  }
-  /**
-   * @brief Get ignore item lists of JSON mnapping.
-   * Ignore the target variable at Serialize.
-   * @return Item list of JSON mapping.
-   * @see cfd::core::JsonClassBase::GetIgnoreItem()
-   */
-  virtual const std::set<std::string>& GetIgnoreItem() const {
-    return ignore_items;
-  }
-
- private:
- /**
-  * @brief JsonFunctionMap table
-  */
-  static TargetAmountMapDataMapTable json_mapper;
-  /**
-   * @brief field name list.
-   */
-  static std::vector<std::string> item_list;
-  /**
-   * @brief ignore item list.
-   */
-  std::set<std::string> ignore_items;
-
-  /**
-   * @brief JsonAPI(asset) value
-   */
-  std::string asset_ = "";
-  /**
-   * @brief JsonAPI(amount) value
-   */
-  int64_t amount_ = 0;
 };
 
 // ------------------------------------------------------------------------
@@ -49076,7 +48891,7 @@ class CoinSelectionFeeInfomationField
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -49413,7 +49228,7 @@ class SelectUtxosRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -49741,7 +49556,7 @@ class SelectUtxosResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -49981,7 +49796,7 @@ class SerializeLedgerFormatTxOut
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -50257,7 +50072,7 @@ class SerializeLedgerFormatRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -50450,7 +50265,7 @@ class SerializeLedgerFormatResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -50635,7 +50450,7 @@ class SignatureHashKeyData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -51036,7 +50851,7 @@ class CreateSignatureHashTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -51242,7 +51057,7 @@ class CreateSignatureHashRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -51384,7 +51199,7 @@ class CreateSignatureHashResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -51565,7 +51380,7 @@ class ElementsSignatureHashKeyData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -52009,7 +51824,7 @@ class CreateElementsSignatureHashTxIn
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -52219,7 +52034,7 @@ class CreateElementsSignatureHashRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -52361,7 +52176,7 @@ class CreateElementsSignatureHashResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -52886,7 +52701,7 @@ class SignWithPrivkeyTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -53147,7 +52962,7 @@ class SignWithPrivkeyRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -53293,7 +53108,7 @@ class SignWithPrivkeyResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -53474,7 +53289,7 @@ class GetSupportedFunctionResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -53702,7 +53517,7 @@ class TxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -53934,7 +53749,7 @@ class TxOutRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -54211,7 +54026,7 @@ class CreateRawTransactionRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -54361,7 +54176,7 @@ class CreateRawTransactionResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -54628,7 +54443,7 @@ class UpdateTxOutAmountData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -54865,7 +54680,7 @@ class UpdateTxOutAmountRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -55011,7 +54826,7 @@ class UpdateTxOutAmountResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -55364,7 +55179,7 @@ class WitnessStackData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -55609,7 +55424,7 @@ class UpdateWitnessStackTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -55842,7 +55657,7 @@ class UpdateWitnessStackRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -55988,7 +55803,7 @@ class UpdateWitnessStackResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -56341,7 +56156,7 @@ class VerifyignTxInUtxoData
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -56586,7 +56401,7 @@ class VerifySignRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -56818,7 +56633,7 @@ class FailSignTxIn
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -57008,7 +56823,7 @@ class VerifySignResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -57537,7 +57352,7 @@ class VerifySignatureTxInRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -57798,7 +57613,7 @@ class VerifySignatureRequest
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()
@@ -57944,7 +57759,7 @@ class VerifySignatureResponse
     return item_list;
   }
   /**
-   * @brief Get ignore item lists of JSON mnapping.
+   * @brief Get ignore item lists of JSON mapping.
    * Ignore the target variable at Serialize.
    * @return Item list of JSON mapping.
    * @see cfd::core::JsonClassBase::GetIgnoreItem()

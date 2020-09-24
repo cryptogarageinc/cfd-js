@@ -55,7 +55,7 @@
         "vout:require": "optional",
         "scriptSig:require": "optional",
         "scriptSig": {
-          ":class": "ElementsDecodeUnlockingScript",
+          ":class": "DecodeUnlockingScript",
           "asm": "",
           "asm:require": "require",
           "hex": "",
