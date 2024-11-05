@@ -43,9 +43,10 @@ const removeFile = async function(path) {
 const main = async function() {
   let removeFileName = '';
   try {
-    if (process.arch !== 'x64') {
+    if (!isMacos && process.arch !== 'x64') {
       return;
     }
+    const arch = (process.arch === 'x64') ? 'x86_64' : 'arm64';
     if (process.env.CFDJS_UNUSE_ASSET !== undefined) {
       const unuseAsset = process.env.CFDJS_UNUSE_ASSET.toLowerCase();
       if ((unuseAsset === 'true') || (unuseAsset === 'on') || (unuseAsset === '1')) {
@@ -74,18 +75,18 @@ const main = async function() {
 
     let targetName = '';
     if (isMacos) {
-      targetName = 'osx-xcode11.7';
+      targetName = 'osx-xcode14.3.1';
     } else if (isWindows) {
       targetName = 'win-vs2019';
     } else {
       const {MUSL, family} = require('detect-libc');
       if (family == MUSL) {
-        targetName = 'alpine314-musl';
+        targetName = 'alpine320-musl';
       } else {
         targetName = 'ubuntu2004-gcc';
       }
     }
-    const targetUrl = `https://github.com/${repositoryDomain}/cfd-js/releases/download/v${version}/cfdjs-api-v${version}-${targetName}-x86_64.zip`;
+    const targetUrl = `https://github.com/${repositoryDomain}/cfd-js/releases/download/v${version}/cfdjs-api-v${version}-${targetName}-${arch}.zip`;
     if (!localFile) {
       console.log(`download url = ${targetUrl}`);
     } else {
